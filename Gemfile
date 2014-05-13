@@ -39,3 +39,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'json'
 gem 'mongoid'
+gem 'bson_ext'
+gem 'nokogiri'
+gem 'mediacloth'
+gem 'openurl'
+gem 'newrelic_rpm'
+gem 'sendgrid'
+gem 'dq-readability'
