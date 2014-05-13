@@ -37,7 +37,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'json'
-gem 'mongoid', '~> 4.0.0.beta1', github: 'mongoid/mongoid'
+gem 'mongoid', '4.0.0.beta1'
 gem 'bson_ext'
 gem 'nokogiri'
 gem 'openurl'
