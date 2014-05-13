@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/mongoid/mongoid.git
+  revision: aa2c82e804ef6a3ba44dfa4bd9b357017762a768
+  specs:
+    mongoid (4.0.0.beta1)
+      activemodel (>= 4.0.0)
+      moped (~> 2.0.beta6)
+      origin (~> 2.1)
+      tzinfo (>= 0.3.37)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,9 +38,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    bson (1.10.0)
-    bson_ext (1.10.0)
-      bson (~> 1.10.0)
+    bson (2.2.3)
+    bson_ext (1.5.1)
     builder (3.2.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -39,10 +48,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    connection_pool (2.0.0)
     dq-readability (1.0.6)
       guess_html_encoding (>= 0.0.4)
       nokogiri (>= 1.4.2)
-    durran-validatable (2.0.1)
     ensure_valid_encoding (0.5.3)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -56,24 +65,19 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    leshill-will_paginate (2.3.11)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     marc (0.8.1)
       ensure_valid_encoding
       unf
-    mediacloth (0.6)
     mime-types (1.25.1)
     mini_portile (0.5.3)
     minitest (5.3.3)
-    mongo (1.10.0)
-      bson (~> 1.10.0)
-    mongoid (1.0.6)
-      activesupport (>= 2.2.2)
-      durran-validatable (>= 2.0.1)
-      leshill-will_paginate (>= 2.3.11)
-      mongo (>= 0.18.2)
+    moped (2.0.0.rc1)
+      bson (~> 2.2)
+      connection_pool (~> 2.0)
+      optionable (~> 0.2.0)
     multi_json (1.10.0)
     newrelic_rpm (3.8.0.218)
     nokogiri (1.6.2-x86-mingw32)
@@ -81,6 +85,8 @@ GEM
     openurl (0.4.3)
       ensure_valid_encoding
       marc
+    optionable (0.2.0)
+    origin (2.1.1)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -140,6 +146,7 @@ GEM
       json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
+    unf_ext (0.0.6)
     unf_ext (0.0.6-x86-mingw32)
 
 PLATFORMS
@@ -152,8 +159,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json
-  mediacloth
-  mongoid
+  mongoid (~> 4.0.0.beta1)!
   newrelic_rpm
   nokogiri
   openurl
