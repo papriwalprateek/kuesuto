@@ -44,3 +44,6 @@ gem 'openurl'
 gem 'newrelic_rpm'
 gem 'sendgrid'
 gem 'dq-readability'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
