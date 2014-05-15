@@ -47,3 +47,5 @@ gem 'dq-readability'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+gem 'rails_12factor', group: :production
