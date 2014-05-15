@@ -46,6 +46,6 @@ gem 'sendgrid'
 gem 'dq-readability'
 
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 
 gem 'rails_12factor', group: :production
