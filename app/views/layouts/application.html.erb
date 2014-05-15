@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Kuesuto</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= Kuesuto %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+<div class="row">
+<div class="large-2 small-4 columns">
+	<h3 style="color: orange;">Daqwest</h3>
+</div>
+<div class="large-8 columns">
+<form accept-charset="UTF-8" action="/search" method="get">
+<div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+   <div class="raw collapse">
+    <div class="large-10 medium-8 columns">
+      <input id="search" name="q" value="" type="text">
+	 
+      </div>
+    <div class="large-2 medium-4 columns">
+     <input class="button tiny" value="Search" type="submit">
+	    </div>
+        </div>
+</form>
+</div>
+<div class="large-2 columns">
+	<div id="user-widget">
+  <% if current_user %>
+   <strong><%= current_user.name %></strong>
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Fb login", "/auth/facebook", id: "sign_in", class: "button tiny" %>
+  <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+  <% end %>
+</div>
+</div>
+</div><!-- header search bar-->
+<div id="content_yield">
+    <%= yield %>
+</div>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

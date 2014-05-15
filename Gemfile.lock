@@ -47,6 +47,9 @@ GEM
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    foundation-rails (5.2.2.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     guess_html_encoding (0.0.9)
     hashie (2.1.1)
     hike (1.2.3)
@@ -167,7 +170,6 @@ GEM
       json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.6)
     unf_ext (0.0.6-x86-mingw32)
 
 PLATFORMS
@@ -177,6 +179,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 4.0.0)
   dq-readability
+  foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   json
