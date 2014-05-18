@@ -12,39 +12,45 @@
   </head>
 
   <body>
-<div class="row">
-<div class="large-2 small-4 columns">
-	<h3 style="color: orange;">Daqwest</h3>
-</div>
-<div class="large-8 columns">
+<%if !current_user%>
+<div class="row" style="text-align: center"><img src="/assets/dqtagcloud.png" style="width: 700px;margin:60px;"></img></div>
+<div class="row" style="text-align: center">
+<a href="/auth/facebook"><span class="fb_login" style="margin-left:42%"></span></a>
+	</div>
+
+<%else%>
+<div class="row root_row">
+	<div class="large-3 medium-4 columns show-for-medium-up side-nav">
+		<%= render "/layouts/side_nav"%>
+	</div>
+	<div class="large-9 medium-8 columns main_container">
+		<div class="row">
+<div class="large-8 medium-8 columns">
 <form accept-charset="UTF-8" action="/search" method="get">
 <div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
    <div class="raw collapse">
     <div class="large-10 medium-8 columns">
-      <input id="search" name="q" value="" type="text">
+      <input id="search" name="q" value="Search" type="text">
 	 
       </div>
-    <div class="large-2 medium-4 columns">
-     <input class="button tiny" value="Search" type="submit">
-	    </div>
         </div>
 </form>
 </div>
-<div class="large-2 columns">
-	<div id="user-widget">
-  <% if current_user %>
-   <strong><%= current_user.name %></strong>
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Fb login", "/auth/facebook", id: "sign_in", class: "button tiny" %>
-  <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
-  <% end %>
+<div class="large-2 medium-3 columns">
+  <a href="/signout" style="color:#666;line-height: 20px">  <span class="signout"></span>Sign out</a>
 </div>
 </div>
-</div><!-- header search bar-->
 <div id="content_yield">
     <%= yield %>
 </div>
+
+</div>
+
+		
+		
+	
+</div><!--row class-->    
+<%end%>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

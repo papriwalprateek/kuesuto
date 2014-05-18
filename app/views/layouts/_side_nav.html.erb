@@ -1,0 +1,23 @@
+<ul class="side-nav"> 
+	<li class="logo"><a href="#" style="font-size: 20px;color: #555;">DaQwest</a></li>
+	<li style="height: 60px;"><a href="#">
+		<span class="nav_icon nav_icon_user"></span><span style="line-height: 40px;"><%=current_user.name%></span>
+		</a>
+	</li> 
+	<li><a href="#"><span class="nav_icon nav_icon_repo"></span>Repositories</a></li> 
+	<li><a href="#"><span class="nav_icon nav_icon_flow"></span>Flows</a></li> 
+	<li><a href="#"><span class="nav_icon nav_icon_rlist"></span>Reading List</a></li> 
+	<li><a href="#"><span class="nav_icon nav_icon_contri"></span>Contributions</a></li>
+	<li></li> 
+</ul>
+	
+<style>
+.nav_icon_user{
+  background:url(http://graph.facebook.com/<%=current_user.uid%>/picture?height=32&width=32) left top; 
+}
+li.logo a{
+	text-align:center;
+	font-weight: bold;
+	background-color: #dedede;
+}
+</style>

@@ -9,19 +9,89 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
- *= require_tree .
- *= require_self
- *= require foundation_and_overrides
+ *= require foundation_custom
 
  */
 
-body{
+.root_row{
+	height: 100%;
+}
+.root_row .side-nav{
 	background-color: #efefef;
+	height: 100%;
+}
+.root_row .side-nav ul{
+	padding: 0px 20px;
+}
+.root_row .side-nav ul li a{
+	color: #666;
+	font-size: 16px;
+}
+.root_row .side-nav ul li a:hover{
+	color: #000;
+}
+.root_row .main_container{
+	padding-top: 10px;
+	
 }
 nav.top-bar{
 	background-color: #eee;
 }
 .top-bar-section ul{
 	background-color: #eee;
+}
+
+.nav_icon
+{ 
+   width:20px; 
+   height:20px;
+   margin: 3px;
+   margin-right: 16px;
+   display: block;
+   float: left;
+}
+.nav_icon_repo{
+  background:url(/assets/repo.png) left top;  	
+}
+.nav_icon_flow{
+  background:url(/assets/flow.png) left top;  	
+}
+.nav_icon_contri{
+  background:url(/assets/contri.png) left top;  	
+}
+.nav_icon_rlist{
+  background:url(/assets/read.png) left top;  	
+}
+.nav_icon_user{
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px; 	
+}
+span.signout{
+background: url(/assets/signout.png);
+display:block;
+height:20px;
+width:20px;
+float:left;
+margin-right:4px;
+}
+.fb_login{
+background: url(/assets/fb_login.png);
+display:block;
+height:39px;
+width:205px;
+}
+.search_submit{
+	
+background: url(/assets/search.png);
+display:block;
+height:32px;
+width:32px;
+}
+hr{
+	margin:0px;
+	
 }
