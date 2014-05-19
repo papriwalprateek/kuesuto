@@ -3,10 +3,10 @@
 	<li><a href="/">repositories</a></li> 
 	<li class="current"><a href="#"><%=@repo%></a></li> 
 </ul>
+<div class="row explorer" data-equalizer>
+<div class="large-4 medium-5 columns side-nav explorer_column" data-equalizer-watch style="padding:0px;">
 
-<div class="large-5 medium-5 columns side-nav " style="padding:0px;">
-
-<ul class="side-nav explore_column">
+<ul class="side-nav explorer_column_s">
 	<li><a href="#"><span class="nav_icon1 nav_folder"></span>Sequence Sorting</a></li> 	
 	<li><a href="#"><span class="nav_icon1 nav_folder"></span>Graph Algorithms</a></li> 	
 	<li><a href="#"><span class="nav_icon1 nav_folder"></span>Machine Learning</a></li> 	
@@ -15,8 +15,8 @@
 
 </ul>
 </div>
-<div class="large-5 medium-5 columns">
-<ul class="side-nav explore_column" data-equalizer-watch>
+<div class="large-4 medium-5 columns end explorer_column" data-equalizer-watch>
+<ul class="side-nav explorer_column_s" >
 	<li><a href="#"><span class="nav_icon1 nav_entity"></span>Bubble Sort</a></li> 	
 	<li><a href="#"><span class="nav_icon1 nav_entity"></span>Selection Sort</a></li> 	
 	<li><a href="#"><span class="nav_icon1 nav_entity"></span>Insertion Sort</a></li> 	
@@ -40,13 +40,13 @@
 
 </ul>
 </div>
-
+</div>
 </div>	
 <style>
-.explore_column{
+.explorer_column_s{
 	padding: 0px;
 }
-.explore_column li a{
+.explorer_column_s li a{
 	line-height: 26px;
 }
 .nav_icon1{
@@ -68,11 +68,15 @@
  	background: url(<%= asset_path 'entity.png' %>) left top;
 
 }
-.explore_column li a:hover:after {
+.explorer_column_s li a:hover:after {
     content: url(<%= asset_path 'arrow_right.png' %>);
     float: right;
     display: block;
    width:20px; 
    height:20px;
+   margin-top: 2px;
+}
+.explorer_column{
+	border-right: 1px solid #dedede;
 }
 </style>

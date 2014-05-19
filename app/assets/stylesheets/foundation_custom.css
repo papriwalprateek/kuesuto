@@ -5893,9 +5893,9 @@ meta.foundation-mq-topbar {
 .top-bar .toggle-topbar.menu-icon a::after {
   content: "";
   position: absolute;
-  right: 0;
+  right: 4px;  /* dq edit  right: 0px;*/
   display: block;
-  width: 16px;
+ width: 16px;   
   top: 0;
   height: 0;
   box-shadow: 0 10px 0 1px white, 0 16px 0 1px white, 0 22px 0 1px white;
@@ -6377,7 +6377,7 @@ meta.foundation-mq-topbar {
   }
   /* line 588, C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/foundation-rails-5.2.2.0/vendor/assets/stylesheets/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
-    background: #333333;
+     /* dq edit background: #333333*/
     padding: 0 15px;
     height: 45px;
   }

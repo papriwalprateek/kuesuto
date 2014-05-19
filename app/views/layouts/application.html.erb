@@ -12,45 +12,59 @@
   </head>
 
   <body>
-<%if current_user%>
-<div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></div>
-<div class="row" style="text-align: center">
-<a href="/auth/facebook"><span class="fb_login" style="margin-left:42%"></span></a>
-	</div>
-
-<%else%>
-<div class="row root_row" >
-	<div class="large-3 medium-4 columns show-for-medium-up side-nav left-panel">
-		<%= render "/layouts/side_nav"%>
-	</div>
-	<div class="large-9 medium-8 columns main_container">
-		<div class="row">
-<div class="large-8 medium-8 columns">
-<form accept-charset="UTF-8" action="/search" method="get">
-<div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
-   <div class="raw collapse">
-    <div class="large-10 medium-8 columns">
-      <input id="search" name="q" value="Search" type="text">
-	 
-      </div>
-        </div>
-</form>
-</div>
-<div class="large-2 medium-3 columns">
-  <a href="/signout" style="color:#666;line-height: 20px">  <span class="signout"></span>Sign out</a>
-</div>
-</div>
-<div id="content_yield">
-    <%= yield %>
-</div>
-
-</div>
-
+<div class="page">
+<div class="off-canvas-wrap" data-offcanvas> 
+	<div class="inner-wrap"> 
+		<nav class="top-bar" data-topbar> 
 		
-		
-	
-</div><!--row class-->    
-<%end%>
+			 <ul class="title-area">
+				    <li class="name">
+	 		    		 <h1><a class="left-off-canvas-toggle menu-icon" href="#">
+	 		    		 	<img class="logo_image" src=<%= asset_path 'logo.png' %>>
+	 		    		 	</a></h1>	
+	 			   </li>
+     		   <li class="toggle-topbar menu-icon " ><a href="#" style="background-color:#333"></a></li>
+  			</ul>
+ 			
+  			<section class="top-bar-section">
+				<ul class="right">
+					<li><a style="color:#333;background-color:#fff;" href="/signout" > <b>Sign out</b></a>
+					</li>
+     			</ul>
+				<ul class="left" style="min-width:75%">
+      				
+    				<li class="has-form" style="min-width:80%"> <div class="row collapse"> 
+    					<div class="large-8 small-9 large-offset-2 columns"> 
+    						<input type="text" placeholder="Search in repos, flows .."> 
+    					</div> 
+    					<div class="large-2 small-3 columns end"> 
+    						<a href="#" class="button expand" style="background-color:#888">Search</a> 
+    					</div> 
+    					</div> 
+    				</li>
+					    			
+    			</ul>
+			</section>
+		</nav> 
+		<aside class="left-off-canvas-menu"> 
+			<%= render "/layouts/side_nav"%>
+
+		</aside> 
+		 
+		 <section class="main-section"> 
+		 	<div class="row">
+				<div class="small-12 large-10 large-offset-1 collumns">
+				<div id="content_yield">
+    			<%= yield %>
+				</div>
+			</div>
+			
+			</div>
+		 	<!-- content goes here --> </section> 
+		 <a class="exit-off-canvas"></a> 
+		</div> 
+</div>
+</div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

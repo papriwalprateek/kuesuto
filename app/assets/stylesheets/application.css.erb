@@ -11,35 +11,14 @@
  * file per style scope.
  *= require foundation_custom
  */
-
-.root_row{
-	height: 100%;
-}
-.root_row .main_container{
-	padding-top: 10px;
-	height: 100%;
-	background-color: #fff;	
-}
+html, body, body > .page, .off-canvas-wrap { height:100%; } 
+.off-canvas-wrap { overflow-y: scroll; }
+ .inner-wrap { min-height: 100%; }
 #content_yield{
 	height: 80%;
 }
-nav.top-bar{
-	background-color: #eee;
-}
 .top-bar-section ul{
-	background-color: #eee;
-}
-
-.left-off-canvas-menu .side-nav li a{
-	color: #666;
-	font-size: 16px;
-}
-.left-off-canvas-menu .side-nav ul li a:hover{
-	color: #000;
-}
-
-.left-off-canvas-menu .side-nav ul{
-	padding: 0px 20px;
+	background-color: #fff;
 }
 
 
@@ -50,6 +29,7 @@ height:20px;
 width:20px;
 float:left;
 margin-right:4px;
+margin-top: 12px;
 }
 .fb_login{
 background: url(<%= asset_path 'fb_login.png' %>);
@@ -78,4 +58,24 @@ hr{
 }
 .content_window .full_height{
 	height: 100%;
+}
+.top-bar .name h1 a {
+	
+	color: #888;
+}
+nav.top-bar{
+	background-color: #fff;
+}
+
+.logo_image{
+	height: 30px;
+	width: 90px;
+}
+.side-nav li a:not(.button) {
+color: #666;
+}
+
+.side-nav li a:not(.button):hover{
+color: #000 !important;
+background-color: #eee;
 }
