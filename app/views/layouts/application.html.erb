@@ -12,15 +12,15 @@
   </head>
 
   <body>
-<%if !current_user%>
+<%if current_user%>
 <div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></div>
 <div class="row" style="text-align: center">
 <a href="/auth/facebook"><span class="fb_login" style="margin-left:42%"></span></a>
 	</div>
 
 <%else%>
-<div class="row root_row">
-	<div class="large-3 medium-4 columns show-for-medium-up side-nav">
+<div class="row root_row" >
+	<div class="large-3 medium-4 columns show-for-medium-up side-nav left-panel">
 		<%= render "/layouts/side_nav"%>
 	</div>
 	<div class="large-9 medium-8 columns main_container">

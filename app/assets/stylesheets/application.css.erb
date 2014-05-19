@@ -10,29 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require foundation_custom
-
  */
 
 .root_row{
 	height: 100%;
 }
-.root_row .side-nav{
-	background-color: #efefef;
-	height: 100%;
-}
-.root_row .side-nav ul{
-	padding: 0px 20px;
-}
-.root_row .side-nav ul li a{
-	color: #666;
-	font-size: 16px;
-}
-.root_row .side-nav ul li a:hover{
-	color: #000;
-}
 .root_row .main_container{
 	padding-top: 10px;
-	
+	height: 100%;
+	background-color: #fff;	
+}
+#content_yield{
+	height: 80%;
 }
 nav.top-bar{
 	background-color: #eee;
@@ -41,36 +30,19 @@ nav.top-bar{
 	background-color: #eee;
 }
 
-.nav_icon
-{ 
-   width:20px; 
-   height:20px;
-   margin: 3px;
-   margin-right: 16px;
-   display: block;
-   float: left;
+.left-off-canvas-menu .side-nav li a{
+	color: #666;
+	font-size: 16px;
 }
-.nav_icon_repo{
-background: url(<%= asset_path 'repo.png' %>) left top;
+.left-off-canvas-menu .side-nav ul li a:hover{
+	color: #000;
 }
-.nav_icon_flow{
-background: url(<%= asset_path 'flow.png' %>) left top;
-}
-.nav_icon_contri{
 
-background: url(<%= asset_path 'contri.png' %>) left top;
+.left-off-canvas-menu .side-nav ul{
+	padding: 0px 20px;
 }
-.nav_icon_rlist{
-background: url(<%= asset_path 'read.png' %>) left top;
-}
-.nav_icon_user{
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
-  border-radius: 16px;
-	-webkit-border-radius: 16px;
-	-moz-border-radius: 16px; 	
-}
+
+
 span.signout{
 background: url(<%= asset_path 'signout.png' %>);
 display:block;
@@ -95,4 +67,15 @@ width:32px;
 hr{
 	margin:0px;
 	
+}
+.add_bar{
+	border-width: 0px 0px 1px;
+	background-color: white;
+}
+.content_window{
+	padding: 0px 10px 0px;
+	
+}
+.content_window .full_height{
+	height: 100%;
 }
