@@ -4,7 +4,7 @@
 	<li class="current"><a href="#"><%=@repo%></a></li> 
 </ul>
 <div class="row explorer" data-equalizer>
-<div class="large-4 medium-5 columns side-nav explorer_column" data-equalizer-watch style="padding:0px;">
+<div class="large-3 medium-5 columns side-nav explorer_column" data-equalizer-watch style="padding:0px;">
 
 <ul class="side-nav explorer_column_s">
 	<li><a href="/repo/algorithm/seq" data-remote="true"><span class="nav_icon1 nav_folder"></span>Sequence Sorting</a></li> 	
@@ -12,10 +12,14 @@
 	
 </ul>
 </div>
-<div class="large-4 medium-5 columns end" data-equalizer-watch>
+<div class="large-3 medium-5 columns" data-equalizer-watch>
 <div class="box" id="items_grid">
 </div>
 </div>
+<div class="large-5 medium-5 columns end" data-equalizer-watch>
+<%=render 'layouts/temp'%>
+</div>
+
 </div>
 </div>	
 <style>
