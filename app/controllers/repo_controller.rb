@@ -1,6 +1,6 @@
 class RepoController < ApplicationController
   def show
-    @repo = params[:a]
+    @repo = params[:repo]
   end
   def generic
     if params[:a]=="graph"
