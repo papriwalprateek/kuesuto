@@ -12,7 +12,7 @@
   </head>
 
   <body>
- <%if current_user%>
+ <%if !current_user%>
 <div class="page">
 <div class="off-canvas-wrap" data-offcanvas> 
 	<div class="inner-wrap"> 
@@ -70,9 +70,16 @@
 <div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></div>
 <div class="row" style="text-align: center">
 <a href="/auth/facebook"><span class="fb_login" style="margin-left:42%"></span></a>
-	</div>
-
+</div>
+      
 <%end%>
     <%= javascript_include_tag "application" %>
+ <script>
+ 	$(function() {  
+    	$(".explorer_column_s li a").click(function() {  
+	        $(".box").toggleClass("box-change");  
+	    });  
+	}); 
+ </script>
   </body>
 </html>
