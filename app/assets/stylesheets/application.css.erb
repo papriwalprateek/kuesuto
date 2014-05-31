@@ -140,3 +140,44 @@ line-height: 26px;
 	border-bottom-width: 1px;
 	padding:8px;
 }
+/*below is code taken from the generic page*/
+
+.explorer_column_s{
+	padding: 0px;
+}
+.explorer_column_s li a{
+	line-height: 26px;
+}
+.nav_icon1{
+ width:20px; 
+   height:20px;
+   margin: 3px;
+   margin-right: 6px;
+   display: block;
+   float: left;
+	
+}
+.nav_folder{
+	
+  	background: url(<%= asset_path 'folder.png' %>) left top;
+
+}
+.nav_entity{
+	
+ 	background: url(<%= asset_path 'entity.png' %>) left top;
+
+}
+.explorer_column_s li a:hover:after {
+    content: url(<%= asset_path 'arrow_right.png' %>);
+    float: right;
+    display: block;
+   width:20px; 
+   height:20px;
+   margin-top: 2px;
+}
+.explorer_column{
+	border-right: 1px solid #dedede;
+}
+div.ember-view{
+	height: 100%;
+}

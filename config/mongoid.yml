@@ -9,7 +9,7 @@ development:
       #database: daqwest_mongo
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
-      uri: "mongodb://vinayrajchoudhary:khetri@54.226.71.234:10010/daqwest_mongo"
+      uri: "mongodb://sumit:563joker@54.198.124.25:10023/daqwest_mongo"
       
       options:
         # Change whether the session persists in safe mode by default.

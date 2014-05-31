@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require facebook
+//= require ember_application
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'repo/:repo'=>'repo#show'
+  get 'ember' => 'basic#ember_test'
   get 'repo/:repo/*a',to: 'repo#generic'
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
@@ -60,4 +61,10 @@ match '/search', to: 'basic#show', via: [:get, :post]
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  namespace :api do
+    namespace :v1 do
+      resources :entities, only: :index
+      
+    end
+  end
 end

@@ -45,9 +45,15 @@ gem 'newrelic_rpm'
 gem 'sendgrid'
 gem 'dq-readability'
 
+#ember js app
+gem 'ember-rails'
+gem 'ember-source'
+gem 'active_model_serializers'
+#facebook login
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
+#images not loading on heroku
 gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
