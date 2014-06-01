@@ -1,15 +1,15 @@
+
 <div class="large-3 medium-5 columns side-nav explorer_column"  style="padding:0px;">
  <ul class="side-nav explorer_column_s" >
-{{#each item in controller}}
+{{#each item in model}}
 	<li>
-	{{#view App.EntityListButton href = item.type}}
+	{{#view App.EntityListButton href = item.url}}
 
 		<span class="nav_icon1 nav_entity"></span>
 			{{item.type}}
+	
 	{{/view}}
 	
 	</li>
-
-{{/each}}
 </ul>
 </div>

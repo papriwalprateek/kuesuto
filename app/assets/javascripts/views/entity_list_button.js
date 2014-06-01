@@ -1,5 +1,6 @@
 App.EntityListButton = Ember.View.extend({
   tagName: "a",
+  list:["ad"],
   attributeBindings: ['href'],
   click: function() {
     ii = this.get('parentView');
@@ -13,6 +14,7 @@ App.EntityListButton = Ember.View.extend({
         k = k+1;
         console.log(k);
       }
+      history.pushState(null, document.title, this.href);
     this.get('controller').send('gett', this.href);
 	return false;
   }

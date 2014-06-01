@@ -1,6 +1,6 @@
 App.ApplicationController = Ember.ObjectController.extend({
   actions: {
-    get: function(level){
+    gett: function(level){
       console.log("inside get");
     }
   },

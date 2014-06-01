@@ -1,3 +1,8 @@
 App.ExplorerList = Ember.View.extend({
-  templateName: 'explorerlist'
+  templateName: 'explorerlist',
+  listBinding:["asd"],
+  didInsertElement : function(){
+	App.set("asd",this);
+}
+
 });

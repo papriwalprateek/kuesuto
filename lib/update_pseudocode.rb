@@ -1,11 +1,11 @@
 ## Attention creates new source entities for the wiki parts
 puts 'hi'
 count=0
-#Entity.where(type:'/dq/algorithm').each do |e|
+Entity.where(type:'/dq/algorithm').each do |e|
         begin
     count=count+1
 #if(count>25)
-e=Entity.find_by(name:/stooge/i)
+#e=Entity.find_by(name:/stooge/i)
     puts count
    @arr=[]
     e1=Entity.find(e['wiki'][0])
@@ -63,4 +63,4 @@ e=Entity.find_by(name:/stooge/i)
     File.open('log/mylog.log', 'a') {|f| f.write( e['name']+"update_propertycache.rb\n") }
 
     end
-#end
+end

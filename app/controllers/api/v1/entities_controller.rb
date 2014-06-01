@@ -3,9 +3,8 @@ class Api::V1::EntitiesController < ApplicationController
 
   def index
     addr = params[:addr]
-    addr = addr.split("/dq/")[1]
     respond_with [
-      {"type"=>addr,"name"=>"Sequence Sorting","id"=>4},
+      {"type"=>addr+"/a","name"=>"Sequence Sorting","id"=>4},
       {"type"=>addr,"name"=>"Sequence Sorting","id"=>3},
       {"type"=>addr,"name"=>"Sequence Sorting","id"=>2}
       ]
