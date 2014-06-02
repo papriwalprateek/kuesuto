@@ -1,4 +1,4 @@
 # For more information see: http://emberjs.com/guides/routing/
 
 App.Router.map ()->
-  @resource('entities', { path: '/*addr' })
+  this.route('entities', { path: '*addr' })

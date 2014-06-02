@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+ get 'showa' => 'basic#showa'
   get 'repo/:repo'=>'repo#show'
   get 'ember' => 'basic#ember_test'
   get '/r',to: 'repo#generic'

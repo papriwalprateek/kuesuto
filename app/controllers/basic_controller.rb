@@ -60,6 +60,6 @@ end
         end            
       end       
     end        
-    puts @s    
+    puts @s
   end 
 end
