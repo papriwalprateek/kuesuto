@@ -2,13 +2,18 @@
 {{#ifeq controller.has "list"}}
 
 	 <ul class="side-nav explorer_column_s" >
- 
 
-		{{#each item in controller.entities}}
+		{{#each controller.list}}
 			<li>
-			{{#view App.ExploreButtonView href=item.url}}
+			{{#view App.ExploreButtonView}}
+			{{#ifeq type "leaf"}}
 			<span class="nav_icon1 nav_entity"></span>
-			{{item.type}}
+			{{/ifeq}}
+			{{#ifeq type "notleaf"}}
+			<span class="nav_icon1 nav_folder"></span>
+			{{/ifeq}}
+			
+			{{name}}
 			{{/view}}
 			</li>
 		{{/each}}
@@ -16,43 +21,24 @@
 {{/ifeq}}
 
 
-{{#ifeq controller.has "card"}}
+{{#ifeq controller.has "tiles"}}
+{{#each controller.tiles}}
 	<div class="panel card"> 
-  		<div class="card_title">Description</div>
+  		<div class="card_title">{{tile_title}}</div>
+  {{#each tile_nodes}}
   		<div class="panel card_tile">
-  			
-  			Quicksort, or partition-exchange sort, is a sorting algorithm developed by Tony Hoare that, on average, makes O comparisons to sort n items. In the worst case, it makes O comparisons, though this behavior is rare. Quicksort is often ....
+ 			{{{node.cache}}}
   		</div>
-  		
-  		<div class="panel card_tile">
-  		
-    		n. A sorting algorithm that operates by recursively partitioning the items to be sorted into two sets.
-    		v. To sort with such an algorithm.
-		</div>
+  {{/each}}
+  
   		
 	</div>   
-	<div class="panel card"> 
-  		<div class="card_title">Articles</div>
-  		<div class="panel card_tile">Quicksort introduction</div>
-  		<div class="panel card_tile">Quick Sort Personal.kent.edu</div>
-  		<div class="panel card_tile">Quick Sort - algorithms</div>
-
-	</div>    
-	<div class="panel card"> 
-		<div class="card_title">Videos</div>
-		<div style="display: inline-block">
-		<img src="//i1.ytimg.com/vi/Oq1F1VxEGcg/mqdefault.jpg" alt="Thumbnail" width="175"><div>How many ice hockey</div></div>
-		<div style="display: inline-block">
-		<img src="//i1.ytimg.com/vi/zA15IUYkBng/mqdefault.jpg" alt="Thumbnail" width="175"> <div>The Indian setter has</div></div>
-		
-		
-	</div>    
-	  <div class="panel card"><div class="card_title">Code</div>  </div>    
-	  <div class="panel card"><div class="card_title"> Mathematical Analysis</div>  </div>    
-	  <div class="panel card"><div class="card_title">Algorithm</div>  </div>    
-	  <div class="panel card"><div class="card_title">Example</div>  </div>    
-	  <div class="panel card"> <div class="card_title">Related Algorithms</div> <div>Intro Sort</div><div>Flash Sort</div></div>    
+{{/each}}
 {{/ifeq}}
 
+{{#ifeq controller.has "source"}}
+<a href="#/dq/algorithms/sequence sorting/bubble sort/article/537d1b886c6f6313bb840000">Article</a>
+	{{{controller.cache}}}
+{{/ifeq}}
 </div>
 	

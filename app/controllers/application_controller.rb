@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def get_contents(a)                  ### gives children or htmloutput in case of type /dqs/...
+ def get_contents(a)                  ### gives children or htmloutput in case of type /dqs/...
       a=a.downcase
       a_split= a.split('/')
       k=0
@@ -16,30 +16,41 @@ class ApplicationController < ActionController::Base
           end
           p<<'/'
       end
-      q=a_split.last
-      r=[]
+      if a_split.length>1
+          q=a_split.last
+          a=p+'/'+q
+          else
+          a=p
+          q=nil
+      end
+      r=Hash.new
       if a_split.length==1
-          r<<'repo'
-          Repo.each do |repo|
+          r['has']='repos'
+          r['repos'] = []
+          Repo.where(addr:a).each do |repo|
               r1=Hash.new
               r1['name']=repo['name']
-              r1['isleaf']=repo['isleaf']
-              r<<r1
+              r1['type']='notleaf'
+              r1['query'] = repo['addr']+'/'+repo['name']
+              r['repos']<<r1
           end
           else
       
       if Entity.where(addr:a).where(type:/dqs/i).count > 0 #### seeking contents of a source
-          r<<'source'
-          Entity.find_by(addr:a)['cache']
+          r['has']='source'
+          r['source']=[]
+          #Entity.find_by(addr:a)['cache']
           r1=Hash.new
-          r1["out_html"]=Entity.find_by(addr:a)['cache']
-          r1["type"]='source'
+          r1["type"]='content'
           r1["node"]=Entity.find_by(addr:a)
           r1["title"]=r1['node']['title']
-          r1['url']=r1['node']['url']
-          r<<r1
-          else if a_split.length == 2
-              r<<'notleaf'
+          r1["out_html"]=r1['node']['cache']
+          r1["url"]=r1['node']['url']
+          r['source']<<r1
+          else
+          if a_split.length == 2
+              r['has']='list'
+              r['list']=[]
               Entity.where(addr:a).each do |e1|
                   r1=Hash.new
                   if e1['isleaf']
@@ -47,55 +58,53 @@ class ApplicationController < ActionController::Base
                       else
                       r1["type"] ='notleaf'
                   end
-                  r1['isleaf']=e1['isleaf']
                   r1['name']=e1['name']
-                  r<<r1
-                  end
-                  else
-                    e=Entity.where(addr:p).find_by(name:/^#{Regexp.escape(q)}$/i)
-                    if e['isleaf']
-                        r<<'leaf'
-                        e['property_list'].each do |p|
-                            if p[1]>0
-                                r1=Hash.new
-                                r1["tile_title"]=p[0]
-                                r1["tile_content"]=[]
-                                r1['ids']=[]
-                                e[p[0]].each do |id|
-                                    if (p[0] != 'description')
-                                        r1["tile_content"]<<Entity.find(id)['title']
-                                        r1["ids"]<<id
-                                        else
-                                        r1["tile_content"]<<Entity.find(id)['content']   ### change to cache later
-                                        r1["ids"]<<id
-                                    end
-                                end
-                                r1['tile_nodes']=Entity.find(e[p[0]])
-                                r<<r1
-                            end
-                        end
-                        else
-                        r<<'notleaf'
-                        puts (e['name']+e['isleaf'].to_s+e.type)
-                        puts Entity.where(addr:a).count
-                        Entity.where(addr:a).each do |e1|
+                  r1['query']=e1['addr']+'/'+e1['name']
+                  r['list']<<r1
+                end
+                else
+                e=Entity.where(addr:p).find_by(name:/^#{Regexp.escape(q)}$/i)
+                if e['isleaf']
+                    r['has']='tiles'
+                    r['tiles']=[]
+                    e['property_list'].each do |p|
+                        if p[1]>0
+                            puts p[0]
                             r1=Hash.new
-                            if e1['isleaf']
-                                r1["type"]='leaf'
-                                else
-                                r1["type"] ='notleaf'
+                            r1["tile_title"]=p[0]
+                            r1["tile_nodes"]=[]
+                            e[p[0]].each do |id|
+                                r2=Hash.new
+                                r2['query']=e['addr']+'/'+e['name']+'/'+id.to_s
+                                r2['node']=Entity.find(id)
+                                r1['tile_nodes']<<r2
                             end
-                            r1['isleaf']=e1['isleaf']
-                            r1['name']=e1['name']
-                            r<<r1
+                            r['tiles']<<r1
                         end
                     end
-              end
-          end
-      end
+                    else
+                    r['has']='list'
+                    r['list']=[]
+                    puts (e['name']+e['isleaf'].to_s+e.type)
+                    puts Entity.where(addr:a).count
+                    Entity.where(addr:a).each do |e1|
+                        r1=Hash.new
+                        if e1['isleaf']
+                            r1["type"]='leaf'
+                            else
+                            r1["type"] ='notleaf'
+                        end
+                        r1['name']=e1['name']
+                        r1['query']=e1['addr']+'/'+e1['name']
+                        r['list']<<r1
+                    end
+                end
+            end
+        end
+    end
           return r
       end
-  
+        
   private
   def current_user
     @current_user ||= User.find(session[:user_id]["$oid"]) if session[:user_id]
