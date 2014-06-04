@@ -30,7 +30,7 @@
 				brd.push({"name":a[index],"url":"#"+value,"active":"current"});
 			}
 			else{
-			brd.push({"name":a[index],"url":"#"+value});
+			brd.push({"name":a[index],"url":"#/"+value});
 			}
 		});
 		brd
