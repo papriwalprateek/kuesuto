@@ -1,5 +1,8 @@
 App.Router.map(function() {
-  return this.route('entities', {
-    path: '*addr'
+  this.route('entities', {
+    path: '/asd/*addr'
   });
+  this.route("index", { path: "/index" });
+
 });
+
