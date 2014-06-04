@@ -81,7 +81,7 @@ test:
 production:
   sessions:
     default:
-      uri: mongodb://vinayrajchoudhary:khetri@paulo.mongohq.com:10010/daqwest_mongo
+      uri: "mongodb://sumit:563joker@54.198.124.25:10023/daqwest_mongo"
         
       options:
         #skip_version_check: true

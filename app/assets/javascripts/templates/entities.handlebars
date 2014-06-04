@@ -40,5 +40,13 @@
 	{{{controller.error}}}
 {{/ifeq}}
 
+{{#ifeq controller.has "repos"}}
+	{{#each controller.repos}}
+		{{#view App.ExploreButtonView}}	
+		{{name}}
+		{{/view}}
+	{{/each}}
+{{/ifeq}}
+
 </div>
 	
