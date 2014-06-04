@@ -7,6 +7,7 @@ App.EntitiesRoute = Ember.Route.extend({
   },
   afterModel: function() {
     Ember.$("body").removeClass("loading");
+     
   }
 });
  

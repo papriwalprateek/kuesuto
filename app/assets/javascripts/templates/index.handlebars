@@ -1,3 +1,10 @@
+<ul class="breadcrumbs add_bar"> 
+
+{{#each App.breadcrumbs}}
+	<li {{bind-attr class=active}}><a {{bind-attr href=url}} >{{name}}</a></li> 
+{{/each }}
+</ul>
+
 <div class="small-12 columns side-nav explorer_column"  style="padding:0px;">
 {{#ifeq controller.has "list"}}
 

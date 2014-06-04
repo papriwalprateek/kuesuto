@@ -5,7 +5,7 @@
 //= require app
 
 window.App = Ember.Application.create({
-  current_path: '',
+  currentpath: '',
   rootElement: ".ember-root-class"
 });
 
