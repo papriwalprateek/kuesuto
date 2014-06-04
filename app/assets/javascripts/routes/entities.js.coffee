@@ -1,4 +1,4 @@
-App.EntitiesRoute = Ember.Route.extend
+App.EntitiesRoute = Ember.Route.extend(
   beforeModel: ->
     
     # Assume the 'loading' class displays an overlay with a loading animation
@@ -11,4 +11,4 @@ App.EntitiesRoute = Ember.Route.extend
   afterModel: ->
     Ember.$("body").removeClass "loading"
     return
-    
+)   
