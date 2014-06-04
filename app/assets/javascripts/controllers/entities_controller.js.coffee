@@ -1,0 +1,1 @@
+App.EntitiesController =  Ember.Controller.extend
