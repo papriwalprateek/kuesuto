@@ -1,7 +1,8 @@
 
  App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    return $.getJSON('/api/v1/entities.json?addr=dq');
+  model: function(params) {
+  	
+    return $.getJSON('/api/v1/entities.json?addr='+params.addr);
   }
 });
  
