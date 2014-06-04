@@ -13,7 +13,6 @@
 
   <body>
  <%if !current_user%>
-		<script type="text/x-handlebars">
 
 <div class="page" style="height:100%">
 <div class="off-canvas-wrap" data-offcanvas> 
@@ -57,9 +56,12 @@
 		 <section class="main-section"> 
 		 	<div class="row">
 				<div class="small-12 large-10 large-offset-1 collumns">
+						<script type="text/x-handlebars">
+
 				<div id="content_yield">
     			<%= yield %>
 				</div>
+				</script>
 			</div>
 			
 			</div>
@@ -68,7 +70,7 @@
 		</div> 
 </div>
 </div>
-		</script>
+		
 
 <%else%>
 	
