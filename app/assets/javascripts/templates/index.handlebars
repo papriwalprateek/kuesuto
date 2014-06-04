@@ -1,4 +1,52 @@
-THis is index
+<div class="small-12 columns side-nav explorer_column"  style="padding:0px;">
+{{#ifeq controller.has "list"}}
+
+	 <ul class="side-nav explorer_column_s" >
+
+		{{#each controller.list}}
+			<li>
+			{{#view App.ExploreButtonView}}
+			{{#ifeq type "leaf"}}
+			<span class="nav_icon1 nav_entity"></span>
+			{{/ifeq}}
+			{{#ifeq type "notleaf"}}
+			<span class="nav_icon1 nav_folder"></span>
+			{{/ifeq}}
+			
+			{{name}}
+			{{/view}}
+			</li>
+		{{/each}}
+	</ul>
+{{/ifeq}}
 
 
-{{repos}}
+{{#ifeq controller.has "tiles"}}
+{{#each controller.tiles}}
+	<div class="panel card"> 
+  		<div class="card_title">{{tile_title}}</div>
+  {{#each tile_nodes}}
+  		<div class="panel card_tile">
+ 			{{{node.cache}}}
+  		</div>
+  {{/each}}
+  
+  		
+	</div>   
+{{/each}}
+{{/ifeq}}
+
+{{#ifeq controller.has "error"}}
+	{{{controller.error}}}
+{{/ifeq}}
+
+{{#ifeq controller.has "repos"}}
+	{{#each controller.repos}}
+		{{#view App.ExploreButtonView}}	
+		{{name}}
+		{{/view}}
+	{{/each}}
+{{/ifeq}}
+
+</div>
+	
