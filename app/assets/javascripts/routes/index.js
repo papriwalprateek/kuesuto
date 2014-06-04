@@ -27,13 +27,12 @@
 		var brd = [];
 		$.each(arr, function( index, value ) {
 			if(index==arr.length-1){
-				brd.push({"name":a[index],"url":"#"+value,"active":"current"});
+				brd.push({"name":decodeURI(a[index]),"url":"#"+value,"active":"current"});
 			}
 			else{
 			brd.push({"name":a[index],"url":"#/"+value});
 			}
 		});
-		brd
       	App.set('breadcrumbs',brd); 
   		}
 	});
