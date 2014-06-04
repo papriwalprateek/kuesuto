@@ -3,7 +3,7 @@ App.EntitiesRoute = Ember.Route.extend({
     Ember.$("body").addClass("loading");
   },
   model: function(params) {
-    return App.Entity.get_by_addr(params.addr);
+    return {has: "error",error:"this"};
   },
   afterModel: function() {
     Ember.$("body").removeClass("loading");

@@ -5,6 +5,8 @@ App.Entity.reopenClass({
     return $.getJSON("/api/v1/entities?addr=" + addr).then(function(response) {
       var a;
       a = App.Entity.create(response);
+      console.log(a);
+      App.set("out",response);
       return a;
     });
   }
