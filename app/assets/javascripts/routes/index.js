@@ -12,7 +12,7 @@
     _this = this;
       App.set('currentpath',_this.get('router.url'));
 
-		var a = App.currentpath.split('/');
+		var a = decodeURI(App.currentpath).split('/');
  
 		a.removeAt(0);
 		var arr = jQuery.map( a, function( n, i ) {
@@ -27,7 +27,7 @@
 		var brd = [];
 		$.each(arr, function( index, value ) {
 			if(index==arr.length-1){
-				brd.push({"name":decodeURI(a[index]),"url":"#"+value,"active":"current"});
+				brd.push({"name":a[index],"url":"#"+value,"active":"current"});
 			}
 			else{
 			brd.push({"name":a[index],"url":"#/"+value});
