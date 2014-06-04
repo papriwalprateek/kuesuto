@@ -11,21 +11,24 @@ class ApplicationController < ActionController::Base
       a_split.each do
           p<<a_split[k]
           k=k+1
-          if k==a_split.length - 1
+          if k>a_split.length - 2
               break
           end
           p<<'/'
       end
+      puts('p: '+p)
       if a_split.length>1
           q=a_split.last
           a=p+'/'+q
           else
           a=p
-          q=nil
+          q=''
       end
       err={}
-      if (Entity.where(addr:a).count==0 && Entity.where(addr:p).where(name:/^#{Regexp.escape(q)}$/i).count==0)
+      if (Entity.where(addr:a).count==0 && Entity.where(addr:p).where(name:/^#{Regexp.escape(q)}$/i).count==0 && Repo.where(addr:a).count==0)
           err['error']='not found'
+          err['details']='addr: '+a+" \n Entity.where(addr:a).count="+Entity.where(addr:a).count.to_s+" \n count addr p name q "+Entity.where(addr:p).where(name:/^#{Regexp.escape(q)}$/i).count.to_s+" \n repo count"+Repo.where(addr:a).count.to_s
+          puts err['details']
           err['has']='error'
           return err
           else
@@ -86,7 +89,7 @@ class ApplicationController < ActionController::Base
                             r1["tile_nodes"]=[]
                             e[p].each do |id|
                                 r2=Hash.new
-                                r2['query']=e['addr']+'/'+e['name']+'/'+id.to_s
+                                r2['query']=e['addr']+'/'+e['name']+'/'+p+'/'+id.to_s
                                 r2['node']=Entity.find(id)
                                 if p=='video'
                                     r2['node']['out_type']='video'
@@ -121,7 +124,7 @@ class ApplicationController < ActionController::Base
           return r
           end
       end
-    
+  
   private
   def current_user
     @current_user ||= User.find(session[:user_id]["$oid"]) if session[:user_id]
