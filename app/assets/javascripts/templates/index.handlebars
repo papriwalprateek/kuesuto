@@ -34,8 +34,16 @@
   		<div class="card_title">{{tile_title}}</div>
   {{#each tile_nodes}}
   		<div class="panel card_tile">
- 			{{{node.cache}}}
+ 		
+  		{{#ifeq node.out_type "text"}}
+  			{{{node.cache}}}  		
+  		{{/ifeq}}
+  		{{#ifeq node.out_type "video"}}
+  			<iframe width="520" height="300"{{bind-attr src= node.url}}></iframe>
+  		{{/ifeq}}
+  		
   		</div>
+  		
   {{/each}}
   
   		
