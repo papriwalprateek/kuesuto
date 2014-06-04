@@ -2,16 +2,6 @@ App.Entity = Ember.Object.extend({})
 
 
 App.Entity.reopenClass get_by_addr: (addr) ->
-  $.getJSON("api/v1/entities?addr=" + addr ).then (response) ->
-    entities = []
-    #response.has
-    #response.entities.forEach (child) ->
-    #  a = App.Entity.create child
-    #  a.set("url","#/"+a.type)
-    #  entities.push a
-    #  return
-    #Ember.RSVP.hash 
-    #  has: response.has,
-    #  entities: entities
+  $.getJSON("/api/v1/entities?addr=" + addr ).then (response) ->
     a = App.Entity.create response
     a
