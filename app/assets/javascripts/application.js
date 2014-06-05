@@ -15,6 +15,8 @@
 //= require foundation
 //= require facebook
 //= require ember_application
+//= require customized_swipe
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+

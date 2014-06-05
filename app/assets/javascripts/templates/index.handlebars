@@ -48,22 +48,25 @@
   	
   		<div class="card_title">{{tile_title}}</div>
   		
-  		
-  {{#each tile_nodes}}
-  		<div class="panel card_tile">
+ 		<div style='text-align:center;padding-top:20px;'>
+ 				{{#ifeq tile_title "article"}} <button onclick='mySwipe.prev()'>prev</button> <button onclick='mySwipe.next()'>next</button>
+ 		  		<div id='mySwipe' style='margin:0 auto' class='swipe'><div class='swipe-wrap'>	
+ 				{{/ifeq}}
+ 			{{#each tile_nodes}}
+  				<div class="panel" >
  		
-  		{{#ifeq node.out_type "text"}}
-  			{{{node.cache}}}  		
-  		{{/ifeq}}
-  		{{#ifeq node.out_type "video"}}
-  			<iframe width="520" height="300"{{bind-attr src= node.url}}></iframe>
-  		{{/ifeq}}
+  				{{#ifeq node.out_type "text"}}
+  					{{{node.cache}}}  		
+  				{{/ifeq}}
+  				{{#ifeq node.out_type "video"}}
+  					<iframe width="520" height="300"{{bind-attr src= node.url}}></iframe>
+  				{{/ifeq}}
+  			
+  				</div>
+  			{{/each}}
+		 {{#ifeq tile_title "article"}}</div></div>{{/ifeq}}
   		
-  		</div>
-  		
-  {{/each}}
-  
-  		
+		</div>
 	</div>   
 {{/each}}
 </div>
