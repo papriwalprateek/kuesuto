@@ -29,9 +29,26 @@
 
 
 {{#ifeq controller.has "tiles"}}
+{{#view App.ContentView}}
+
+<div class="row">
+<div class="large-3 columns side-nav " >
+
 {{#each controller.tiles}}
-	<div class="panel card"> 
+{{#view App.ContentTabsView}}
+	{{tile_title}}
+{{/view}}
+
+{{/each}}
+</div>
+<div class="large-9 columns ">
+{{#each controller.tiles}}
+
+	<div class="panel card" {{bind-attr id= "tile_title" }}> 
+  	
   		<div class="card_title">{{tile_title}}</div>
+  		
+  		
   {{#each tile_nodes}}
   		<div class="panel card_tile">
  		
@@ -49,6 +66,9 @@
   		
 	</div>   
 {{/each}}
+</div>
+</div>
+{{/view}}
 {{/ifeq}}
 
 {{#ifeq controller.has "error"}}
