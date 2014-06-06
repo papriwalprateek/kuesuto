@@ -6,7 +6,7 @@
 
 window.App = Ember.Application.create({
   currentpath: '',
-  rootElement: ".ember-root-class"
+  rootElement: "#content_yield"
 });
 
 Ember.Handlebars.registerHelper("ifeq", function(a, b, options) {
