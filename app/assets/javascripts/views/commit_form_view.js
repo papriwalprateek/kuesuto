@@ -9,6 +9,18 @@ App.CommitFormView = Ember.View.extend({
   isProcessing: false,
   isSlowConnection: false,
   timeout: null,
+  empty:	function(){
+  				var content_type = $('input[name="type_of_commit"]:checked').val();
+    	
+  				if(content_type=='content'){
+    				if(this.get('content')==''){
+    				return true;}}
+    			else if(content_type=='url'){    	
+    				if(this.get('resourceUrl')==''){
+    				return true;}}
+    			else if(!content_type) return true;
+    				return false;	
+  			}.property('content','resourceUrl'),
   
 	  resetfields:function(){
   		 clearTimeout(this.get("timeout"));
@@ -25,7 +37,8 @@ App.CommitFormView = Ember.View.extend({
     	});
   		},
   	submit: function() {
-    	$('div.commit_fields').hide();
+    	var content_type = $('input[name="type_of_commit"]:checked').val();
+    	console.log('here');
     	this.setProperties({
     	  submitFailed: false,
     	  isProcessing: true,
@@ -39,7 +52,7 @@ App.CommitFormView = Ember.View.extend({
     				p:{	content:this.get('content'),
     					property:this.get('property'),
     					resourceUrl:this.get('resourceUrl'),
-    					content_type:$('input[name="type_of_commit"]:checked').val()
+    					content_type:content_type
     				
     				}
     			}

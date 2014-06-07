@@ -60,14 +60,14 @@
 	 <h3>Your Content:</h3>
 
     {{view Ember.TextArea value=view.content}}
-    <button type="submit" {{action "submit" target=view}}>Done</button>
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.empty}}>Done</button>
 	<h3>Preview :</h3> {{{view.content}}}
     </div>
     <div class="commit_fields" id="commit_url">
 	 
     	 <h3>URL for your resource:</h3>
     {{view Ember.TextField value=view.resourceUrl}}
-    <button type="submit" {{action "submit" target=view}}>Done</button>
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.empty}}>Done</button>
 
 	</div>
 	
@@ -82,8 +82,8 @@
   {{#if view.successfully_saved}}
   	Congrats, Your commit has been saved and will be reviewed soon, you can see it in the review section :)
     <button {{action "resetfields" target=view}}>Add more!</button>
-  	
-  {{/if}}
+   {{/if}}
+	{{#if view.empty}}This is empty please write something to submit{{/if}}
   {{/view}}
 </div>
 {{#each controller.tiles}}
