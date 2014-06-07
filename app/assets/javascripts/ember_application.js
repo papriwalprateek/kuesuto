@@ -14,3 +14,7 @@ Ember.Handlebars.registerHelper("ifeq", function(a, b, options) {
     return result === b;
   });
 });
+Ember.Handlebars.helper('unUnderscore', function(value, options) {
+  
+  return Ember.String.capitalize(value.replace("_"," "));
+});

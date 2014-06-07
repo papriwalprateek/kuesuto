@@ -38,7 +38,7 @@
 {{/view}}
 {{#each controller.tiles}}
 {{#view App.ContentTabsView }}
-	{{tile_title}}
+	{{unUnderscore tile_title}}
 {{/view}}
 
 {{/each}}
@@ -91,7 +91,7 @@
 
 	<div class="panel card contentcard" {{bind-attr id= "tile_title" }}> 
   	
-  		<div class="card_title" >{{tile_title}}</div>
+  		<div class="card_title" >{{unUnderscore tile_title}}</div>
   		
  		<div >
  				{{#ifeq tile_title "article"}} <button onclick='mySwipe.prev()'>prev</button> <button onclick='mySwipe.next()'>next</button>

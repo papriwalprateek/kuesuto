@@ -10,7 +10,7 @@ skip_before_action :verify_authenticity_token
   end
   def create
     r=params[:p]
-    r['review_status']='under review'
+    r['review_status']='under_review'
     r['author']='raj'
     puts r
     x=commit_content(r)
