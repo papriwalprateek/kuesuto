@@ -60,14 +60,14 @@
 	 <h3>Your Content:</h3>
 
     {{view Ember.TextArea value=view.content}}
-    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.empty}}>Done</button>
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
 	<h3>Preview :</h3> {{{view.content}}}
     </div>
     <div class="commit_fields" id="commit_url">
 	 
     	 <h3>URL for your resource:</h3>
     {{view Ember.TextField value=view.resourceUrl}}
-    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.empty}}>Done</button>
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptyurl}}>Done</button>
 
 	</div>
 	
