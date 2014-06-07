@@ -38,7 +38,6 @@ App.CommitFormView = Ember.View.extend({
   		},
   	submit: function() {
     	var content_type = $('input[name="type_of_commit"]:checked').val();
-    	console.log('here');
     	this.setProperties({
     	  submitFailed: false,
     	  isProcessing: true,

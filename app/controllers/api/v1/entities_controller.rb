@@ -13,8 +13,9 @@ skip_before_action :verify_authenticity_token
     r['review_status']='under review'
     r['author']='raj'
     puts r
+    x=commit_content(r)
      respond_to do |format|
-        format.json {render :json => r}
+        format.json {render :json => x}
       end
   end
 private
