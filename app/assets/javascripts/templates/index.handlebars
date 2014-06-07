@@ -33,20 +33,64 @@
 
 <div class="row">
 <div class="large-3 columns side-nav " >
-
+{{#view App.ContentTabsCommitView}}
+	Add Content about it!!!
+{{/view}}
 {{#each controller.tiles}}
-{{#view App.ContentTabsView}}
+{{#view App.ContentTabsView }}
 	{{tile_title}}
 {{/view}}
 
 {{/each}}
 </div>
 <div class="large-9 columns ">
+<div class="panel card commitcard" id="commitform ">
+   {{#view App.CommitFormView}}
+	{{#if view.notFilled}}
+  <div class="send_form">
+  What you want to add: 
+ {{view Ember.TextField value=view.property}} For ex. write description if you want to add a description about it.
+   
+   {{#view App.CommitTypeView}} 
+ <h3> What would you like to add</h3>
+    <input type="radio" name="type_of_commit" value="url"> I want to suggest a resource 
+	<input type="radio" name="type_of_commit" value="content"> I want to write myself
+	{{/view}}
+	 <div class="commit_fields" id="commit_content">
+	 <h3>Your Content:</h3>
+
+    {{view Ember.TextArea value=view.content}}
+    <button type="submit" {{action "submit" target=view}}>Done</button>
+	<h3>Preview :</h3> {{{view.content}}}
+    </div>
+    <div class="commit_fields" id="commit_url">
+	 
+    	 <h3>URL for your resource:</h3>
+    {{view Ember.TextField value=view.resourceUrl}}
+    <button type="submit" {{action "submit" target=view}}>Done</button>
+
+	</div>
+	
+  </div>
+  {{/if}}
+  {{#if view.isSlowConnection}}There seems to be some problem with your connection.
+  {{else}}
+  {{#if view.isProcessing}}Commiting your information ...{{/if}}
+  {{/if}}
+  {{#if view.submitFailed}}Your commit Failed :( {{/if}}
+  
+  {{#if view.successfully_saved}}
+  	Congrats, Your commit has been saved and will be reviewed soon, you can see it in the review section :)
+    <button {{action "resetfields" target=view}}>Add more!</button>
+  	
+  {{/if}}
+  {{/view}}
+</div>
 {{#each controller.tiles}}
 
-	<div class="panel card" {{bind-attr id= "tile_title" }}> 
+	<div class="panel card contentcard" {{bind-attr id= "tile_title" }}> 
   	
-  		<div class="card_title">{{tile_title}}</div>
+  		<div class="card_title" >{{tile_title}}</div>
   		
  		<div >
  				{{#ifeq tile_title "article"}} <button onclick='mySwipe.prev()'>prev</button> <button onclick='mySwipe.next()'>next</button>
@@ -87,4 +131,4 @@
 {{/ifeq}}
 
 </div>
-	
+ 
