@@ -13,13 +13,13 @@ App.CommitFormView = Ember.View.extend({
   				var content_type = $('input[name="type_of_commit"]:checked').val();
     	
   				if(content_type=='content'){
-    				if(this.get('content')==''){
-    				return true;}}
+    				if(this.get('content')!=''){
+    				return false;}}
     			else if(content_type=='url'){    	
-    				if(this.get('resourceUrl')==''){
-    				return true;}}
-    			else if(!content_type) return true;
-    				return false;	
+    				if(this.get('resourceUrl')!=''){
+    				return false;}}
+    			
+    				return true;	
   			}.property('content','resourceUrl'),
   
 	  resetfields:function(){
