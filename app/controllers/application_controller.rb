@@ -144,7 +144,7 @@ class ApplicationController < ActionController::Base
 #   in_type:'imm_content'
 #   author:'vinay'
 #   content:'Bubble sort means you put everything in water, make some soap bubbles and they shall sort evrything ;)'
-#   review_status:'under review'
+#   review_status:'under_review'
 #
 #
 #   }
@@ -173,10 +173,10 @@ def commit_content(r)# r is a Hash(json) containing parent_query,property,conten
         else
         if(get['has']=='leaf')
             e=get[get['has']]
-            if r['review_status']=='under review'
-                es,e=create_sourcenode('under review',e,r['out_type'])
+            if r['review_status']=='under_review'
+                es,e=create_sourcenode('under_review',e,r['out_type'])
                 else
-                err['details']='not yet supported review_status other than under review'
+                err['details']='not yet supported review_status other than under_review'
                 return err
             end
             
@@ -233,7 +233,7 @@ def create_sourcenode(property,e,out_type)##e is parent ##return sourcenode,pare
             if property_a.include?(property)
                 temp.type="/dqs/"+property
                 else
-                if (property!=nil && property!='under review')
+                if (property!=nil && property!='under_review')
                     temp.type="/dqs/"+property
                     puts( "warning unknown property : "+property)
                     else
