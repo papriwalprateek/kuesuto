@@ -51,8 +51,9 @@ App.CommitFormView = Ember.View.extend({
     		{
     				p:{	content:this.get('content'),
     					property:this.get('property'),
-    					resourceUrl:this.get('resourceUrl'),
-    					content_type:content_type
+    					url:this.get('resourceUrl'),
+    					in_type:content_type,
+    					parent_query:decodeURI(App.currentpath).substr(1)
     				
     				}
     			}
@@ -60,7 +61,8 @@ App.CommitFormView = Ember.View.extend({
     	request.then(this.success.bind(this), this.failure.bind(this));
  	},	
 	
-  	success: function() {
+  	success: function(data) {
+  		console.log(data);
   	  this.reset();
   	  this.set('notFilled',false);
   	  	this.set('successfully_saved',true);

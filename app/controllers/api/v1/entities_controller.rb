@@ -9,10 +9,12 @@ skip_before_action :verify_authenticity_token
   end
   end
   def create
-    puts params[:p]
-    sleep(1);
+    r=params[:p]
+    r['review_status']='under review'
+    r['author']='raj'
+    puts r
      respond_to do |format|
-        format.json {render :json => {}}
+        format.json {render :json => r}
       end
   end
 private
