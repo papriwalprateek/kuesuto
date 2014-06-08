@@ -33,12 +33,15 @@ App.EditorContainerComponent = Ember.Component.extend({
   },
 
   click: function() {
+  	
     this.doUpdate();
+  
   },
 
   doUpdate: function() {
     var content = this.$('.html5-editor').html();
     this.set('content', content);
+    return false;
   }
 });
 
