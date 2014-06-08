@@ -9,14 +9,14 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
 //= require jquery_ujs
+//= require jquery.html5_editor
 //= require foundation
 //= require facebook
 //= require ember_application
 //= require customized_swipe
-//= require_tree .
 
 $(function(){ $(document).foundation(); });
 
