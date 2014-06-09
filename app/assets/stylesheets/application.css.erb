@@ -24,7 +24,7 @@ html, body, body > .page, .off-canvas-wrap { height:100%; }
 
 
 span.signout{
-background: url('signout.png');
+background: url(<%= asset_path 'signout.png' %>);
 display:block;
 height:20px;
 width:20px;
@@ -33,14 +33,14 @@ margin-right:4px;
 margin-top: 12px;
 }
 .fb_login{
-background: url('fb_login.png');
+background: url(<%= asset_path 'fb_login.png' %>);
 display:block;
 height:39px;
 width:205px;
 }
 .search_submit{
 	
-background: url('search.png');
+background: url(<%= asset_path 'search.png' %>);
 display:block;
 height:32px;
 width:32px;
@@ -121,10 +121,10 @@ background-color: #eee;
 	margin-bottom: 16px;
 }
 .article_icon{
-background: url('article.png');
+background: url(<%= asset_path 'article.png' %>);
 }
 .video_icon{
-background: url('video.png');
+background: url(<%= asset_path 'video.png' %>);
 
 }
 .icon_20{
@@ -160,16 +160,16 @@ line-height: 26px;
 }
 .nav_folder{
 	
-  	background: url('folder.png') left top;
+  	background: url(<%= asset_path 'folder.png' %>) left top;
 
 }
 .nav_entity{
 	
- 	background: url('entity.png') left top;
+ 	background: url(<%= asset_path 'entity.png' %>) left top;
 
 }
 .explorer_column_s li a:hover:after {
-    content: url('arrow_right.png');
+    content: url(<%= asset_path 'arrow_right.png' %>);
     float: right;
     display: block;
    width:20px; 
@@ -199,5 +199,5 @@ body.loading{
   position: relative;
 }
 .cleditorMain iframe {
-	width:100% !important;
+	border:none; margin:0; padding:0;width:100% !important;
 	}
