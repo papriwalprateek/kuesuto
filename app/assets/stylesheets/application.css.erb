@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require foundation_custom
- *= require jquery.html5_editor
+ *= require jquery.cleditor
  */
 html, body, body > .page, .off-canvas-wrap { height:100%; } 
 .off-canvas-wrap { overflow-y: scroll; }
@@ -198,3 +198,6 @@ body.loading{
   width:100%;
   position: relative;
 }
+.cleditorMain iframe {
+	width:100% !important;
+	}

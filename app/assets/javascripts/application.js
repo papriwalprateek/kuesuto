@@ -12,7 +12,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery.html5_editor
+//= require jquery.cleditor.min
 //= require foundation
 //= require facebook
 //= require ember_application
