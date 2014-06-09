@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require foundation_custom
+ *= require jquery.cleditor
  */
 html, body, body > .page, .off-canvas-wrap { height:100%; } 
 .off-canvas-wrap { overflow-y: scroll; }
@@ -23,7 +24,7 @@ html, body, body > .page, .off-canvas-wrap { height:100%; }
 
 
 span.signout{
-background: url(<%= asset_path 'signout.png' %>);
+background: url('signout.png');
 display:block;
 height:20px;
 width:20px;
@@ -32,14 +33,14 @@ margin-right:4px;
 margin-top: 12px;
 }
 .fb_login{
-background: url(<%= asset_path 'fb_login.png' %>);
+background: url('fb_login.png');
 display:block;
 height:39px;
 width:205px;
 }
 .search_submit{
 	
-background: url(<%= asset_path 'search.png' %>);
+background: url('search.png');
 display:block;
 height:32px;
 width:32px;
@@ -119,10 +120,10 @@ background-color: #eee;
 	margin-bottom: 16px;
 }
 .article_icon{
-background: url(<%= asset_path 'article.png' %>);
+background: url('article.png');
 }
 .video_icon{
-background: url(<%= asset_path 'video.png' %>);
+background: url('video.png');
 
 }
 .icon_20{
@@ -158,16 +159,16 @@ line-height: 26px;
 }
 .nav_folder{
 	
-  	background: url(<%= asset_path 'folder.png' %>) left top;
+  	background: url('folder.png') left top;
 
 }
 .nav_entity{
 	
- 	background: url(<%= asset_path 'entity.png' %>) left top;
+ 	background: url('entity.png') left top;
 
 }
 .explorer_column_s li a:hover:after {
-    content: url(<%= asset_path 'arrow_right.png' %>);
+    content: url('arrow_right.png');
     float: right;
     display: block;
    width:20px; 
@@ -215,3 +216,7 @@ div#entitynav{
 	padding:1rem;
 	background-color:#f8f8f8";
 }
+
+.cleditorMain iframe {
+	width:100% !important;
+	}

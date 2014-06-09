@@ -60,7 +60,7 @@
 	 <div class="commit_fields" id="commit_imm_content">
 	 <h3>Your Content:</h3>
 
-    {{view Ember.TextArea value=view.content}}
+      {{editor-container content=view.content }}
     <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
 	<h3>Preview :</h3> {{{view.content}}}
     </div>
@@ -132,4 +132,5 @@
 {{/ifeq}}
 
 </div>
+
  
