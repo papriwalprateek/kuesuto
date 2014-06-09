@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'ember' => 'basic#ember_test'
   get '/r',to: 'repo#generic'
   get '/r/*a',to: 'repo#generic'
-  get 'test' => 'test#show'
+  get 'test' => 'test#show' 
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
