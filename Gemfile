@@ -57,4 +57,6 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
+gem 'execjs'
+gem 'therubyracer'
 
