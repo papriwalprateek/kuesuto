@@ -3,8 +3,9 @@ Rails.application.routes.draw do
  get 'showa' => 'basic#showa'
   get 'repo/:repo'=>'repo#show'
   get 'ember' => 'basic#ember_test'
-  get '/r',to: 'repo#generic'
-  get '/r/*a',to: 'repo#generic'
+  get '/',to: 'repo#generic'
+  
+
   get 'test' => 'test#show'
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]

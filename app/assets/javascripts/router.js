@@ -1,7 +1,8 @@
 App.Router.map(function() {
 
-  this.route("index", { path: "/*addr" });
-  this.route('content', { path : '/*addr/o-:id' });
+  this.route("repo", { path: "/repo/*addr" });
+  this.route("repos", { path: "/repo" });
+  this.route('index', { path : '/' });
   
 });
 

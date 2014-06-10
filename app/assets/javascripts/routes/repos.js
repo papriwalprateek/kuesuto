@@ -1,0 +1,1 @@
+App.ReposRoute = Ember.Route.extend({});
