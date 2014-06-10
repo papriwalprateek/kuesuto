@@ -157,6 +157,8 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
   /*max-width: 62.5rem;  dq edit */
   *zoom: 1;
 }

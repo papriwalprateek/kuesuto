@@ -1,0 +1,1 @@
+App.ListsRoute = Ember.Route.extend({});
