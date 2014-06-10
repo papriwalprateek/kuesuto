@@ -1,0 +1,89 @@
+{{#view App.ContentView}}
+
+<div class="row">
+<div class="large-3 columns side-nav " >
+{{#view App.ContentTabsCommitView}}
+	Add Knowledge
+{{/view}}
+{{#each controller.tiles}}
+{{#view App.ContentTabsView }}
+	{{unUnderscore tile_title}}
+{{/view}}
+
+{{/each}}
+</div>
+<div class="large-9 columns ">
+<div class="panel card commitcard" id="commitform ">
+   {{#view App.CommitFormView}}
+   {{currentpath}}
+	{{#if view.notFilled}}
+  <div class="send_form">
+  What you want to add: 
+ {{view Ember.TextField value=view.property}} For ex. write description if you want to add a description about it.
+   
+   {{#view App.CommitTypeView}} 
+ <h3> What would you like to add</h3>
+    <input type="radio" name="type_of_commit" value="url"> I want to suggest a resource 
+	<input type="radio" name="type_of_commit" value="imm_content"> I want to write myself
+	{{/view}}
+	 <div class="commit_fields" id="commit_imm_content">
+	 <h3>Your Content:</h3>
+
+      {{editor-container content=view.content }}
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
+	<h3>Preview :</h3> {{{view.content}}}
+    </div>
+    <div class="commit_fields" id="commit_url">
+	 
+    	 <h3>URL for your resource:</h3>
+    {{view Ember.TextField value=view.resourceUrl}}
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptyurl}}>Done</button>
+
+	</div>
+	
+  </div>
+  {{/if}}
+  {{#if view.isSlowConnection}}There seems to be some problem with your connection.
+  {{else}}
+  {{#if view.isProcessing}}Commiting your information ...{{/if}}
+  {{/if}}
+  {{#if view.submitFailed}}Your commit Failed :( {{/if}}
+  
+  {{#if view.successfully_saved}}
+  	Congrats, Your commit has been saved and will be reviewed soon, you can see it in the review section :)
+    <button {{action "resetfields" target=view}}>Add more!</button>
+   {{/if}}
+	{{#if view.empty}}This is empty please write something to submit{{/if}}
+  {{/view}}
+</div>
+{{#each controller.tiles}}
+
+	<div class="panel card contentcard" {{bind-attr id= "tile_title" }}> 
+  	
+  		<div  >{{unUnderscore tile_title}}</div>
+  		
+ 		<div >
+ 				{{#ifeq tile_title "article"}} 
+ 				<div class="row"><div style="float:right;"><button class="tiny" onclick='mySwipe.prev()'><</button> <button class="tiny" onclick='mySwipe.next()'>></button></div></div>
+ 		  		<div id='mySwipe' style='margin:0 auto' class='swipe'><div class='swipe-wrap'>	
+ 				{{/ifeq}}
+ 			{{#each tile_nodes}}
+  				<div class="panel text_content" >
+ 		
+  				{{#ifeq node.out_type "text"}}
+  					{{{node.cache}}}  		
+  				{{/ifeq}}
+  				{{#ifeq node.out_type "video"}}
+  					<iframe width="520" height="300"{{bind-attr src= node.url}}></iframe>
+  				{{/ifeq}}
+  			
+  				</div>
+  			{{/each}}
+		 {{#ifeq tile_title "article"}}</div></div>{{/ifeq}}
+  		
+		</div>
+	</div>   
+{{/each}}
+</div>
+</div>
+{{/view}}
