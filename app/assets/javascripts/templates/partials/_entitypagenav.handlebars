@@ -1,0 +1,9 @@
+{{#view App.ContentTabsCommitView}}
+	Add Knowledge
+{{/view}}
+{{#each controller.tiles}}
+{{#view App.ContentTabsView }}
+	{{unUnderscore tile_title}}
+{{/view}}
+
+{{/each}}

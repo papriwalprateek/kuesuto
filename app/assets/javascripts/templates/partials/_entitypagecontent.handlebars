@@ -1,0 +1,29 @@
+
+{{#each controller.tiles}}
+
+	<div class="panel card contentcard" {{bind-attr id= "tile_title" }}> 
+  	
+  		<div  >{{unUnderscore tile_title}}</div>
+  		
+ 		<div >
+ 				{{#ifeq tile_title "article"}} 
+ 				<div class="row"><div style="float:right;"><button class="tiny" onclick='mySwipe.prev()'><</button> <button class="tiny" onclick='mySwipe.next()'>></button></div></div>
+ 		  		<div id='mySwipe' style='margin:0 auto' class='swipe'><div class='swipe-wrap'>	
+ 				{{/ifeq}}
+ 			{{#each tile_nodes}}
+  				<div class="panel text_content" >
+ 		
+  				{{#ifeq node.out_type "text"}}
+  					{{{node.cache}}}  		
+  				{{/ifeq}}
+  				{{#ifeq node.out_type "video"}}
+  					<iframe width="520" height="300"{{bind-attr src= node.url}}></iframe>
+  				{{/ifeq}}
+  			
+  				</div>
+  			{{/each}}
+		 {{#ifeq tile_title "article"}}</div></div>{{/ifeq}}
+  		
+		</div>
+	</div>   
+{{/each}}

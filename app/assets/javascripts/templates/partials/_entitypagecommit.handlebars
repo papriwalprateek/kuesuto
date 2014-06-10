@@ -1,0 +1,44 @@
+ <div class="panel card commitcard" id="commitform ">
+ 
+   {{#view App.CommitFormView}}
+   {{currentpath}}
+	{{#if view.notFilled}}
+  <div class="send_form">
+  What you want to add: 
+ {{view Ember.TextField value=view.property}} For ex. write description if you want to add a description about it.
+   
+   {{#view App.CommitTypeView}} 
+ <h3> What would you like to add</h3>
+    <input type="radio" name="type_of_commit" value="url"> I want to suggest a resource 
+	<input type="radio" name="type_of_commit" value="imm_content"> I want to write myself
+	{{/view}}
+	 <div class="commit_fields" id="commit_imm_content">
+	 <h3>Your Content:</h3>
+
+      {{editor-container content=view.content }}
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
+	<h3>Preview :</h3> {{{view.content}}}
+    </div>
+    <div class="commit_fields" id="commit_url">
+	 
+    	 <h3>URL for your resource:</h3>
+    {{view Ember.TextField value=view.resourceUrl}}
+    <button type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptyurl}}>Done</button>
+
+	</div>
+	
+  </div>
+  {{/if}}
+  {{#if view.isSlowConnection}}There seems to be some problem with your connection.
+  {{else}}
+  {{#if view.isProcessing}}Commiting your information ...{{/if}}
+  {{/if}}
+  {{#if view.submitFailed}}Your commit Failed :( {{/if}}
+  
+  {{#if view.successfully_saved}}
+  	Congrats, Your commit has been saved and will be reviewed soon, you can see it in the review section :)
+    <button {{action "resetfields" target=view}}>Add more!</button>
+   {{/if}}
+	{{#if view.empty}}This is empty please write something to submit{{/if}}
+  {{/view}}
+  </div>
