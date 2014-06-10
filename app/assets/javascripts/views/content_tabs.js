@@ -1,5 +1,5 @@
 App.ContentTabsView = Ember.View.extend({
-classNames: ['panel'],
+classNames: ['panel','entitynavbutton'],
 click: function(evt) {
 	$('div.contentcard').hide();
 	$('div.commitcard').hide();

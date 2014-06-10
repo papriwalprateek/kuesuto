@@ -34,7 +34,7 @@
 <div class="row">
 <div class="large-3 columns side-nav " >
 {{#view App.ContentTabsCommitView}}
-	Add Content about it!!!
+	Add Knowledge
 {{/view}}
 {{#each controller.tiles}}
 {{#view App.ContentTabsView }}
@@ -94,11 +94,12 @@
   		<div class="card_title" >{{unUnderscore tile_title}}</div>
   		
  		<div >
- 				{{#ifeq tile_title "article"}} <button onclick='mySwipe.prev()'>prev</button> <button onclick='mySwipe.next()'>next</button>
+ 				{{#ifeq tile_title "article"}} 
+ 				<div class="row"><div style="float:right;"><button class="tiny" onclick='mySwipe.prev()'><</button> <button class="tiny" onclick='mySwipe.next()'>></button></div></div>
  		  		<div id='mySwipe' style='margin:0 auto' class='swipe'><div class='swipe-wrap'>	
  				{{/ifeq}}
  			{{#each tile_nodes}}
-  				<div class="panel" >
+  				<div class="panel text_content" >
  		
   				{{#ifeq node.out_type "text"}}
   					{{{node.cache}}}  		
