@@ -5,7 +5,7 @@
 {{/each }}
 </ul>
 
-<div class="small-12 columns side-nav explorer_column"  style="padding:0px;">
+<div class="small-12 columns side-nav"  style="padding:0px;">
 {{#ifeq controller.has "list"}}
 
 	 <ul class="side-nav explorer_column_s" >
@@ -91,7 +91,7 @@
 
 	<div class="panel card contentcard" {{bind-attr id= "tile_title" }}> 
   	
-  		<div class="card_title" >{{unUnderscore tile_title}}</div>
+  		<div  >{{unUnderscore tile_title}}</div>
   		
  		<div >
  				{{#ifeq tile_title "article"}} 
