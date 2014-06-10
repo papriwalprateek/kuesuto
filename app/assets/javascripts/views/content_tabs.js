@@ -6,6 +6,10 @@ click: function(evt) {
    $('div#'+this._context.tile_title).show();
 	var elem = document.getElementById('mySwipe');
 	window.mySwipe = Swipe(elem, {});
+	
+	//for highlighting selected tab
+	$('div.entitynavbutton').removeClass('entitynavactive');
+	$("#"+this.elementId).addClass('entitynavactive');
  }
  
 });

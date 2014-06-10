@@ -3,5 +3,6 @@ classNames: ['panel','callout','entitynavcommit'],
 click: function(evt) {
 	$('div.contentcard').hide();
    $('div.commitcard').show();
+   $('div.entitynavbutton').removeClass('entitynavactive');
 }
 });
