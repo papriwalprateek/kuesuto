@@ -2,7 +2,7 @@
  App.RepoRoute = Ember.Route.extend({
   model: function(params) {
   	
-		return {};
+		return $.getJSON('api/v1/entities.json?addr=dq/'+params.addr);
   },
   beforeModel: function() {
     Ember.$("body").addClass("loading");
