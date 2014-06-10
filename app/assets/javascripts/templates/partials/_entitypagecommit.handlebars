@@ -24,7 +24,9 @@
       {{editor-container content=view.content }}
       <br>
     <button class ="small radius" type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
-	<div class="commitformtext">Preview:</div> {{{view.content}}}
+	<div class="commitformtext">Preview:</div> 
+	</br></br>
+	<div class="text_content">	{{{view.content}}} </div>
     </div>
     <div class="commit_fields" id="commit_url">
 	 
