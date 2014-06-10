@@ -1,0 +1,1 @@
+App.BinRoute = Ember.Route.extend({});
