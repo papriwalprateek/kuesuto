@@ -17,10 +17,11 @@ skip_before_action :verify_authenticity_token
           @f = {"has"=>"list","list"=>l.es}      
       end
     end
+  elsif params[:all]
+    l = List.all.map{ |x| {"name"=>x.name,"entities_count"=>x.entities.count,"creator"=>x.creator}}
+    @f = { "has" => "lists", "lists"=>l}
   end
-  
-  
-  
+    
   respond_to do |format|
     format.json {render :json => @f}
   end

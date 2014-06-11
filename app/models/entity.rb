@@ -5,7 +5,5 @@ class Entity
   field :addr, type: String
   has_and_belongs_to_many :lists
   
-  def list_names
-    read_attributes(:list_ids)
-  end
+ 
 end

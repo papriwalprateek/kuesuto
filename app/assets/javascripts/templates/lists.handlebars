@@ -5,22 +5,18 @@
   <br>
   
   <div class="row">
+ 
+ {{#each controller.lists}}
   <div class="small-12 large-6 columns">
-	<a href="#/list/Must Know Algorithms">
+	 {{#view App.ListsPanelView}}
 	  <div class="small panel callout radius"> 
-	  <h5>Must Know algorithms</h5> 
-	  <span class="label">71 entities</span>
+	  <h5>{{name}}</h5>  
+	  <span class="label">{{entities_count}} entities</span>{{!creator}}
 	  </div>
-	</a>
+     {{/view}}
   </div>
-  
-  <div class="small-12 large-6 columns">
-  <div class="small panel callout radius"> 
-  <h5>Awesome OS Concepts</h5> 
-  <span class="label">71 entities</span>
-  </div>
-  </div>
-
+  {{/each}}
+ 
 
   </div>
   </div>

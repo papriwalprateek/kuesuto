@@ -1,4 +1,4 @@
-ets = ["Bubble sort","Merge sort","Radix sort"]
+ets = ["Bubble sort","Merge sort","Radix sort","Heap sort", "Dynamic Programming","Prim's algorithm","Dijkstra's algorithm"]
 l_name = "Must Know Algorithms"
 
 
