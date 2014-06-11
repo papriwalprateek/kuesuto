@@ -68,7 +68,7 @@ match '/search', to: 'basic#show', via: [:get, :post]
   namespace :api do
     namespace :v1 do
       resources :entities, only: [:index,:create]
-      
+      resources :lists, only:[:index,:create]
     end
   end
 end

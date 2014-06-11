@@ -1,8 +1,16 @@
 
- App.RepoRoute = Ember.Route.extend({
+ App.ListRoute = Ember.Route.extend({
   model: function(params) {
-  	
-		return $.getJSON('api/v1/entities.json?addr=dq/'+params.addr);
+  		var a = params.addr.split('/')
+  		
+  		if(a[1]){
+  		
+			return $.getJSON('api/v1/lists.json?l_name='+a[0]+'&e_name='+a[1]);}
+  		else if(a[0]){
+			return $.getJSON('api/v1/lists.json?l_name='+a[0]);			
+  			
+  		}
+  		return false;
   },
   beforeModel: function() {
     Ember.$("body").addClass("loading");

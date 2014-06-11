@@ -1,0 +1,25 @@
+<div class="small-12 medium-12 large-12 columns" style="margin-bottom:1.5rem">
+	
+<ul class="breadcrumbs add_bar"> 
+
+{{#each App.breadcrumbs}}
+	<li {{bind-attr class=active}}><a {{bind-attr href=url}} >{{name}}</a></li> 
+{{/each }}
+</ul>
+</div>
+<div class="small-12 columns side-nav"  style="padding:0px;">
+{{#ifeq controller.has "list"}}
+	{{partial "partials/listentitylist"}}
+{{/ifeq}}
+
+
+{{#ifeq controller.has "tiles"}}
+	{{partial "partials/entitypage"}}
+{{/ifeq}}
+
+{{#ifeq controller.has "error"}}
+	{{{controller.error}}}
+{{/ifeq}}
+</div>
+
+ 

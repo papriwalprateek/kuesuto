@@ -1,0 +1,11 @@
+<ul class="side-nav explorer_column_s" >
+
+		{{#each controller.list}}
+			<li>
+			{{#view App.ListExploreButtonView}}
+			<span class="nav_icon1 nav_entity"></span>
+			{{this}}
+			{{/view}}
+			</li>
+		{{/each}}
+	</ul>

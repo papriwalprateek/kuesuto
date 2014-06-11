@@ -312,10 +312,36 @@ def get_entity(query)
         end
     end
 end
+
+  def get_tiles(e)
+  r={}
+  r['tiles']=[]
+                    e['p_list'].each do |p,n|
+                        if n>0
+                            puts p
+                            r1=Hash.new
+                            r1["tile_title"]=p
+                            r1["tile_nodes"]=[]
+                            e[p].each do |id|
+                                r2=Hash.new
+                                r2['query']=e['addr']+'/'+e['name']+'/'+p+'/'+id.to_s
+                                r2['node']=Entity.find(id)
+                                if p=='video'
+                                    r2['node']['out_type']='video'
+                                    else
+                                    r2['node']['out_type']='text'
+                                end
+                                r1['tile_nodes']<<r2
+                            end
+                            r['tiles']<<r1
+                        end
+                    end
+        return r                  
+      end
   private
   def current_user
     @current_user ||= User.find(session[:user_id]["$oid"]) if session[:user_id]
   end
-  helper_method :current_user, :get_contents, :commit_content
+  helper_method :current_user, :get_contents, :commit_content, :get_tiles
 
 end
