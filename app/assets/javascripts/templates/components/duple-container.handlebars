@@ -1,0 +1,11 @@
+ <h3 {{action "toggleBody"}}>{{name}}</h3>
+  {{#if isShowingBody}}
+  
+  <div style="display: block; visibility: visible;" class="reveal-modal open" data-reveal="">
+ 	{{#each x in value}}
+    <p>{{{x}}}</p>
+   {{/each}}
+ 
+  <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
+  </div> 
+  {{/if}}
