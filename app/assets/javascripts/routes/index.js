@@ -7,7 +7,7 @@
           url: 'api/v1/profiles.json',
           type: 'GET',
           dataType: 'json',
-          success: function() { alert('hello!'); },
+          success: function() {  },
           error: function() { alert('boo!'); },
           beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Token '+_this.get("currentUser").oauth_token );}
         });           

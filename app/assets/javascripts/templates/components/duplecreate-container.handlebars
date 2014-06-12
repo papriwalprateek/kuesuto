@@ -1,0 +1,39 @@
+ <span  class="label"{{action "toggleBody"}}>Add a new duple</span>
+  {{#if isShowingBody}}
+  
+  <div style="display: block; visibility: visible;" class="reveal-modal open" data-reveal="">
+ 	<form class="form-horizontal" {{action "saveDuple" on="submit"}}>
+  {{#if dupleSaveFailed}}
+    <div class="alert">Not Saved.</div>
+  {{/if}}
+  
+  {{#if isSlowConnection}}
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+  {{/if}}
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Name</label>
+    </div>
+
+    <div class="controls">
+      {{input value=name type="text"}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Value</label>
+    </div>
+
+    <div class="controls">
+      {{input value=value type="text"}}
+    </div>
+  </div>
+
+  <button type="submit" {{bindAttr disabled="isProcessing"}}>Save!</button>
+</form>
+ 
+  <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
+  </div> 
+  {{/if}}
