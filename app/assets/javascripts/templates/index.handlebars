@@ -1,5 +1,6 @@
 
 Welcome, {{currentUser.name}}
+<br>
   <h4>Duples</h4>
 	<hr><br>
 {{#each model.duples}}
@@ -7,5 +8,20 @@ Welcome, {{currentUser.name}}
     
 {{/each}}
 	{{duplecreate-container currentUser = currentUser}}
-
-
+<br>
+<br>
+<br>
+<br>
+  <h4>Spaces</h4>
+{{#each model.spaces}}
+<br>
+<br>
+{{name}}
+<hr>
+{{short_desc}}</br>
+{{#each duples}}
+	{{duple-container name=name value=value}}
+    
+{{/each}}
+	{{duplecreate-container currentUser = currentUser space_id = _id}}
+{{/each}}

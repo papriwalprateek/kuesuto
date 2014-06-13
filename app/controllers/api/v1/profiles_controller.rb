@@ -1,10 +1,17 @@
 class Api::V1::ProfilesController < ApplicationController
-before_filter :restrict_access
+#before_filter :restrict_access
   respond_to :json
 skip_before_action :verify_authenticity_token
   def index
+  @user = User.first
   @f = @user.duples
-  @f = {"user"=>@user,"duples"=>@f}
+  @s = []
+  @user.spaces.each do |s|
+    d = s.attributes
+    ss = d.merge({"duples"=>s.duples})
+    @s<<ss
+  end
+  @f = {"user"=>@user,"duples"=>@f,"spaces"=>@s}
   respond_to do |format|
     format.json {render :json => @f}
   end

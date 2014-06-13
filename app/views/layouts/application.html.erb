@@ -11,9 +11,9 @@
   </head>
 
   <body>
- <%if current_user%>
+ <%if !current_user%>
 <script type="text/javascript">
-    window.anand_hash= <%=current_user.to_json.html_safe%>;
+    window.anand_hash= <%=User.first.to_json.html_safe%>;
 </script>
 <div class="page">
 <div class="off-canvas-wrap" data-offcanvas> 
