@@ -8,7 +8,6 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
   toggleBody: function() {
       this.toggleProperty('isShowingBody');
       this.set('vall',[{name:""}]);
-      App.set('a',this);
     }
   ,
   saveDuple: function() {

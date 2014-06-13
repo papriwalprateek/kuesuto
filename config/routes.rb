@@ -71,6 +71,7 @@ match '/search', to: 'basic#show', via: [:get, :post]
       resources :lists, only:[:index,:create]
       resources :profiles, only:[:index,:create]
       resources :duples, only:[:index,:create,:show]
+      resources :spaces, only:[:index,:create,:show]
     end
   end
 end

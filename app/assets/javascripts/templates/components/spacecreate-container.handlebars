@@ -1,0 +1,38 @@
+ <span  class="label"{{action "toggleBody"}}>Add a new Space</span>
+  {{#if isShowingBody}}
+  
+  <div >
+ 	<form class="form-horizontal" {{action "saveSpace" on="submit"}}>
+  {{#if spaceSaveFailed}}
+    <div class="alert">Not Saved.</div>
+  {{/if}}
+  
+  {{#if isSlowConnection}}
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+  {{/if}}
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Name</label>
+    </div>
+    <div class="controls">
+      {{input value=name type="text"}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Short Description</label>
+    </div>
+
+	<div class="controls">
+      {{input value=short_desc type="text"}}
+    	
+    </div>
+  </div>
+  <button type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
+</form>
+ 
+  <button {{action "toggleBody"}}>Cancel</a>
+  </div> 
+  {{/if}}
