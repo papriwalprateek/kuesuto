@@ -15,7 +15,6 @@
     <div class="control-label">
       <label>Name</label>
     </div>
-
     <div class="controls">
       {{input value=name type="text"}}
     </div>
@@ -26,12 +25,15 @@
       <label>Value</label>
     </div>
 
+	{{#each x in vall}}
     <div class="controls">
-      {{input value=value type="text"}}
+      {{input value=x.name type="text"}}
+    	
     </div>
+    {{/each}}
   </div>
-
-  <button type="submit" {{bindAttr disabled="isProcessing"}}>Save!</button>
+	 <button {{action 'moreFields' target='view'}}> More fields </button>
+  <button type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
 </form>
  
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>

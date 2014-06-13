@@ -18,7 +18,7 @@ skip_before_action :verify_authenticity_token
   end
   def create
     puts params[:duple]
-  d = Duple.create(:parent_type=>"User",:parent_id=>User.find(params[:parent_id]).id,:name=>params[:name],:value=>[]<<params[:value])
+  d = Duple.create(:parent_type=>"User",:parent_id=>User.find(params[:parent_id]).id,:name=>params[:name],:value=>params[:value])
   #d = Duple.create(params[:duple])
   d.save
   respond_to do |format|

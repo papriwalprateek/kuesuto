@@ -5,13 +5,14 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
   isSlowConnection: false,
   timeout: null,
 
-  actions: {
-    toggleBody: function() {
+   toggleBody: function() {
       this.toggleProperty('isShowingBody');
+      this.set('vall',[{name:""}]);
+      App.set('a',this);
     }
      
 
-  },
+  ,
    saveDuple: function() {
     this.setProperties({
       dupleSaveFailed: false,
@@ -19,11 +20,12 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
     });
 
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 1));
-
-    var request = $.post("/api/v1/duples", 
+	var values = [];
+	$.each(this.get('vall'),function(k,v){values.push(v['name']);});
+	var request = $.post("/api/v1/duples", 
     			{
     				parent_id:this.get('currentUser._id.$oid'),
-    					value:[this.get('value')],
+    					value:values,
     					name:this.get('name'),
     					parent_type:"User"
     				
@@ -54,11 +56,11 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
       isProcessing: false,
       isSlowConnection: false
     });
-  }
- 
-
-  
-  
+  },
+   moreFields: function(){
+        this.get('vall').pushObject({name:""});
+        
+    } 
   });
 
 
