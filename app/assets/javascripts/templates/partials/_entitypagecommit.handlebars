@@ -20,13 +20,10 @@
 	 <div class="commit_fields" id="commit_imm_content">
 	 <div class="commitformtext">Your Content:</div><br>
 	
-      {{editor-container content=view.content }}
+      {{editorpop-container content=view.content }}
       <br>
-    <button class ="small radius" type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
-	<div class="commitformtext">Preview:</div> 
-	</br></br>
-	<div class="text_content">	{{{view.content}}} </div>
-    </div>
+    <button class ="small radius" type="submit" {{action "submit" target=view}}>Done</button>
+	</div>
     <div class="commit_fields" id="commit_url">
 	 
 	<div class="commitformtext">URL for your resource:</div><br>

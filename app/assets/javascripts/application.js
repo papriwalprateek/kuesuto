@@ -17,7 +17,6 @@
 //= require jquery.popline.justify
 //= require jquery.popline.link
 //= require jquery.popline.list
-//= require jquery.cleditor.min
 //= require foundation
 //= require facebook
 //= require ember_application

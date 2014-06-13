@@ -9,6 +9,11 @@ App.CommitFormView = Ember.View.extend({
   isProcessing: false,
   isSlowConnection: false,
   timeout: null,
+  contenthtml: function(){
+	return this.$('.editor').html();
+	
+},
+  
   emptyurl:	function(){
   					if(this.get('resourceUrl')!=''){
     				return false;}
@@ -16,11 +21,7 @@ App.CommitFormView = Ember.View.extend({
     				return true;	
   			}.property('resourceUrl'),
   			
-  emptycontent: function(){
-  			if(this.get('content')!=''){
-    				return false;}
-    			return true;	
-  			}.property('content'),
+ 
   			
 	  resetfields:function(){
   		 clearTimeout(this.get("timeout"));
@@ -48,7 +49,7 @@ App.CommitFormView = Ember.View.extend({
 	
     	var request = $.post("/api/v1/entities", 
     		{
-    				p:{	content:this.get('content'),
+    				p:{	content:this.contenthtml(),
     					property:this.get('property'),
     					url:this.get('resourceUrl'),
     					in_type:content_type,
