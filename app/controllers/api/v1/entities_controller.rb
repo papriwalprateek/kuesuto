@@ -4,6 +4,7 @@ skip_before_action :verify_authenticity_token
   def index
     
   @f=get_contents(params[:addr])
+  @f = @f.merge({"query"=>params[:addr]})
   respond_to do |format|
     format.json {render :json => @f}
   end

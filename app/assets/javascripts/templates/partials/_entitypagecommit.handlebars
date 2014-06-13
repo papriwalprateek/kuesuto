@@ -1,7 +1,6 @@
 <div class="panel card commitcard" id="commitform ">
    {{#view App.CommitFormView}}
-   {{currentpath}}
-	{{#if view.notFilled}}
+  {{#if view.notFilled}}
   <div class="send_form" >
   <div class="commitformtext" >Add Property. Ex:- Description, video, article etc. 
   </div> 
@@ -10,17 +9,17 @@
   <br>
  {{view Ember.TextField value=view.property}} 
    
-   {{#view App.CommitTypeView}} 
+{{#view App.CommitTypeView}} 
 	<div class="commitformtext">What would you like to add!</div>
 	<br>
 	<hr>
 	<br>
     <input type="radio" name="type_of_commit" value="url"> I want to suggest a resource 
 	<input type="radio" name="type_of_commit" value="imm_content"> I want to write myself
-	{{/view}}
+{{/view}}
 	 <div class="commit_fields" id="commit_imm_content">
 	 <div class="commitformtext">Your Content:</div><br>
-
+	
       {{editor-container content=view.content }}
       <br>
     <button class ="small radius" type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptycontent}}>Done</button>
@@ -38,7 +37,7 @@
 	
   </div>
   {{/if}}
-  {{#if view.isSlowConnection}}<div class="commitformtext">There seems to be some problem with your connection.</div>
+  {{#if view.isSlowConnection}}<div class="commitformtext">It is taking loger than usual...</div>
   {{else}}
   {{#if view.isProcessing}}<div class="commitformtext">Commiting your information ...</div>{{/if}}
   {{/if}}

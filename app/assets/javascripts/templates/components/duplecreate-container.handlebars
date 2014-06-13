@@ -25,10 +25,9 @@
       <label>Value</label>
     </div>
 
-	{{#each x in vall}}
+	{{#each vall}}
     <div class="controls">
-      {{input value=x.name type="text"}}
-    	
+    	{{editorpop-container name = name}}	
     </div>
     {{/each}}
   </div>

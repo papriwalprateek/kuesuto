@@ -44,7 +44,7 @@ App.CommitFormView = Ember.View.extend({
     	  notFilled: false
     	  
    	 	});
-   	 this.set("timeout", setTimeout(this.slowConnection.bind(this), 25000));
+   	 this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000));
 	
     	var request = $.post("/api/v1/entities", 
     		{
@@ -52,7 +52,7 @@ App.CommitFormView = Ember.View.extend({
     					property:this.get('property'),
     					url:this.get('resourceUrl'),
     					in_type:content_type,
-    					parent_query:decodeURI(App.currentpath).substr(1)
+    					parent_query:this.get('controller.query')
     				
     				}
     			}

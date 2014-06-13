@@ -4,6 +4,13 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
   isProcessing: false,
   isSlowConnection: false,
   timeout: null,
+  values: function(){
+	var arr = [];
+	var a = this.$('.editor');
+	a.each(function( index ) {arr.push($(this).html());});
+	return arr;
+	
+},
 
   toggleBody: function() {
       this.toggleProperty('isShowingBody');
@@ -17,11 +24,9 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
     });
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000));
     
-	var values = [];
-	$.each(this.get('vall'),function(k,v){values.push(v['name']);});
 	
 	var data_send = {   parent_id:this.get('currentUser._id.$oid'),
-    					value:values,
+    					value:this.values(),
     					name:this.get('name'),
     					parent_type:"User"}
     
