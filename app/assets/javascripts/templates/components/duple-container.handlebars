@@ -1,10 +1,18 @@
  <span  class="radius secondary label"{{action "toggleBody"}}>{{name}}</span>
   {{#if isShowingBody}}
   
-  <div style="display: block; visibility: visible;" class="reveal-modal open" data-reveal="">
+  <div style="display: block; visibility: visible;position:fixed;" class="reveal-modal open medium" data-reveal="">
+  <div style="margin-top:10px;">
+  <div style="float:right;margin-right:20px;"><img src="/assets/destroy.png"></div>
+  <div style="float:right;margin-right:10px;"><img src="/assets/edit.png"></div>
+  <div style="font-family:serif;font-size:1.2em;color:#aaa;margin-bottom:4px;">{{{name}}}</div>
+  </div>
+  <hr>
+  <div style="margin-top:4px;">
  	{{#each x in value}}
     <p>{{{x}}}</p>
    {{/each}}
+ </div>
  
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
   </div> 

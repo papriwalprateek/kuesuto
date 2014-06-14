@@ -1,19 +1,21 @@
  <ul class="off-canvas-list"> 
+	<li><a href="" id="logo">daqwest</a></li>
 	<li style="height: 60px;"><a href="#">
-		<span class="nav_icon nav_icon_user"></span><span style="line-height: 40px;"><%if current_user%><%=current_user.name%><%end%></span>
+		<span class="nav_icon nav_icon_user"></span><span style="line-height: 40px;"><%if !current_user%>Vinay Raj Choudhary<%end%></span>
 		</a>
 	</li> 
 	<li><a href="#/repo"><span class="nav_icon nav_icon_repo"></span>Repositories</a></li> 
 	<li><a href="#/list"><span class="nav_icon nav_icon_flow"></span>Lists</a></li> 
 	<li><a href="#/bin"><span class="nav_icon nav_icon_rlist"></span>Shared Bin</a></li> 
 	<li><a href="#/contributions"><span class="nav_icon nav_icon_contri"></span>Contributions</a></li>
-	<li><a href="/signout"><span class=""></span>Signout</a></li>
+	<li><a href="/signout"><span class="nav_icon nav_icon_logout"></span>Signout</a></li>
 
 	<li></li> 
 </ul>
 	
 <style>
 .nav_icon_user{
+background: url(<%= asset_path 'repo.png' %>) left top;
 <%if current_user%>
 background:url(http://graph.facebook.com/<%=current_user.uid%>/picture?height=32&width=32) left top;
 <%end%>
@@ -27,7 +29,7 @@ background:url(http://graph.facebook.com/<%=current_user.uid%>/picture?height=32
    width:20px; 
    height:20px;
    margin: 3px;
-   margin-right: 16px;
+   margin-right: 20px;
    display: block;
    float: left;
 }
@@ -42,8 +44,12 @@ background: url(<%= asset_path 'flow.png' %>) left top;
 background: url(<%= asset_path 'contri.png' %>) left top;
 }
 .nav_icon_rlist{
-background: url(<%= asset_path 'read.png' %>) left top;
+background: url(<%= asset_path 'sharedbin.png' %>) left top;
 }
+.nav_icon_logout{
+background: url(<%= asset_path 'logout.png' %>) left top;
+}
+
 .nav_icon_user{
   width: 32px;
   height: 32px;
