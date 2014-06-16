@@ -13,7 +13,8 @@
  <%if current_user%>
 <script type="text/javascript">
     window.anand_hash= <%=current_user.to_json.html_safe%>;
-    window.anand_hash['uimage'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=32&width=32";
+    window.anand_hash['uimage_s'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=32&width=32";
+    window.anand_hash['uimage_b'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=160&width=160";
 </script>
 <div class="page">
 <script type="text/x-handlebars" >

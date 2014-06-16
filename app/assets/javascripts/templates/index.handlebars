@@ -5,7 +5,7 @@
 	<div class="small-12 large-3 columns">
 		<div style="font-family:BantoSans;margin-bottom:20px;font-size:1.3em;font-weight:bold;">{{currentUser.name}}
 		</div>
-		<div><a class="th [radius]" href="#"> <img src="http://1.gravatar.com/avatar?size=160px"> </a></div>
+		<div><a class="th [radius]" href="#"> <img {{bind-attr src=currentUser.name}}> </a></div>
 	</div>
   <div class="small-12 large-9 columns">
   <div class="row" style="margin-top:30px;">
