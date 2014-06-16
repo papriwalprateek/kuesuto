@@ -4,8 +4,9 @@
   <hr>
   <br>
   <div class="row">
+  {{#each}}
   <div class="small-12 large-6 columns">
-  <a href="#/repo/algorithms">
+  {{#link-to 'repo' this}}
   	<div class="small panel radius"> 
   		<h5>Algorithm</h5> 
   		<p>This is a huge collection of algorithms. It contains articles, videos, definition, pseudocode and many other things.
@@ -13,9 +14,9 @@
   		<span class="label">445 entities</span>
   		<span class="success label">2045 duples</span>
   	</div>
-  </a>
+  {{/link-to}}
   </div>
-
+  {{/each}}
   <div class="small-12 large-6 columns">
   <div class="small panel radius"> 
   <h5>Operating System</h5> 

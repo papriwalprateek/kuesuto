@@ -1,0 +1,22 @@
+
+<ul class="off-canvas-list"> 
+	<li style="height: 60px;"><a href="#">
+	<span class="nav_icon nav_icon_user"> <img {{bind-attr src=currentUser.uimage}} alt="photo"></span><span style="line-height: 40px;">{{#link-to 'index'}}{{currentUser.name}}{{/link-to}}</span>
+	</a>
+	</li> 
+	<li>{{#link-to 'repos'}}<span class="nav_icon nav_icon_repo"></span>Repositories{{/link-to}}</li> 
+	<li>{{#link-to 'lists'}}<span class="nav_icon nav_icon_flow"></span>Lists{{/link-to}}</li> 
+	<li>{{#link-to 'bin'}}<span class="nav_icon nav_icon_rlist"></span>Shared Bin{{/link-to}}</li> 
+	<li>{{#link-to 'contri'}}<span class="nav_icon nav_icon_contri"></span>Contributions{{/link-to}}</li>
+	<li><a href="/signout"><span class=""></span>Signout</a></li>
+	
+	<li></li> 
+</ul>
+
+<style>
+.nav_icon_user{
+}
+
+</style>
+
+	

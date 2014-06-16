@@ -10,15 +10,50 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require foundation_custom
+ *= require font-awesome
  */
 html, body, body > .page, .off-canvas-wrap { height:100%; } 
 .off-canvas-wrap { overflow-y: scroll; }
  .inner-wrap { min-height: 100%; }
-#content_yield{
-	height: 80%;
-}
+
 .top-bar-section ul{
 	background-color: #fff;
+}
+.page > .ember-view{ height:100%;}
+
+.left-panel{
+  background-color: #efefef;
+  height: 100%;
+}
+.nav_icon
+{ 
+   width:20px; 
+   height:20px;
+   margin: 3px;
+   margin-right: 16px;
+   display: block;
+   float: left;
+}
+.nav_icon_repo{
+background: url(<%= asset_path 'repo.png' %>) left top;
+}
+.nav_icon_flow{
+background: url(<%= asset_path 'flow.png' %>) left top;
+}
+.nav_icon_contri{
+
+background: url(<%= asset_path 'contri.png' %>) left top;
+}
+.nav_icon_rlist{
+background: url(<%= asset_path 'read.png' %>) left top;
+}
+.nav_icon_user{
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;   
 }
 
 

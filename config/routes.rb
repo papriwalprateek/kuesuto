@@ -3,8 +3,16 @@ Rails.application.routes.draw do
  get 'showa' => 'basic#showa'
   get 'repo/:repo'=>'repo#show'
   get 'ember' => 'basic#ember_test'
-  get '/',to: 'repo#generic'
-  
+ 
+
+get '/',to: 'repo#generic'
+get '/repo/*path',to:'repo#generic'
+get '/repo',to:'repo#generic'
+get '/list',to: 'repo#generic'
+get '/list/*path',to: 'repo#generic'
+get '/bin',to: 'repo#generic'
+get '/contributions',to: 'repo#generic'
+
 
   get 'test' => 'test#show'
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

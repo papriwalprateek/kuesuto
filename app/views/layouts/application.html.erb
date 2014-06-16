@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+	
     <title><%= Kuesuto %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -15,17 +14,20 @@
  <%if current_user%>
 <script type="text/javascript">
     window.anand_hash= <%=current_user.to_json.html_safe%>;
+    window.anand_hash['uimage'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=32&width=32";
 </script>
 <div class="page">
+<script type="text/x-handlebars" >
+				
 <div class="off-canvas-wrap" data-offcanvas> 
 	<div class="inner-wrap"> 
 		<nav class="top-bar" data-topbar> 
 		
 			 <ul class="title-area">
 				    <li class="name">
-	 		    		 <h1><a class="left-off-canvas-toggle menu-icon" href="#">
+			    		    <a class="left-off-canvas-toggle menu-icon" href="#">
 	 		    		 	<img class="logo_image" src=<%= asset_path 'logo.png' %>>
-	 		    		 	</a></h1>	
+	 		    		 	</a>
 	 			   </li>
      		   <li class="toggle-topbar menu-icon " ><a href="#" style="background-color:#333"></a></li>
   			</ul>
@@ -47,8 +49,7 @@
 			</section>
 		</nav> 
 		<aside class="left-off-canvas-menu"> 
-			<%= render "/layouts/side_nav"%>
-
+		{{partial "partials/sidenav"}}
 		</aside> 
 		 
 		 <section class="main-section"> 
@@ -56,11 +57,10 @@
 				<div class="small-12 large-10 large-offset-1 collumns ember-root-class">
 	
 				<div id="content_yield">
-    				<script type="text/x-handlebars" data-template-name="application">
-						{{outlet}}
-    			<%= yield %>
-    			</script>	
-
+				
+					{{outlet}}
+    				<%= yield %>
+    			
 				</div>
 			</div>
 			
@@ -68,13 +68,13 @@
 		 	<!-- content goes here --> </section> 
 		 <a class="exit-off-canvas"></a> 
 		</div> 
+</div>	
+</script>
 </div>
-</div>
-		
 
 <%else%>
 	
-<div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></div>
+<div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></di>
 
 <div class="row" style="text-align: center">
 

@@ -6,7 +6,7 @@
 
 window.App = Ember.Application.create({
   currentpath: '',
-  rootElement: "#content_yield",
+  rootElement: ".page",
    LOG_ACTIVE_GENERATION: true,
   // log when Ember looks up a template or a view
   LOG_VIEW_LOOKUPS: true, 

@@ -9,3 +9,7 @@ App.Router.map(function() {
   this.route('bin',{ path : '/bin'})
 });
 
+
+App.Router.reopen({
+   location: 'history'
+});

@@ -1,17 +1,18 @@
 <ul class="side-nav explorer_column_s" >
 
 		{{#each controller.list}}
-			<li>
-			{{#view App.ExploreButtonView}}
+			
+		<li>
 			{{#ifeq type "leaf"}}
-			<span class="nav_icon1 nav_entity"></span>
+				<span class="nav_icon1 nav_entity"></span>
 			{{/ifeq}}
 			{{#ifeq type "notleaf"}}
-			<span class="nav_icon1 nav_folder"></span>
+				<span class="nav_icon1 nav_folder"></span>
 			{{/ifeq}}
 			
-			{{name}}
-			{{/view}}
-			</li>
+			{{#link-to 'repo' query}}
+				{{name}}
+			{{/link-to}}
+		</li>
 		{{/each}}
 	</ul>
