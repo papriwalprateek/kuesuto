@@ -1,8 +1,8 @@
 
 <ul class="off-canvas-list"> 
-	<li style="height: 60px;"><a href="#">
-	<span class="nav_icon nav_icon_user"> <img {{bind-attr src=currentUser.uimage}} alt="photo"></span><span style="line-height: 40px;">{{#link-to 'index'}}{{currentUser.name}}{{/link-to}}</span>
-	</a>
+	<li style="height: 60px;">{{#link-to 'index'}}
+	<span class="nav_icon nav_icon_user"> <img {{bind-attr src=currentUser.uimage}} alt="photo"></span><span style="line-height: 40px;">{{currentUser.name}}</span>
+	{{/link-to}}
 	</li> 
 	<li>{{#link-to 'repos'}}<span class="nav_icon nav_icon_repo"></span>Repositories{{/link-to}}</li> 
 	<li>{{#link-to 'lists'}}<span class="nav_icon nav_icon_flow"></span>Lists{{/link-to}}</li> 
