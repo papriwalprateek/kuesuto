@@ -14,15 +14,15 @@ App.ProfileAdapter = Ember.Object.extend({
           a = App.User.create({});
 	      du = a.get('duples');
 	      sp = a.get('spaces');
-	      for (var i = 0;i<=response.spaces.length - 1; i--) {
+	      for (var i = 0;i<=response.duples.length - 1; i++) {
 	      	x = response.duples[i];
 	      	d = du.create({
 	      		name:x.name,
 	      		value:x.value
 	      	});
 	      
-	      };;
-	      for (var i = 0;i<=response.spaces.length - 1; i--) {
+	      };
+	      for (var i = 0;i<=response.spaces.length - 1; i++) {
 	      	x = response.spaces[i];
 	      	d = sp.create({
 	      		name:x.name,
@@ -32,7 +32,7 @@ App.ProfileAdapter = Ember.Object.extend({
 	      	});
 
 	      	dd = d.get('duples');
-	      	for (var j = 0;j<=response.spaces.length - 1; j--) {
+	      	for (var j = 0;j<=x.duples.length - 1; j++) {
 	      		y = x.duples[j];
 	      		dd.create({
 	      			name:y.name,

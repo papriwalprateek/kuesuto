@@ -6,14 +6,14 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<title><%= Kuesuto %></title>
     <%= stylesheet_link_tag    "application" %>
-    
+
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
- <%if current_user%>
+ <%if !current_user%>
 <script type="text/javascript">
-    window.anand_hash= <%=current_user.to_json.html_safe%>;
+    window.anand_hash= <%=User.last.to_json.html_safe%>;
     window.anand_hash['uimage_s'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=32&width=32";
     window.anand_hash['uimage_b'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=160&width=160";
 </script>
