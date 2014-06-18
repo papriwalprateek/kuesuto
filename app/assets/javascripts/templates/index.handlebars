@@ -12,7 +12,7 @@
 	<h4>Duples</h4>
 	<hr><br>
 	{{#each model.duples}}
-	{{duple-container name=name value=value}}
+	{{duple-container name=name value=value id = id _id=_id}}
 	{{/each}}
 	
 	{{duplecreate-container currentUser = currentUser}}
@@ -29,7 +29,7 @@
 	<div style="font-family:BantoSans;font-size:0.8em;color:#aaa;">{{short_desc}}</div>
 	<br>
 	{{#each duples}}
-	{{duple-container name=name value=value}}
+	{{duple-container name=name value=value duple_id=_id}}
     {{/each}}
 	{{duplecreate-container currentUser = currentUser space_id = _id}}
 	</div>

@@ -1,5 +1,6 @@
 App.DupleContainerComponent = Ember.Component.extend({
   tagName:'span',
+  
   actions: {
     toggleBody: function() {
 
@@ -10,13 +11,19 @@ App.DupleContainerComponent = Ember.Component.extend({
   		}
       this.toggleProperty('isShowingBody');
 
+    },
+    toggleDelete: function() {
+
+      this.toggleProperty('isDeleting');
+
+    },
+    delete: function() {
+      App.set('d',this);
+      
+      this.toggleProperty('isDeleting');
+
     }
   }
   
   
   });
-
-
-
-
-

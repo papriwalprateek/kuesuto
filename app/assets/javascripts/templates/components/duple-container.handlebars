@@ -1,9 +1,16 @@
  <span  class="radius secondary label"{{action "toggleBody"}}>{{name}}</span>
   {{#if isShowingBody}}
-  
   <div style="display: block; visibility: visible;position:fixed;" class="reveal-modal open medium" data-reveal="">
+  
   <div style="margin-top:10px;">
   <div style="font-family:serif;font-size:1.2em;color:#aaa;margin-bottom:4px;">{{{name}}}</div>
+  {{#if isDeleting}}
+  <div style="float:right;margin-right:20px;" {{action "delete"}}>Sure</div>
+  <div style="float:right;margin-right:20px;" {{action "toggleDelete"}}>Cancel</div>  
+  {{else}}
+  <div style="float:right;margin-right:20px;" {{action "toggleDelete"}}>Delete</div>
+  {{/if}}
+  
   </div>
   <hr>
   <div style="margin-top:4px;">
@@ -11,7 +18,6 @@
     <p>{{{x}}}</p>
    {{/each}}
  </div>
- 
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
   </div> 
   {{/if}}

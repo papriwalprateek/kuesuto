@@ -18,7 +18,9 @@ App.ProfileAdapter = Ember.Object.extend({
 	      	x = response.duples[i];
 	      	d = du.create({
 	      		name:x.name,
-	      		value:x.value
+	      		value:x.value,
+	      		id:x._id.$oid,
+	      		_id:x._id
 	      	});
 	      
 	      };
@@ -36,7 +38,9 @@ App.ProfileAdapter = Ember.Object.extend({
 	      		y = x.duples[j];
 	      		dd.create({
 	      			name:y.name,
-	      			value:y.value
+	      			value:y.value,
+	      			id:y._id.$oid,
+	      			_id:y._id
 	      		});
 	      	};
 	      };
