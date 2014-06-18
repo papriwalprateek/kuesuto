@@ -21,10 +21,9 @@ skip_before_action :verify_authenticity_token
   d = Space.create(:name=>params[:name],:short_desc=>params[:short_desc])
   d.user = User.find(params[:user_id])
   #d = Duple.create(params[:duple])
+  d.save
   respond_to do |format|
-  if d.save
     format.json {render :json => d}
-  end
   end
   end
 private

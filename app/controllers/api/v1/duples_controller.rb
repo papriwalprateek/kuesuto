@@ -28,8 +28,8 @@ skip_before_action :verify_authenticity_token
   respond_to do |format|
     if d.save
       format.json {render :json => d}
-    else
     end
+  end 
   end
 private
 
