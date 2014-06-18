@@ -13,7 +13,7 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
 },
 
   toggleBody: function() {
-      if($('.reveal-modal-bg').css('display')=='block'){     // for inactive backgroun
+      if($('.reveal-modal-bg').css('display')=='block'){     // for inactive background
           $('.reveal-modal-bg').hide();
       }else{
         $('.reveal-modal-bg').show();
@@ -44,9 +44,24 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
     request.then(this.success.bind(this), this.failure.bind(this));
   },
 
-  success: function() {
+  success: function(response) {
     this.reset();
-    this.toggleProperty('isShowingBody');
+    this.toggleBody();
+    if(response.parent_type=="User"){
+            a = App.user.get('duples');
+            a.create({
+              name:response.name,
+              value:response.value
+            });
+    }else{
+        a = App.Space.find(response.parent_id.$oid).get('duples');
+            a.create({
+              name:response.name,
+              value:response.value
+            });
+    }
+
+    //a.duples.pushObject();
     // sign in logic
   },
 

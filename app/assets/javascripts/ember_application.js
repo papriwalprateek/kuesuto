@@ -1,5 +1,6 @@
 //= require handlebars
 //= require ember
+//= require ember-model
 //= require ember-data
 //= require_self
 //= require app

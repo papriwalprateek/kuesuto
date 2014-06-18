@@ -24,11 +24,12 @@ skip_before_action :verify_authenticity_token
     end
   d = Duple.create(:parent_type=>params[:parent_type],:parent_id=>d,:name=>params[:name],:value=>params[:value])
   #d = Duple.create(params[:duple])
-  d.save
+  #d.save
   respond_to do |format|
-  
-    format.json {render :json => {}}
-  end
+    if d.save
+      format.json {render :json => d}
+    else
+    end
   end
 private
 

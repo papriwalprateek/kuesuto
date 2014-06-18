@@ -1,17 +1,11 @@
 
  App.IndexRoute = Ember.Route.extend(App.CurrentUserHelper,{
-  model: function(params) {
-  	var _this = this;
-  	return $.ajax({
-          url: '/api/v1/profiles.json',
-          type: 'GET',
-          dataType: 'json',
-          success: function() {  },
-          error: function() {  },
-          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Token '+_this.get("currentUser").oauth_token );}
-        }).then(function(response){
-          return response;
-        });           
+  //model: function(params) {
+  //	var _this = this; 
+  //  return App.st.get('profile',_this.get("currentUser").oauth_token);
+  //}
+  model: function(params){
+    return App.User.adapter.get(this.get('currentUser').oauth_token);
   }
 });
 
@@ -19,7 +13,7 @@
     App.LoadingRoute = Ember.Route.extend({
         activate: function(){
             this._super();
-            console.log("loading loading loading");
+            
             // add some loading indication here
         },
         deactivate: function(){

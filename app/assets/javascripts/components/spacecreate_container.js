@@ -29,9 +29,20 @@ App.SpacecreateContainerComponent = Ember.Component.extend({
     request.then(this.success.bind(this), this.failure.bind(this));
   },
 
-  success: function() {
+  success: function(response) {
     this.reset();
     this.toggleProperty('isShowingBody');
+     console.log(response);
+            a = App.user.get('spaces');
+            a.create({
+              name:response.name,
+              short_desc:response.short_desc,
+              _id:response._id,
+              id:response._id.$oid
+            });
+    
+
+   
     // sign in logic
   },
 
