@@ -17,13 +17,16 @@ App.DupleContainerComponent = Ember.Component.extend({
       this.toggleProperty('isDeleting');
 
     },
-    delete: function() {
-      App.set('d',this);
-      
-      this.toggleProperty('isDeleting');
-
-    }
+    delete: function(a) {
+    	$.ajax({
+    	url: '/api/v1/duples/'+a.id,
+    	type: 'DELETE',
+    	success: function(result) {
+        // Do something with the result    	
+		  a.deleteRecord();
+    	}
+		});
+	  $('.reveal-modal-bg').hide();
+	  }
   }
-  
-  
   });

@@ -77,9 +77,9 @@ match '/search', to: 'basic#show', via: [:get, :post]
     namespace :v1 do
       resources :entities, only: [:index,:create]
       resources :lists, only:[:index,:create]
-      resources :profiles, only:[:index,:create]
-      resources :duples, only:[:index,:create,:show]
-      resources :spaces, only:[:index,:create,:show]
+      resources :profiles, only:[:index,:create,:show]
+      resources :duples, only:[:index,:create,:show,:destroy]
+      resources :spaces, only:[:index,:create,:show,:destroy]
     end
   end
 end

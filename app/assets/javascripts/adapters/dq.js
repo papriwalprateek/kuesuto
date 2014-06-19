@@ -1,4 +1,4 @@
-App.ProfileAdapter = Ember.Object.extend({ 
+/*App.ProfileAdapter = Ember.Object.extend({ 
   user: null,
   get: function(token) {
     return $.ajax({
@@ -19,8 +19,8 @@ App.ProfileAdapter = Ember.Object.extend({
 	      	d = du.create({
 	      		name:x.name,
 	      		value:x.value,
-	      		id:x._id.$oid,
-	      		_id:x._id
+	      		id:x._id.$oid
+
 	      	});
 	      
 	      };
@@ -40,7 +40,7 @@ App.ProfileAdapter = Ember.Object.extend({
 	      			name:y.name,
 	      			value:y.value,
 	      			id:y._id.$oid,
-	      			_id:y._id
+	      			space_id:x._id.$oid
 	      		});
 	      	};
 	      };
@@ -52,7 +52,7 @@ App.ProfileAdapter = Ember.Object.extend({
   }
 
 });
-
+*/
 
       /*  return result.data.children.map(function(c) {
           return {id: c.id,

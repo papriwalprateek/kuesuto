@@ -18,17 +18,39 @@ skip_before_action :verify_authenticity_token
   end
   
   def create
-  d = Space.create(:name=>params[:name],:short_desc=>params[:short_desc])
-  d.user = User.find(params[:user_id])
+  para = params[:space]
+  @d = Space.create(:name=>para[:name],:short_desc=>para[:short_desc])
+  @d.user = User.find(para[:userId])
   #d = Duple.create(params[:duple])
-  d.save
+  
   respond_to do |format|
-    format.json {render :json => d}
+      if @d.save
+        @d.id = @d.id.to_s
+        @s = @d.attributes.merge({"id"=>@d.id.to_s})
+        @s['profileId'] = @d.user_id.to_s
+        puts @s
+        format.json { render :json=> {"space"=>@s}, :status=> :created }
+      else
+        format.json { render :json=> @d.errors, :status=> :unprocessable_entity }
+      end
+  end 
+  
   end
+  def destroy
+    @d = Space.find(params[:id])
+    respond_to do |format|
+      if @d.destroy
+        @s = {"id"=>@d.id.to_s}.merge(@d.attributes)
+
+        format.json { render :json=> {"space"=>@s}, :status=> 204 }
+      else
+        format.json { render :json=> @d.errors, :status=> :unprocessable_entity }
+      end
+    end
   end
 private
 
  def space_params
-    params.require(:duple).permit(:name,:short_desc,:user_id)
+    params.require(:space).permit(:name,:short_desc,:user_id)
  end
  end

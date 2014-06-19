@@ -17,23 +17,59 @@ skip_before_action :verify_authenticity_token
   end
   end
   def create
-    if(params[:parent_type]=="User")
-      d = User.find(params[:parent_id]).id    
+    para = params[:duple]
+    if(para[:parentType]=="profile")
+      t = "User"
+      d = User.find(para[:parent]).id    
     else
-      d = Space.find(params[:parent_id]).id
+      t = "Space"
+      d = Space.find(para[:parent]).id
     end
-  d = Duple.create(:parent_type=>params[:parent_type],:parent_id=>d,:name=>params[:name],:value=>params[:value])
+  @d = Duple.create(:parent_type=>t,:parent_id=>d,:name=>para[:name],:value=>para[:value])
   #d = Duple.create(params[:duple])
   #d.save
   respond_to do |format|
-    if d.save
-      format.json {render :json => d}
-    end
+      if @d.save
+          @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type)}
+       
+        format.json { render :json=> {"duple"=>@s}, :status=> :created }
+      else
+        format.json { render :json=> @d.errors, :status=> :unprocessable_entity }
+      end
   end 
   end
-private
+  def update
+    @d = Duple.find(params[:id])
+    respond_to do |format|
+      if @d.update_attributes(params[:duple])
+        @d.id = @d.id.to_s
+        format.json { render :json=>{"duple"=>@d}, status: :ok }
+      else
+        format.json { render :json=> @d.errors, :status=> 422 }
+      end
+    end
+  end
 
+  def destroy
+     @d = Duple.find(params[:id])
+    respond_to do |format|
+      if @d.destroy
+        @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type)}
+        format.json { render :json=> {"duple"=>@s}, :status=> 204 }
+      else
+        format.json { render :json=> @d.errors, :status=> :unprocessable_entity }
+      end
+    end
+  end
+private
+  def par_type(p)
+    if (p=="User")
+      return "Profile"
+    else
+      return "Space"
+    end
+  end
  def duple_params
-    params.require(:duple).permit(:name,:value,:parent_id,:parent_type)
+    params.require(:duple).permit(:name,:value,:parentId,:parentType)
  end
  end

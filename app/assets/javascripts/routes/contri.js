@@ -1,1 +1,3 @@
-App.ContriRoute = Ember.Route.extend({});
+App.ContriRoute = Ember.Route.extend({
+
+});

@@ -22,47 +22,23 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
       this.set('vall',[{name:""}]);
     }
   ,
-  saveDuple: function() {
-    this.setProperties({
+  save: function() {
+     this.setProperties({
       dupleSaveFailed: false,
       isProcessing: true
     });
-    this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000));
-    
-	
-	var data_send = {   parent_id:this.get('currentUser._id.$oid'),
-    					value:this.values(),
-    					name:this.get('name'),
-    					parent_type:"User"}
-    
-    if(this.get('space_id')){
-    	data_send["parent_id"] = this.get('space_id.$oid');
-    	data_send["parent_type"] = "Space";
-	}
-	
-	var request = $.post("/api/v1/duples", data_send);
-    request.then(this.success.bind(this), this.failure.bind(this));
+    this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000)); 
+  var data_send = {  
+              value:this.values(),
+              name:this.get('name'),
+              parent:this.get('parent')};
+    App.set('a',this.get('parent'));
+    d = App.Profile.store.createRecord('duple',data_send).save().then(this.success.bind(this), this.failure.bind(this));
   },
 
   success: function(response) {
     this.reset();
     this.toggleBody();
-    if(response.parent_type=="User"){
-            a = App.user.get('duples');
-            a.create({
-              name:response.name,
-              value:response.value
-            });
-    }else{
-        a = App.Space.find(response.parent_id.$oid).get('duples');
-            a.create({
-              name:response.name,
-              value:response.value
-            });
-    }
-
-    //a.duples.pushObject();
-    // sign in logic
   },
 
   failure: function() {

@@ -5,7 +5,8 @@
   //  return App.st.get('profile',_this.get("currentUser").oauth_token);
   //}
   model: function(params){
-    return App.User.adapter.get(this.get('currentUser').oauth_token);
+//    return App.User.adapter.get(this.get('currentUser').oauth_token);
+      return this.store.find('profile',1);
   }
 });
 

@@ -1,5 +1,5 @@
 class Api::V1::ProfilesController < ApplicationController
-before_filter :restrict_access
+#before_filter :restrict_access
   respond_to :json
 skip_before_action :verify_authenticity_token
   def index
@@ -17,6 +17,55 @@ skip_before_action :verify_authenticity_token
   end
   end
   def create
+  end
+  def show
+  @user = User.first
+  @x = {}
+  @x['profile'] = {}
+  @x['spaces'] = []
+  @x['duples'] = []
+  @x['profile']['id'] = @user.id.to_s
+  @x['profile']['name'] = @user.name
+  @x['profile']['spaces'] = []
+  @x['profile']['duples'] = []
+  
+  @user.spaces.each do |s|
+  @x['profile']['spaces'] << s.id.to_s
+  temp = {}
+  temp['id'] = s.id.to_s
+  temp['name'] = s.name
+  temp['short_desc'] = s.short_desc
+  temp['duples'] = []
+  s.duples.each do |d|
+    tem = {}
+    tem['id'] = d.id.to_s
+    tem['name'] = d.name
+    tem['value'] = d.value
+    tem['parent_type'] = d.parent_type
+    tem['parent_id'] = d.parent_id
+    @x['duples'] << tem
+    temp['duples'] << d.id.to_s
+  end
+  @x['spaces'] << temp
+  end
+  
+  @user.duples.each do |d|
+  @x['profile']['duples'] << d.id.to_s
+  temp = {}
+  temp['id'] = d.id.to_s
+  temp['name'] = d.name
+  temp['value'] = d.value
+  temp['parent_type'] = d.parent_type
+  temp['parent_id'] = d.parent_id
+  @x['duples'] << temp
+  end
+  
+
+  
+  respond_to do |format|
+    format.json {render :json => @x}
+  end
+  
   end
 private
 def restrict_access

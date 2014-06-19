@@ -1,9 +1,8 @@
 <br>
 <br>
-	
 <div class="row">
 	<div class="small-12 large-3 columns">
-		<div style="font-family:BantoSans;margin-bottom:20px;font-size:1.3em;font-weight:bold;">{{currentUser.name}}
+		<div style="font-family:BantoSans;margin-bottom:20px;font-size:1.3em;font-weight:bold;">{{model.name}}
 		</div>
 		<div><a class="th [radius]" href="#"> <img {{bind-attr src=currentUser.uimage_b}}> </a></div>
 	</div>
@@ -11,35 +10,48 @@
   <div class="row" style="margin-top:30px;">
 	<h4>Duples</h4>
 	<hr><br>
-	{{#each model.duples}}
-	{{duple-container name=name value=value id = id _id=_id}}
+	{{#each item in model.duples}}
+	{{#if item.isDirty}}
+	{{else}}	{{duple-container name = item.name value = item.value duple = item }}
+	{{/if}}
 	{{/each}}
-	
-	{{duplecreate-container currentUser = currentUser}}
+	{{duplecreate-container currentUser = currentUser parent = model}}
   </div>
 
   <div class="row" style="margin-top:30px;">
 	<h4>Entities</h4>
 	<hr>
-	{{#each model.spaces}}
+	{{#each item in model.spaces}} 
+	{{#if item.isDirty}}
+	{{else}}
 	<br>
 	<br>
 	<div style="border:1px solid #d8d8d8;padding:10px;border-radius:3px;">
-	<div style="margin-bottom:4px;font-weight:bold;margin-bottom:6px;font-family:BantoSans;">{{name}}</div>
-	<div style="font-family:BantoSans;font-size:0.8em;color:#aaa;">{{short_desc}}</div>
+	<div style="margin-bottom:4px;font-weight:bold;margin-bottom:6px;font-family:BantoSans;">{{item.name}}</div>
+	<div style="font-family:BantoSans;font-size:0.8em;color:#aaa;">{{item.short_desc}}</div>
+	{{#if item.isDeleting}}
+  	<div style="float:right;margin-right:20px;" {{action "delSpace" item}}>Sure</div>
+  	<div style="float:right;margin-right:20px;" {{action "toggleDel" item}}>Cancel</div>  
+  	{{else}}
+  	<div style="float:right;margin-right:20px;" {{action "toggleDel" item}}>Delete</div>
+  	{{/if}}
+  
 	<br>
-	{{#each duples}}
-	{{duple-container name=name value=value duple_id=_id}}
-    {{/each}}
-	{{duplecreate-container currentUser = currentUser space_id = _id}}
+	{{#each item.duples}}
+	{{#if isDirty}}
+	{{else}}	{{duple-container name=name value=value duple = this}}
+	{{/if}}
+	{{/each}}
+	{{duplecreate-container currentUser = currentUser space_id = id parent = item}}
 	</div>
+	{{/if}}
 	{{/each}}
 	
   </div> 
 	<br>
 	<br>
 	
-  	{{spacecreate-container currentUser = currentUser}}
+  	{{spacecreate-container currentUser = currentUser profile = model}}
 
   </div>
  </div>
