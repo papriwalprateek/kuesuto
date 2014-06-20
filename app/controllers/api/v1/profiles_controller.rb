@@ -19,7 +19,7 @@ skip_before_action :verify_authenticity_token
   def create
   end
   def show
-  @user = User.first
+  @user = User.find(params[:id])
   @x = {}
   @x['profile'] = {}
   @x['spaces'] = []

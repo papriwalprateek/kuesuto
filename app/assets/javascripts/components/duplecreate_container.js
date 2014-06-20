@@ -32,7 +32,7 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
               value:this.values(),
               name:this.get('name'),
               parent:this.get('parent')};
-    App.set('a',this.get('parent'));
+
     d = App.Profile.store.createRecord('duple',data_send).save().then(this.success.bind(this), this.failure.bind(this));
   },
 

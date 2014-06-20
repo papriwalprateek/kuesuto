@@ -1,23 +1,63 @@
- <span  class="radius secondary label"{{action "toggleBody"}}>{{name}}</span>
+ <span  class="radius secondary label"{{action "toggleBody"}}>{{duple.name}}</span>
   {{#if isShowingBody}}
+  
   <div style="display: block; visibility: visible;position:fixed;" class="reveal-modal open medium" data-reveal="">
+   	 <div style="float:right;margin-right:20px;" {{action "toggleEdit"}}>Edit</div>
+	
+ 	 {{#if isEditing}}
+  	<form class="form-horizontal" {{action "update" on="submit"}}>
+ 	 {{#if dupleSaveFailed}}
+ 	   <div class="alert">Not Updated.</div>
+ 	 {{/if}}
   
-  <div style="margin-top:10px;">
-  <div style="font-family:serif;font-size:1.2em;color:#aaa;margin-bottom:4px;">{{{name}}}</div>
-  {{#if isDeleting}}
-  <div style="float:right;margin-right:20px;" {{action "delete" duple}}>Sure</div>
-  <div style="float:right;margin-right:20px;" {{action "toggleDelete"}}>Cancel</div>  
+ 	 {{#if isSlowConnection}}
+ 	   <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+ 	 {{/if}}
+
+  	<div class="control-group">
+  	  	<div class="control-label">
+ 			     <label>Name</label>
+  	  </div>
+  	  <div class="controls">
+  	    {{input value=duple.name type="text"}}
+  	  </div>
+  	</div>
+
+  		<div class="control-group">
+   		 <div class="control-label">
+   		   <label>Value</label>
+   			 </div>
+
+		{{#each name in duple.value}}
+	    <div class="controls">
+	    	{{editorpop-container name = name}}	
+	    </div>
+	    {{/each}}
+	  </div>
+		 <button {{action 'moreFields' target='view'}}> More fields </button>
+		  <button type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
+	</form>
+ 
   {{else}}
-  <div style="float:right;margin-right:20px;" {{action "toggleDelete"}}>Delete</div>
-  {{/if}}
-  
-  </div>
-  <hr>
-  <div style="margin-top:4px;">
- 	{{#each x in value}}
-    <p>{{{x}}}</p>
-   {{/each}}
- </div>
+   <div style="margin-top:10px;">
+ 	
+  <div style="font-family:serif;font-size:1.2em;color:#aaa;margin-bottom:4px;">{{duple.name}}</div>
+ 	 {{#if isDeleting}}
+	 	 <div style="float:right;margin-right:20px;" {{action "delete" duple}}>Sure</div>
+	 	 <div style="float:right;margin-right:20px;" {{action "toggleDelete"}}>Cancel</div>  
+		  {{else}}
+	  	<div style="float:right;margin-right:20px;" {{action "toggleDelete"}}>Delete</div>
+	  {{/if}}
+  	
+	</div>
+		<hr>
+		<div style="margin-top:4px;">
+			{{#each x in duple.value}}
+			<p>{{{x}}}</p>
+			{{/each}}
+		</div>
+ {{/if}}
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
   </div> 
+
   {{/if}}

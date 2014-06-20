@@ -30,7 +30,7 @@ skip_before_action :verify_authenticity_token
   #d.save
   respond_to do |format|
       if @d.save
-          @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type)}
+          @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type),'value'=>@d.value}
        
         format.json { render :json=> {"duple"=>@s}, :status=> :created }
       else
