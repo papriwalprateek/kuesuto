@@ -52,9 +52,8 @@ $(function(){ $(document).foundation();
 
  $( "#search" ).autocomplete({
           serviceUrl: '/api/v1/search',
-    	onSelect: function (suggestion) {
-        		alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-    		}
+          minChars  : 3
+    		
 
           });
 
