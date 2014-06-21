@@ -22,7 +22,7 @@ App.SpacecreateContainerComponent = Ember.Component.extend({
     					        short_desc:this.get('short_desc'),
     					        name:this.get('name'),
                       profile:this.get('profile')
-					         }
+					         };
     s = App.Profile.store.createRecord('space',data_send).save().then(this.success.bind(this), this.failure.bind(this));
 	
 	/*var request = $.post("/api/v1/spaces", data_send);
@@ -33,7 +33,6 @@ App.SpacecreateContainerComponent = Ember.Component.extend({
   success: function(response) {
     this.reset();
     this.toggleProperty('isShowingBody');
-     console.log(response);
          /*   a = App.user.get('spaces');
             a.create({
               name:response.name,

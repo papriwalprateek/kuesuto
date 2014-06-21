@@ -25,10 +25,7 @@ skip_before_action :verify_authenticity_token
   
   respond_to do |format|
       if @d.save
-        @d.id = @d.id.to_s
-        @s = @d.attributes.merge({"id"=>@d.id.to_s})
-        @s['profileId'] = @d.user_id.to_s
-        puts @s
+        @s = {"profileId" => @d.user_id.to_s,"id"=>@d.id.to_s,"name"=>@d.name,"short_desc"=>@d.short_desc,"userId"=>@d.user_id.to_s}
         format.json { render :json=> {"space"=>@s}, :status=> :created }
       else
         format.json { render :json=> @d.errors, :status=> :unprocessable_entity }

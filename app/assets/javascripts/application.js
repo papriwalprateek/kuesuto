@@ -12,6 +12,7 @@
 //= require modernizr
 //= require jquery
 //= require jquery_ujs
+//= require jquery.autocomplete
 //= require jquery.popline
 //= require jquery.popline.decoration
 //= require jquery.popline.justify
@@ -22,5 +23,40 @@
 //= require ember_application
 //= require customized_swipe
 
-$(function(){ $(document).foundation(); });
+var availableTags = [
+"ActionScript",
+"AppleScript",
+"Asp",
+"BASIC",
+"C",
+"C++",
+"Clojure",
+"COBOL",
+"ColdFusion",
+"Erlang",
+"Fortran",
+"Groovy",
+"Haskell",
+"Java",
+"JavaScript",
+"Lisp",
+"Perl",
+"PHP",
+"Python",
+"Ruby",
+"Scala",
+"Scheme"
+];
+
+$(function(){ $(document).foundation(); 
+
+ $( "#search" ).autocomplete({
+          serviceUrl: '/api/v1/search',
+    	onSelect: function (suggestion) {
+        		alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    		}
+
+          });
+
+});
 

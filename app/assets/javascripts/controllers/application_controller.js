@@ -4,6 +4,9 @@ App.ApplicationController = Ember.Controller.extend({
   }.property(),
   model:function(){
   	return ['a','b','c','d']
+  },
+  actions:{
+  	 
   }
   
 

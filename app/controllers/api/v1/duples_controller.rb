@@ -3,9 +3,11 @@ class Api::V1::DuplesController < ApplicationController
 skip_before_action :verify_authenticity_token
  
   def show
-    d = Duple.find(params[:id])
+    @d = Duple.find(params[:id])
+    s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type),'value'=>@d.value}
+       
     respond_to do |format|
-      format.json {render :json => d}
+      format.json {render :json => s}
     end
   end
 

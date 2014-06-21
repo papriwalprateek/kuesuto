@@ -6,7 +6,7 @@
   //}
   model: function(params){
 //    return App.User.adapter.get(this.get('currentUser').oauth_token);
-      return this.store.find('profile',this.get('currentUser')._id.$oid);
+      return 'fas';
   }
 });
 

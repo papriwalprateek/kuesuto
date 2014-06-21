@@ -2,22 +2,20 @@ App.IndexController = Ember.Controller.extend({
   needs: ['application'],
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
   actions:{
-  	delSpace: function (a) {
-  	  $.ajax({
-    	url: '/api/v1/spaces/'+a.id,
-    	type: 'DELETE',
-    	success: function(result) {
-        // Do something with the result    	
-		  a.deleteRecord();
-    	}
-    });
-  	   
-  	},
-  	toggleDel: function(a) {
+  	toggleBody: function() {
 
-      a.toggleProperty('isDeleting');
+      this.toggleProperty('isShowingBody');
 
-    },
+      if($('.reveal-modal-bg').css('display')=='block'){   // for inactive background
+          $('.reveal-modal-bg').hide();
+      }else{
+
+         
+        $('.reveal-modal-bg').show();
+      }
+      return false;
+    }
 
   }
 });
+
