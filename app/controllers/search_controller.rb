@@ -2,7 +2,7 @@ class Api::V1::SearchController < ApplicationController
   def index
 	query = Regexp.new(params[:query],'i')
 	#x = Duple.where(name:query)
-	@f = {}
+	#@f = {}
 	#@f['duples'] = x
 	
 	#x = Space.where(name:query)
@@ -19,8 +19,9 @@ class Api::V1::SearchController < ApplicationController
 		carrier << {"value"=>p["name"],"data"=>p["addr"]}
 	end
 	
-	@f['suggestions'] = carrier
-	@f['query'] = params[:query]
+	@f = carrier
+	#@f['query'] = params[:query]
+
 	respond_to do |format|
 		format.json {render :json => @f}
 	end
