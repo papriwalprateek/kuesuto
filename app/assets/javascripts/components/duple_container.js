@@ -5,35 +5,37 @@ App.DupleContainerComponent = Ember.Component.extend({
   isSlowConnection: false,
   timeout: null,
   ecName:null,
-  ecValue:[],
+  a:[],
  values: function(){
   var arr = [];
   var a = this.$('.editor');
-  a.each(function( index ) {arr.push($(this).html());});
+  _this = this;
+  a.each(function( index ) {arr.push(_this.remScript($(this).html()));});
   return arr;
   
 },
+remScript: function(a){
+    var div = document.createElement('div');
+    div.innerHTML = a;
+    var scripts = div.getElementsByTagName('script');
+    var i = scripts.length;
+    while (i--) {
+      scripts[i].parentNode.removeChild(scripts[i]);
+    }
+    a = div.innerHTML;
+    return a;
+},
 
+updateVal:function(){
+  this.set('duple.value',this.values());
+},
   actions: {
   	toggleEdit: function(){
   		this.toggleProperty('isEditing');
       if(this.get('isEditing')){
-        this.set('ecName',this.get('duple.name'));
-        this.set('ecValue',this.get('duple.value'));
-
-        this.$(".editor").attr("contenteditable",true);
-        this.$('.editor').popline();
-      
       }
       else{
-        //this.set('container',this.$('.editor'))
-        this.$('.editor').popline("destroy");
-        $(".editor").attr("contenteditable", this.id === "edit");       
-        this.set('ecName',null);
-        this.set('ecValue',null);
-        
-        //this.$('.editor').popline("destroy");
-        //$(".editor").attr("contenteditable", this.id === "edit");
+        this.get('duple').rollback();
       }
       
   	},
@@ -41,7 +43,8 @@ App.DupleContainerComponent = Ember.Component.extend({
 
     	if($('.reveal-modal-bg').css('display')=='block'){   // for inactive background
     		  $('.reveal-modal-bg').hide();
-          this.send('toggleEdit');
+          this.set('isEditing',false);
+          this.get('duple').rollback();
   		}else{
   			$('.reveal-modal-bg').show();
   		}
@@ -66,14 +69,12 @@ App.DupleContainerComponent = Ember.Component.extend({
 	  },
 
    moreFields: function(){
-        var arr = this.get('ecValue');
-        arr.pushObject("start typing here");
-        this.get('duple').set('value',arr);
-        this.$(".editor").attr("contenteditable",true);
-        this.$('.editor').popline();
-        App.set('a',this);
-
-       // this.get('duple').rollback();
+      this.updateVal();
+      this.set('a',this.get('duple.value'));
+      newArr = this.get('a').slice();
+      this.set('duple.value', newArr);
+      newArr.pushObject('Start here....');
+      console.log(newArr);
     } 
   },
   update: function() {
@@ -82,22 +83,14 @@ App.DupleContainerComponent = Ember.Component.extend({
       isProcessing: true
     });
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000)); 
-   var data_send = {  
-              value:this.values(),
-              name:this.get('name')};
-  var p = this.get('duple');
-  p.set("name", this.get('ecName'));
-  p.set("value",this.values());
-  //this.values().each(function(i){p.});
-  p.save().then(this.success.bind(this), this.failure.bind(this));
- // $.post('/api/v1/duples/'+p.get(''))
-   // App.set('a',this.get('parent'));
-    //d = App.Profile.store.createRecord('duple',data_send).save().then(this.success.bind(this), this.failure.bind(this));
+    this.updateVal();
+    this.get('duple').save().then(this.success.bind(this), this.failure.bind(this));
+
   },
 
   success: function(response) {
     this.reset();
-    this.toggleBody();
+    this.send('toggleBody');
   },
 
   failure: function() {

@@ -12,7 +12,7 @@ get '/list',to: 'repo#generic'
 get '/list/*path',to: 'repo#generic'
 get '/bin',to: 'repo#generic'
 get '/contributions',to: 'repo#generic'
-
+get '/me', to:'repo#generic'
 
   get 'test' => 'test#show'
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
@@ -78,7 +78,7 @@ match '/search', to: 'basic#show', via: [:get, :post]
       resources :entities, only: [:index,:create]
       resources :lists, only:[:index,:create]
       resources :profiles, only:[:index,:create,:show]
-      resources :duples, only:[:index,:create,:show,:destroy]
+      resources :duples, only:[:index,:create,:show,:destroy,:update]
       resources :spaces, only:[:index,:create,:show,:destroy]
       resources :search, only:[:index]
     end

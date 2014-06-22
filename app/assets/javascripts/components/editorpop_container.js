@@ -5,9 +5,9 @@ App.EditorpopContainerComponent = Ember.Component.extend({
  
   },
   didInsertElement:function(){
-  	this.set('container',this.$('.editor'))
-  	this.get('container').popline();
-  //more options ({disable: ["link", "blockquote"]}); ({position: 'relative'}); popline({mode: 'view'});
+	this.set('container',this.$('.editor'))
+	this.get('container').popline();
+//more options ({disable: ["link", "blockquote"]}); ({position: 'relative'}); popline({mode: 'view'});
   }
   
   

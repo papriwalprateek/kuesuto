@@ -2,7 +2,7 @@
   {{#if isShowingBody}}
   
   <div style="display: block; visibility: visible;position:fixed;" class="reveal-modal open medium" data-reveal="">
-   	 <!--div style="float:right;margin-right:20px;" {{action "toggleEdit"}}>Edit</div!-->
+   	 <div style="float:right;margin-right:20px;" {{action "toggleEdit"}}>Edit</div>
 	
  {{#if isEditing}}
   	<form class="form-horizontal" {{action "update" on="submit"}}>
@@ -24,8 +24,8 @@
   	</div>
 		<hr>
 		<div style="margin-top:4px;">
-			{{#each x in ecValue}}
-			<div class="editor">{{{x}}}</div></hr>
+			{{#each x in duple.value}}
+					{{editorpop-container value = x}}	
 			{{/each}}
 		</div>
   	 <button {{action 'moreFields' target='view'}}> More fields </button>
@@ -47,16 +47,13 @@
 		<hr>
 		<div style="margin-top:4px;">
 			{{#each x in duple.value}}
-			<div class="editor">{{{x}}}</div></hr>
+			<div >{{{x}}}</div></hr>
 			{{/each}}
 		</div>
   {{/if}}
   		
  
-  {{#if isEditing}}
-		
- 
-  {{/if}}
+  
 
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
   </div> 

@@ -1,10 +1,10 @@
 class Api::V1::DuplesController < ApplicationController
   respond_to :json
-skip_before_action :verify_authenticity_token
+#skip_before_action :verify_authenticity_token
  
   def show
     @d = Duple.find(params[:id])
-    s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type),'value'=>@d.value}
+    s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id.to_s,"parentType"=>par_type(@d.parent_type),'value'=>@d.value}
        
     respond_to do |format|
       format.json {render :json => s}
@@ -32,7 +32,7 @@ skip_before_action :verify_authenticity_token
   #d.save
   respond_to do |format|
       if @d.save
-          @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type),'value'=>@d.value}
+          @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id.to_s,"parentType"=>par_type(@d.parent_type),'value'=>@d.value}
        
         format.json { render :json=> {"duple"=>@s}, :status=> :created }
       else
@@ -42,10 +42,12 @@ skip_before_action :verify_authenticity_token
   end
   def update
     @d = Duple.find(params[:id])
+    @u = {"name"=>params[:duple][:name],"value"=>params[:duple][:value]}
     respond_to do |format|
-      if @d.update_attributes(params[:duple])
-        @d.id = @d.id.to_s
-        format.json { render :json=>{"duple"=>@d}, status: :ok }
+      if @d.update_attributes(@u)
+        @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id.to_s,"parentType"=>par_type(@d.parent_type),"value"=>@d.value}
+       
+        format.json { render :json=>{"duple"=>@s}, status: :ok }
       else
         format.json { render :json=> @d.errors, :status=> 422 }
       end
@@ -56,7 +58,7 @@ skip_before_action :verify_authenticity_token
      @d = Duple.find(params[:id])
     respond_to do |format|
       if @d.destroy
-        @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id,"parentType"=>par_type(@d.parent_type)}
+        @s = {"id"=>@d.id.to_s,"name"=>@d.name,"parentId"=>@d.parent_id.to_s,"parentType"=>par_type(@d.parent_type)}
         format.json { render :json=> {"duple"=>@s}, :status=> 204 }
       else
         format.json { render :json=> @d.errors, :status=> :unprocessable_entity }
@@ -72,6 +74,6 @@ private
     end
   end
  def duple_params
-    params.require(:duple).permit(:name,:value,:parentId,:parentType)
+    params.require(:duple).permit(:name,:parentId,:parentType,:value => [])
  end
  end

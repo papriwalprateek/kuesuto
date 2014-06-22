@@ -41,8 +41,8 @@ skip_before_action :verify_authenticity_token
     tem['id'] = d.id.to_s
     tem['name'] = d.name
     tem['value'] = d.value
-    tem['parent_type'] = d.parent_type
-    tem['parent_id'] = d.parent_id
+    tem['parentType'] = d.parent_type
+    tem['parentId'] = d.parent_id.to_s
     @x['duples'] << tem
     temp['duples'] << d.id.to_s
   end
@@ -55,8 +55,8 @@ skip_before_action :verify_authenticity_token
   temp['id'] = d.id.to_s
   temp['name'] = d.name
   temp['value'] = d.value
-  temp['parent_type'] = d.parent_type
-  temp['parent_id'] = d.parent_id
+  temp['parentType'] = "User"
+  temp['parentId'] = d.parent_id.to_s
   @x['duples'] << temp
   end
   

@@ -50,12 +50,10 @@ App.Duple = DS.Model.extend({
   parent:DS.belongsTo('parent', { polymorphic: true, async:false, inverse: 'duples' })
 });
 
-
-App.ApplicationAdapter = DS.FixtureAdapter;
-
 App.ApplicationAdapter = DS.RESTAdapter.extend({
   namespace: 'api/v1',
 });
+
 DS.ArrayTransform = DS.Transform.extend({
   deserialize: function(serialized) {
     return (Ember.typeOf(serialized) == "array")
@@ -64,7 +62,8 @@ DS.ArrayTransform = DS.Transform.extend({
   },
 
   serialize: function(deserialized) {
-    var type = Ember.typeOf(deserialized);
+   
+   var type = Ember.typeOf(deserialized);
     if (type == 'array') {
         return deserialized
     } else if (type == 'string') {
@@ -78,3 +77,9 @@ DS.ArrayTransform = DS.Transform.extend({
 });
 
 App.register("transform:array", DS.ArrayTransform);
+
+App.ApplicationSerializer = DS.RESTSerializer.extend({
+ serializePolymorphicType: function(record, json, relationship) {
+ //overriding ember data serializer for polymorphic relationship
+}
+});
