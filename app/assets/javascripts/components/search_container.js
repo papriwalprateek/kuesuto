@@ -3,10 +3,10 @@ App.SearchContainerComponent = Ember.Component.extend({
   	suggestions = new Bloodhound({
 	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 	queryTokenizer: Bloodhound.tokenizers.whitespace,
-	remote: {url:'/api/v1/search.json?query=%QUERY',
+	remote: {url:'/api/v1/autocomplete.json?query=%QUERY',
 	filter: function(response){
   	  //format the data here
-  	  return response.search;
+  	  return response.autocomplete;
   	}
 	}
 	});
@@ -27,18 +27,20 @@ App.SearchContainerComponent = Ember.Component.extend({
 	'Sorry, No results',
 	'</div>'
 	].join('\n'),
-	suggestion: Handlebars.compile("<a href='/repo/dq/algorithms'>{{value}}</a>")
+	suggestion: Handlebars.compile("{{value}}")
 	}
 	});
-	App.set('a',this.get('applicationController'));
 	  t.on("typeahead:selected", function(event, item) {
-        console.log(this);
-        _this.get('applicationController').transitionToRoute('repo', {query:item.data+item.value});
+	  	 url = "/repo/"+item.data+"/"+item.value;
+	  	 window.location = url;
+       // console.log(this);
+        //_this.get('').transitionToRoute('repo', {query:item.data+item.value});
       });
 
       t.on("typeahead:autocompleted", function(event, item) {
-       	alert(item.value);
-      });
+     	 url = "/repo/"+item.data+"/"+item.value;
+	  	 window.location = url;
+        });
 
   }
   });

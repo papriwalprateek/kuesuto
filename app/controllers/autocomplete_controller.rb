@@ -1,4 +1,4 @@
-class Api::V1::SearchController < ApplicationController
+class Api::V1::AutocompleteController < ApplicationController
   def index
 	query = Regexp.new(params[:query],'i')
 	#x = Duple.where(name:query)

@@ -326,11 +326,12 @@ end
                                 r2=Hash.new
                                 r2['query']=e['addr']+'/'+e['name']+'/'+p+'/'+id.to_s
                                 r2['node']=Entity.find(id)
-                                if p=='video'
-                                    r2['node']['out_type']='video'
-                                    else
-                                    r2['node']['out_type']='text'
-                                end
+                               
+                               # if p=='video'
+                                #    r2['node']['out_type']='video'
+                                #    else
+                                 #   r2['node']['out_type']='text'
+                                #end
                                 r1['tile_nodes']<<r2
                             end
                             r['tiles']<<r1
