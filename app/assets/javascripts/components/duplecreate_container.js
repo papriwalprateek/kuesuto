@@ -28,10 +28,16 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
       isProcessing: true
     });
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000)); 
+  var pt = "Profile";
+  if(this.get('space_id')){
+    pt= "Space"
+  }
   var data_send = {  
               value:this.values(),
               name:this.get('name'),
-              parent:this.get('parent')};
+              parent:this.get('parent'),
+              parentType:pt
+            };
 
     d = App.Profile.store.createRecord('duple',data_send).save().then(this.success.bind(this), this.failure.bind(this));
   },

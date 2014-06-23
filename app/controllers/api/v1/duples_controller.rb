@@ -20,7 +20,7 @@ class Api::V1::DuplesController < ApplicationController
   end
   def create
     para = params[:duple]
-    if(para[:parentType]=="profile")
+    if(para[:parentType]=="Profile")
       t = "User"
       d = User.find(para[:parent]).id    
     else
