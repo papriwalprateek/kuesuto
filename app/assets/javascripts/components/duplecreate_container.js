@@ -30,7 +30,7 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000)); 
   var pt = "Profile";
   if(this.get('space_id')){
-    pt= "Space"
+    pt= "Space";
   }
   var data_send = {  
               value:this.values(),
