@@ -42,7 +42,8 @@
 	{{!else}}	{{duple-container name=name value=value duple = this}}
 	{{!/if}}
 	{{/each}}
-	{{duplecreate-container currentUser = currentUser space_id = id parent = item}}
+
+	{{duplecreate-container currentUser = currentUser space_id = item.id parent = item}}
 	</div>
 	{{!/if}}
 	{{/each}}

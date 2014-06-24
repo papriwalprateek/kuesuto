@@ -80,7 +80,6 @@ App.register("transform:array", DS.ArrayTransform);
 
 App.ApplicationSerializer = DS.RESTSerializer.extend({
  serializePolymorphicType: function(record, json, relationship) {
-  
   json["parentType"] = record.parentType;
  //overriding ember data serializer for polymorphic relationship
 }
