@@ -1,7 +1,7 @@
 App.EditorpopContainerComponent = Ember.Component.extend({
   container: null,
   actions: {
-    
+   
  
   },
   didInsertElement:function(){

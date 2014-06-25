@@ -21,6 +21,8 @@
 	 <div class="commitformtext">Your Content:</div><br>
 	
       {{editorpop-container content=view.content }}
+      <a style="float:right;" {{action "insertCode" target=view}}>code</a>
+
       <br>
     <button class ="small radius" type="submit" {{action "submit" target=view}}>Done</button>
 	</div>

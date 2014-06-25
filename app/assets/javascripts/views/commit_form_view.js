@@ -13,6 +13,11 @@ App.CommitFormView = Ember.View.extend({
 	return this.$('.editor').html();
 	
 },
+  actions:{
+     insertCode : function(){
+       this.$('.editor').append("<br><pre>Enter code here</pre><br>");
+    }
+  },
   
   emptyurl:	function(){
   					if(this.get('resourceUrl')!=''){
