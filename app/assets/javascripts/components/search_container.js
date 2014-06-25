@@ -20,14 +20,14 @@ App.SearchContainerComponent = Ember.Component.extend({
 	});
   	 if(this.get('name')===undefined){
 	  t.on("typeahead:selected", function(event, item) {
-	  	 url = "/repo/"+item.data+"/"+item.value;
+	  	 url = "/repo/"+item.data;
 	  	 window.location = url;
        // console.log(this);
         //_this.get('').transitionToRoute('repo', {query:item.data+item.value});
       });
 
       t.on("typeahead:autocompleted", function(event, item) {
-     	 url = "/repo/"+item.data+"/"+item.value;
+     	 url = "/repo/"+item.data;
 	  	 window.location = url;
         });
   	}
