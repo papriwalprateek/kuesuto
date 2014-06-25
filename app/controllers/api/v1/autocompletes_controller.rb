@@ -21,17 +21,23 @@ class Api::V1::AutocompletesController < ApplicationController
 	end
 	
 	else
-		carrier = Entity.where("isleaf"=>true).all.map{ |x| {"value"=>x.name,"data"=>x.query}}
+		carrier = Entity.where("isleaf"=>true).all.map{ |x| {"value"=>x.name,"data"=>"repo/"+x.query,"type"=>"Entity"}}
 		
 		collect = Entity.where("isleaf"=>true).all
 
 		collect.each do |l|
 			l.p_list.each do |k,v|
 				if v!=0
-				y = {"value"=>l.name+" "+k,"data"=>l.query+"#"+k}
+				y = {"value"=>l.name+" "+k,"data"=>"repo/"+l.query+"/i:"+k,"type"=>"Knowledge Item"}
 				carrier << y
 				end
 			end
+		end
+
+		lists = List.all
+		lists.each do |l|
+			y = {"value"=>l.name,"data"=>"list/"+l.name,"type"=>"List"}
+			carrier << y
 		end
 
 	end	
