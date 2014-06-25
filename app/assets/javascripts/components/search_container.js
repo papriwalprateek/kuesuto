@@ -1,22 +1,5 @@
 App.SearchContainerComponent = Ember.Component.extend({
   didInsertElement:function(){
-  		var suggestions = new Bloodhound({
-  	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-  	queryTokenizer: Bloodhound.tokenizers.whitespace,
-  	 limit: 10,
-  	prefetch: {
-  	url: '/api/v1/autocompletes.json',
-	
-		//url:'/api/v1/autocomplete.json?query=%QUERY',
-	   filter: function(response){
-  	  //format the data here
-  	  return response.autocompletes;
-  	 }
-	   }
-	});
- 
-	suggestions.initialize();
-	
   	 t = this.$('#search').typeahead({
 	hint: true,
 	highlight: true,
@@ -25,7 +8,7 @@ App.SearchContainerComponent = Ember.Component.extend({
 	{
 	name: 'search',
 	displayKey: 'value',
-	source: suggestions.ttAdapter(),
+	source: App.suggestions.ttAdapter(),
 	 templates: {
 	empty: [
 	'<div class="empty-message">',

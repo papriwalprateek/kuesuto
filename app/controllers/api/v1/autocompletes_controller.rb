@@ -21,7 +21,7 @@ class Api::V1::AutocompletesController < ApplicationController
 	end
 	
 	else
-		carrier = Entity.where("isleaf"=>true).all.map{ |x| {"name"=>x.name,"data"=>x.query}}
+		carrier = Entity.where("isleaf"=>true).all.map{ |x| {"value"=>x.name,"data"=>x.query}}
 		
 	end	
 	#@f['query'] = params[:query]
