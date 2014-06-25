@@ -270,18 +270,16 @@ div.entitynavbutton{
 }
 .text_content{
 	font-family:Georgia;
-	  font-weight: normal;
 	  font-size: 1rem;
 	  line-height: 1.6;
 	  margin-bottom: 1.25rem;
 	  text-rendering: optimizeLegibility;
-	  border-bottom: 1px solid #eee;
+	  border-bottom: 1px solid rgb(224,224,224);
 	  padding-left:0px;
+	  padding-right:0px;
     padding-top: 0px;
 }
-.text_content h3{
-font-family:serif;
-}
+
 
 .send_form{
 	font-family:BantoSans;
@@ -294,12 +292,12 @@ font-family:serif;
 	font-family:BantoSans;
 }
 pre{
- overflow-x:scroll;
- overflow-x:auto;
- max-width:800px;
- font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New; background-color:rgb(248, 248, 248);
- border: 1px solid rgb(221,221,221);
- padding: 10px;
+overflow-x:auto;
+max-width:800px;
+font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+background-color:rgb(248, 248, 248);
+border: 1px solid rgb(221,221,221);
+padding: 10px;
 }
 
 code{
@@ -307,7 +305,9 @@ overflow-x:auto;
 max-width:800px;
 font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 color: black;
-font-weight:normal; }
+font-weight:normal;
+}
+
 .profiletable td{
 	text-align:center;
 }
@@ -320,21 +320,7 @@ font-weight:normal; }
 	color:#080;
 	font-size:0.9em;
 }
-.articleheading{
-font-size:1.3em;
-font-family: chaparral,pro,serif;
-font-weight:600;
-border-bottom:1px solid rgb(205,205,205);
-line-height:1.3em;
-padding-bottom:0.5em;
-}
 
-.viewsource{
- margin-top:5px;
- margin-bottom:40px;
- font-family:serif;
- font-size:0.9em;
-}
 
 .popline {
   position: absolute;
@@ -398,13 +384,48 @@ padding-bottom:0.5em;
     outline: none;
     width: 150px; }
 
+.text_container{
+  font-family: Georgia;
+}
 
+
+.text_container h2, h1, h3, h4, h5
+{
+  font-family: Georgia;
+  font-size:1.3em;
+  font-weight:bold;
+}
+
+
+.text_content h2, h1, h3, h4, h5
+{
+  font-family: Georgia;
+  font-size:1.3em;
+  font-weight:bold;
+}
+
+.articleheading{
+font-size:1.3em;
+font-family: chaparral,pro,serif;
+font-weight:600;
+border-bottom:1px solid rgb(205,205,205);
+line-height:1.3em;
+padding-bottom:0.5em;
+}
+
+.viewsource{
+margin-top:5px;
+margin-bottom:40px;
+font-family:serif;
+font-size:0.9em;
+}
 
 
 
 span.twitter-typeahead{
   width:100%;
 }
+
 
 .typeahead,
 .tt-query,
