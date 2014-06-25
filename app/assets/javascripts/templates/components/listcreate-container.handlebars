@@ -1,0 +1,39 @@
+ <button {{action "toggleBody"}}>Add a new List</span>
+  {{#if isShowingBody}}
+  
+  <div style="display: block; visibility: visible;" class="reveal-modal open" data-reveal="">
+ 	<form class="form-horizontal" {{action "save" on="submit"}}>
+  {{#if listSaveFailed}}
+    <div class="alert">Not Saved.</div>
+  {{/if}}
+  
+  {{#if isSlowConnection}}
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+  {{/if}}
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Name</label>
+    </div>
+    <div class="controls">
+      {{input value=name type="text"}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Value</label>
+    </div>
+
+	{{#each entities}}
+          {{search-container name=name}}
+            
+  {{/each}}
+  </div>
+	 <button {{action 'moreFields' target='view'}}> Add more </button>
+  <button type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
+</form>
+ 
+  <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
+  </div> 
+  {{/if}}

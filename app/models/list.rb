@@ -1,8 +1,8 @@
 class List
   include Mongoid::Document  
   field :name, type: String
-  field :creator, type: String, default: "dq"
   has_and_belongs_to_many :entities
+  belongs_to :user
   
   def es
 	  #self.entities.pluck(:name)

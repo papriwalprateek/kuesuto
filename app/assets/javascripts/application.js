@@ -22,6 +22,8 @@
 //= require facebook
 //= require ember_application
 //= require customized_swipe
+$(function(){ $(document).foundation(); 
 
-$(function(){ $(document).foundation(); });
+
+	});
 

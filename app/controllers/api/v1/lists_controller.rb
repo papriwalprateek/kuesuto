@@ -5,7 +5,7 @@ skip_before_action :verify_authenticity_token
   @f = {"error"=>"not found"}
  
   if params[:l_name]
-    l  = List.where("creator"=>"dq").find_by("name"=>params[:l_name])
+    l  = List.find_by("name"=>params[:l_name])
        
     if l
       if params[:e_name]  #entity in the list is needed
@@ -18,7 +18,7 @@ skip_before_action :verify_authenticity_token
       end
     end
   elsif params[:all]
-    l = List.all.map{ |x| {"name"=>x.name,"entities_count"=>x.entities.count,"creator"=>x.creator}}
+    l = List.all.map{ |x| {"name"=>x.name,"entities_count"=>x.entities.count,"creator"=>x.user.name}}
     @f = { "has" => "lists", "lists"=>l}
   end
     
@@ -27,6 +27,23 @@ skip_before_action :verify_authenticity_token
   end
   end
   def create
+  para = params[:list]
+  @l = List.create(:name=>para[:name])
+  para[:entities].each do |et|
+    e =  Entity.find_by('name'=>et)
+    if e
+      @l.entities.push(e)
+    end
+  end
+  @l.user = User.find(para[:user])
+  respond_to do |format|
+      if @l.save
+        format.json { render :json=> {"list"=>@l}, :status=> :created }
+      else
+        format.json { render :json=> @d.errors, :status=> :unprocessable_entity }
+      end
+  end 
+  
   end
 private
 

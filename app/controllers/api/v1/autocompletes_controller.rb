@@ -1,5 +1,6 @@
-class Api::V1::AutocompleteController < ApplicationController
+class Api::V1::AutocompletesController < ApplicationController
   def index
+	if(params[:query])
 	query = Regexp.new(params[:query],'i')
 	#x = Duple.where(name:query)
 	#@f = {}
@@ -19,9 +20,13 @@ class Api::V1::AutocompleteController < ApplicationController
 		carrier << {"value"=>p["name"],"data"=>p["addr"]}
 	end
 	
-	@f = carrier
+	else
+		carrier = Entity.where("isleaf"=>true).all.map{ |x| {"name"=>x.name,"data"=>x.query}}
+		
+	end	
 	#@f['query'] = params[:query]
-
+		@f = carrier
+	
 	respond_to do |format|
 		format.json {render :json => @f}
 	end

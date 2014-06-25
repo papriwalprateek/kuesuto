@@ -1,2 +1,7 @@
-<input type="text" id="search" placeholder="Search in repos, flows .."> 
-    	
+    	{{#if name}}
+    	      {{input value=name type="text"}}
+
+    	{{else}}
+		<input type="text" id="search" placeholder="Search in repos, flows .."> 
+
+    	{{/if}}

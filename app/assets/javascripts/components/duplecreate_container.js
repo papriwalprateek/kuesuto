@@ -13,7 +13,7 @@ App.DuplecreateContainerComponent = Ember.Component.extend({
 },
 
   toggleBody: function() {
-      if($('.reveal-modal-bg').css('display')=='block'){     // for inactive background
+      if($('.reveal-modal-bg').css('display')==='block'){     // for inactive background
           $('.reveal-modal-bg').hide();
       }else{
         $('.reveal-modal-bg').show();

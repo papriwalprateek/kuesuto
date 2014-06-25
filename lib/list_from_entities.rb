@@ -13,7 +13,6 @@ else
   puts "creating new list"
   l = List.new
   l.name = l_name
-  l.creator = c_name
   l.save
 end
 

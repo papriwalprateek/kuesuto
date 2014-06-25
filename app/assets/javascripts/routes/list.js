@@ -47,4 +47,3 @@
       	App.set('breadcrumbs',brd); 
   		}
 	});
-

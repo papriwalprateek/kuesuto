@@ -80,7 +80,7 @@ match '/search', to: 'basic#show', via: [:get, :post]
       resources :profiles, only:[:index,:create,:show]
       resources :duples, only:[:index,:create,:show,:destroy,:update]
       resources :spaces, only:[:index,:create,:show,:destroy]
-      resources :autocomplete, only:[:index]
+      resources :autocompletes, only:[:index]
     end
   end
 end
