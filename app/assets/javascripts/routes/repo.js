@@ -1,10 +1,32 @@
 
  App.RepoRoute = Ember.Route.extend({
    model: function(params) {
-  		var addr = params.addr.split("/i:");
-		this.controllerFor('repo').set('item',addr[1]);
-		return App.est.get(addr[0]);
-  },
+  	var addr = params.addr.split("/i:");
+    return App.est.get(addr[0]).then(function(response){
+    if(response.has ==="tiles"){
+      if(addr[1]===undefined){
+        t =  response.tiles[0];
+      }
+      else{
+         $.each(response,function(i,v){
+            if(addr[1]==v.tile_title){
+             t=v.tile_nodes;
+           };
+         });        
+      }
+    }
+    else{
+      t  = response;
+    }
+    return t;
+    });
+
+   // return t;
+},
+  setupController: function(controller, model) {
+        controller.set('model', model);
+    },
+
   beforeModel: function() {
     Ember.$("body").addClass("loading");
   },
@@ -43,23 +65,8 @@
 
  App.RepoController = Ember.ObjectController.extend({
    // needs: [],
-    item:"nothing",
-    tile:function(){
-    		arr = this.get('model.tiles');
-    		t ={};
-    		it = this.get('item');
-    		if(it==="nothing"){
-    			t = arr[0].tile_nodes;
-    		}
-    		else{
-    		$.each(arr,function(i,v){
-    			if(it==v.tile_title){
-    				t=v.tile_nodes;
-    			}
-
-    		})}
-    		return t;    		
-    }.property('item'),
+    item:"",
+  
     actions:{
     	addK:function(){
     			$('div.contentcard').hide();
