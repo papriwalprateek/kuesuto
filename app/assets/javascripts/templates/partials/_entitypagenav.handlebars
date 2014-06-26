@@ -1,9 +1,12 @@
-{{#view App.ContentTabsCommitView}}
+<div class="panel callout entitynavbutton"{{action addK}}>
 	Add Knowledge
-{{/view}}
+</div>
 {{#each controller.tiles}}
-{{#view App.ContentTabsView }}
-	{{unUnderscore tile_title}}
-{{/view}}
+{{!#view App.ContentTabsView }}
+	{{!unUnderscore tile_title}}
+{{!/view}}
+{{#link-to 'repo' tile_url}}
+<div class="panel entitynavbutton">{{tile_title}}</div>
+{{/link-to}}
 
 {{/each}}

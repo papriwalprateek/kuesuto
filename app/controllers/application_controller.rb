@@ -86,6 +86,7 @@ class ApplicationController < ActionController::Base
                             puts p
                             r1=Hash.new
                             r1["tile_title"]=p
+                            r1["tile_url"]=e['addr']+"/"+e['name']+'/i:'+p
                             r1["tile_nodes"]=[]
                             e[p].each do |id|
                                 r2=Hash.new
@@ -321,6 +322,7 @@ end
                             puts p
                             r1=Hash.new
                             r1["tile_title"]=p
+                            r1["tile_url"]=e['addr']+"/"+e['name']+'/i:'+p
                             r1["tile_nodes"]=[]
                             e[p].each do |id|
                                 r2=Hash.new

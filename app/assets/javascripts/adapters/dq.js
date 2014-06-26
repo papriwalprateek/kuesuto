@@ -1,3 +1,31 @@
+var cache ={};
+App.EntityStore = Ember.Object.extend({  
+  get:function (addr) {	
+	if (cache[addr] ) {
+      return cache[addr];
+    }
+    var ad;
+    ad = App.EntityAdapter.create(); //adapter = this.container.lookup('adapter:' + name);
+    return ad.get(addr).then(function(record) {
+      cache[addr] = cache[addr] || {};
+      cache[addr] = record;
+      return record;
+    });	   
+  }
+});
+App.EntityAdapter = Ember.Object.extend({ 
+  get: function(addr) {
+    return $.ajax({
+          url: '/api/v1/entities.json?addr='+addr,
+          type: 'GET',
+          dataType: 'json',
+          success: function() {  },
+          error: function() {  }
+      }).then(function(response){return response;});
+}
+});
+App.est = App.EntityStore.create();
+
 /*App.ProfileAdapter = Ember.Object.extend({ 
   user: null,
   get: function(token) {
