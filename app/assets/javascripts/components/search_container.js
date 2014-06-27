@@ -20,29 +20,14 @@ App.SearchContainerComponent = Ember.Component.extend({
 	});
   	 if(this.get('name')===undefined){
 	  t.on("typeahead:selected", function(event, item) {
-	  	 if(item.t==="k"){
-	  	 	arr = item.v.split(" ")
-	  	 	url = "/repo/"+App.addrs[item.d]+"/i:"+arr[arr.length-1];
-	  	 }else if(item.t==="l"){
-	  	 url ="/list/"+item.d;
-	  	}else if(item.t==="e"){
-	  		url = "/repo/"+item.d;
-	  	}
+	  	 url ="/"+item.d;
 	  	 window.location = url;
-	  	
        // console.log(this);
         //_this.get('').transitionToRoute('repo', {query:item.data+item.value});
       });
 
       t.on("typeahead:autocompleted", function(event, item) {
-     	   if(item.t==="k"){
-	  	 	arr = item.v.split(" ")
-	  	 	url = "/repo/"+App.addrs[item.d]+"/i:"+arr[arr.length-1];
-	  	 }else if(item.t==="l"){
-	  	 url ="/list/"+item.d;
-	  	}else if(item.t==="e"){
-	  		url = "/repo/"+item.d;
-	  	}
+     	 url = "/"+item.d;
 	  	 window.location = url;
         });
   	}

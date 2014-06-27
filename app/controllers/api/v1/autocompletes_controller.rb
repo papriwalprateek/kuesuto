@@ -22,18 +22,15 @@ class Api::V1::AutocompletesController < ApplicationController
 	
 	else
 		af = Autocomplete.first
-		
 		if(!af)
-			carrier = Entity.where("isleaf"=>true).all.map{ |x| {"v"=>x.name,"d"=>x.query,"t"=>"e"}}
+			carrier = Entity.where("isleaf"=>true).all.map{ |x| {"v"=>x.name,"d"=>"repo/"+x.query,"t"=>"e"}}
 		
 			collect = Entity.where("isleaf"=>true).all
-			addrs = []
+
 			collect.each do |l|
-				addrs<<l.query
-				id = addrs.length-1
 				l.p_list.each do |k,v|
 					if v!=0
-					y = {"v"=>l.name+" "+k,"d"=>id,"t"=>"k"}
+					y = {"v"=>l.name+" "+k,"d"=>"repo/"+l.query+"/i:"+k,"t"=>"k"}
 					carrier << y
 					end
 				end
@@ -41,15 +38,14 @@ class Api::V1::AutocompletesController < ApplicationController
 
 			lists = List.all
 			lists.each do |l|
-				y = {"v"=>l.name,"d"=>l.name,"t"=>"l"}
+				y = {"v"=>l.name,"d"=>"list/"+l.name,"t"=>"l"}
 				carrier << y
 			end
 			an = Autocomplete.new
 			an.value = carrier
-			an.addrs = addrs
 			an.save
 		else
-			carrier = af.attributes
+			carrier = af.value
 		end
 
 	end	
