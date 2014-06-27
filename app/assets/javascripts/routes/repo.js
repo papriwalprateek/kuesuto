@@ -62,7 +62,7 @@
           }
     		return t; 
       }   		
-    }.property('item'),
+    }.property('model','item'),
     actions:{
     	addK:function(){
     			$('div.contentcard').hide();

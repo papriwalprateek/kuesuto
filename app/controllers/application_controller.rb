@@ -53,11 +53,11 @@ class ApplicationController < ActionController::Base
           r1["type"]='content'
           r1["node"]=Entity.find_by(addr:a)
           r1["title"]=r1['node']['title']
-          if(r1['node']['type']=='/dqs/videopage')
-              r1['out_type']='video'
-              else
-              r1['out_type']='text'
-          end
+          #if(r1['node']['type']=='/dqs/videopage')
+           #   r1['out_type']='video'
+           #   else
+           #   r1['out_type']='text'
+          #end
           r1["out_html"]=r1['node']['cache']
           r1["url"]=r1['node']['url']
           r['source']<<r1
@@ -92,11 +92,11 @@ class ApplicationController < ActionController::Base
                                 r2=Hash.new
                                 r2['query']=e['addr']+'/'+e['name']+'/'+p+'/'+id.to_s
                                 r2['node']=Entity.find(id)
-                                if p=='video'
-                                    r2['node']['out_type']='video'
-                                    else
-                                    r2['node']['out_type']='text'
-                                end
+                                #if p=='video'
+                                 #   r2['node']['out_type']='video'
+                                  #  else
+                                  #  r2['node']['out_type']='text'
+                                #end
                                 r1['tile_nodes']<<r2
                             end
                             r['tiles']<<r1
