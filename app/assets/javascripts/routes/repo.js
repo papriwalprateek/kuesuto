@@ -4,7 +4,7 @@
   		var addr = params.addr.split("/i:");
 		if(addr[1]!==undefined){
     this.controllerFor('repo').set('item',addr[1]);}
-    else(){
+    else{
       this.controllerFor('repo').set('item','');
     }
     this.controllerFor('repo').set('baddr',addr[0]);
