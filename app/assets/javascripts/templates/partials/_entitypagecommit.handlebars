@@ -1,5 +1,5 @@
-<div class="panel card commitcard" id="commitform " style="display:none">
-   {{#view App.CommitFormView}}
+<div class="panel card commitcard" id="commitform " >
+   {{#view App.CommitFormView textBinding="controller.comContent" resourceUrlBinding="controller.comUrl" propertyBinding="controller.comProperty"}}
   {{#if view.notFilled}}
   <div class="send_form" >
   <div class="commitformtext" >Add Property. Ex:- Description, video, article etc. 
@@ -20,7 +20,7 @@
 	 <div class="commit_fields" id="commit_imm_content">
 	 <div class="commitformtext">Your Content:</div><br>
 	
-      {{editorpop-container content=view.content }}
+      {{editorpop-container text=view.text }}
       <a style="float:right;" {{action "insertCode" target=view}}>code</a>
 
       <br>

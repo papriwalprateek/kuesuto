@@ -4,7 +4,9 @@
   		var addr = params.addr.split("/i:");
 		if(addr[1]!==undefined){
     this.controllerFor('repo').set('item',addr[1]);}
-    else{
+    else if(addr[1]==="add"){  
+      this.controllerFor('repo').set('item','add');
+    }else{
       this.controllerFor('repo').set('item','');
     }
     this.controllerFor('repo').set('baddr',addr[0]);
@@ -22,6 +24,11 @@
    // needs: [],
     baddr:"",
     item:"",
+    updateCommitFields:function(){
+      this.set('comContent','start here');
+      this.set('comUrl','');
+      this.set('comProperty','');
+    }.observes('model'),
     breadcrumbs:function(){
       var a = decodeURI(this.get('baddr')).split('/');
      
@@ -51,6 +58,9 @@
     }.property('baddr'),
     tile:function(){
     		if(this.get('model.has')==='tiles'){
+          if(this.get('item')!=="add"){
+
+          
         arr = this.get('model.tiles');
     		t ={};
     		it = this.get('item');
@@ -64,13 +74,17 @@
             t = arr[0].tile_nodes;
           }
     		return t; 
-      }   		
+      }   		}
     }.property('model','item'),
+    addUrl:function(){
+      return this.get('baddr')+"/i:add"
+    }.property('baddr'),
     actions:{
     	addK:function(){
-    			$('div.contentcard').hide();
-   				$('div.commitcard').show();
-   				$('div.entitynavbutton').removeClass('entitynavactive');
+        this.toggleProperty('commitOpen');
+    			//$('div.contentcard').hide();
+   				//$('div.commitcard').show();
+   				//$('div.entitynavbutton').removeClass('entitynavactive');
     	}
     }
  
