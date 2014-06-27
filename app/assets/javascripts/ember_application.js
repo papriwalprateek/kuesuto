@@ -9,9 +9,11 @@ window.App = Ember.Application.create({
 
   rootElement: ".page",
   ready: function(){
+
+      console.log("start");
   var suggestions = new Bloodhound({
-    datumTokenizer: function(d){
-      return Bloodhound.tokenizers.whitespace(d.value);
+    datumTokenizer: function(data){
+      return Bloodhound.tokenizers.whitespace(data.v);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
      limit: 10,
@@ -21,7 +23,9 @@ window.App = Ember.Application.create({
     //url:'/api/v1/autocomplete.json?query=%QUERY',
      filter: function(response){
       //format the data here
-      return response.autocompletes;
+      console.log("started");
+      App.set("addrs",response.addrs);
+      return response.value;
      }
      }
   });

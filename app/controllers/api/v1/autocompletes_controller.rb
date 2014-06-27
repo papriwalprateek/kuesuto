@@ -17,20 +17,23 @@ class Api::V1::AutocompletesController < ApplicationController
 	parsed = JSON.parse(x.to_json)
 	parsed.each do |p|
 	#	carrier << p.slice(*valid_keys)
-		carrier << {"value"=>p["name"],"data"=>p["addr"]}
+		carrier << {"v"=>p["name"],"d"=>p["addr"]}
 	end
 	
 	else
 		af = Autocomplete.first
+		
 		if(!af)
-			carrier = Entity.where("isleaf"=>true).all.map{ |x| {"value"=>x.name,"data"=>"repo/"+x.query,"type"=>"e"}}
+			carrier = Entity.where("isleaf"=>true).all.map{ |x| {"v"=>x.name,"d"=>x.query,"t"=>"e"}}
 		
 			collect = Entity.where("isleaf"=>true).all
-
+			addrs = []
 			collect.each do |l|
+				addrs<<l.query
+				id = addrs.length-1
 				l.p_list.each do |k,v|
 					if v!=0
-					y = {"value"=>l.name+" "+k,"data"=>"repo/"+l.query+"/i:"+k,"type"=>"k"}
+					y = {"v"=>l.name+" "+k,"d"=>id,"t"=>"k"}
 					carrier << y
 					end
 				end
@@ -38,14 +41,15 @@ class Api::V1::AutocompletesController < ApplicationController
 
 			lists = List.all
 			lists.each do |l|
-				y = {"value"=>l.name,"data"=>"list/"+l.name,"type"=>"l"}
+				y = {"v"=>l.name,"d"=>l.name,"t"=>"l"}
 				carrier << y
 			end
 			an = Autocomplete.new
 			an.value = carrier
+			an.addrs = addrs
 			an.save
 		else
-			carrier = af.value
+			carrier = af.attributes
 		end
 
 	end	

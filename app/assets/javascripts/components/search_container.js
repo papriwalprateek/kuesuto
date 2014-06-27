@@ -7,7 +7,7 @@ App.SearchContainerComponent = Ember.Component.extend({
 	},
 	{
 	name: 'search',
-	displayKey: 'value',
+	displayKey: 'v',
 	source: App.suggestions.ttAdapter(),
 	 templates: {
 	empty: [
@@ -15,19 +15,34 @@ App.SearchContainerComponent = Ember.Component.extend({
 	'Sorry, No results',
 	'</div>'
 	].join('\n'),
-	suggestion: Handlebars.compile("{{value}}")
+	suggestion: Handlebars.compile("{{v}}")
 	}
 	});
   	 if(this.get('name')===undefined){
 	  t.on("typeahead:selected", function(event, item) {
-	  	 url =item.data;
+	  	 if(item.t==="k"){
+	  	 	arr = item.v.split(" ")
+	  	 	url = "/repo/"+App.addrs[item.d]+"/i:"+arr[arr.length-1];
+	  	 }else if(item.t==="l"){
+	  	 url ="/list/"+item.d;
+	  	}else if(item.t==="e"){
+	  		url = "/repo/"+item.d;
+	  	}
 	  	 window.location = url;
+	  	
        // console.log(this);
         //_this.get('').transitionToRoute('repo', {query:item.data+item.value});
       });
 
       t.on("typeahead:autocompleted", function(event, item) {
-     	 url = item.data;
+     	   if(item.t==="k"){
+	  	 	arr = item.v.split(" ")
+	  	 	url = "/repo/"+App.addrs[item.d]+"/i:"+arr[arr.length-1];
+	  	 }else if(item.t==="l"){
+	  	 url ="/list/"+item.d;
+	  	}else if(item.t==="e"){
+	  		url = "/repo/"+item.d;
+	  	}
 	  	 window.location = url;
         });
   	}
