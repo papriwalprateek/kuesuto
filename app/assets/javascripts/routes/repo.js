@@ -66,7 +66,7 @@
     		it = this.get('item');
     		  if(it!==""){
     		    $.each(arr,function(i,v){
-    		    	if(it==v.tile_title){
+    		    	if(it===v.tile_title){
     		    		t=v.tile_nodes;
     		    	}
     		    });
@@ -86,6 +86,22 @@
    				//$('div.commitcard').show();
    				//$('div.entitynavbutton').removeClass('entitynavactive');
     	}
+    },
+    saveCommit:function(entity){
+      m = this.get('model');
+      var j;
+      $.each(m.tiles,function(i,v){
+              if(v.tile_title==="under_review"){
+                j=1;
+                m.tiles[i].tile_nodes.pushObject(entity);
+              }
+            });
+      if(j!==1){
+        m.tiles.pushObject({tile_title: "under_review",
+            tile_url: this.get('baddr')+"/i:under_review",
+            tile_nodes:[entity]});
+      }
+        this.set('model',m);
     }
  
  });

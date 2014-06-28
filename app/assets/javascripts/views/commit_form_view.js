@@ -65,11 +65,10 @@ App.CommitFormView = Ember.View.extend({
  	},	
 	
   	success: function(data) {
-  		console.log(data);
-  	  this.reset();
+  		this.reset();
   	  this.set('notFilled',false);
-  	  	this.set('successfully_saved',true);
-
+  	  this.set('successfully_saved',true);
+      this.get("controller").send("saveCommit", data);
     // sign in logic
   	},
 

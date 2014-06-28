@@ -204,8 +204,9 @@ def commit_content(r)# r is a Hash(json) containing parent_query,property,conten
             end
             es.save
             send={}
-            send['has']='query'
+            #send['has']='query'
             send['query']=es['addr']
+            send['node'] = es.attributes
             return send
             else
             return err
