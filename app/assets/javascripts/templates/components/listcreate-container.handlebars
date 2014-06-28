@@ -1,7 +1,7 @@
- <button {{action "toggleBody"}}>Add a new List</button>
+ <button style="background-color:rgb(234,254,255);color:#666;font-family:BantoSans;" class = "expand" {{action "toggleBody"}}>Add a new List</button>
   {{#if isShowingBody}}
   
-  <div style="display: block; visibility: visible;" class="reveal-modal open" data-reveal="">
+  <div style="display: block; visibility: visible;" class="reveal-modal small open popup " data-reveal="">
  	<form class="form-horizontal" {{action "save" on="submit"}}>
   {{#if listSaveFailed}}
     <div class="alert">Not Saved.</div>
@@ -10,10 +10,10 @@
   {{#if isSlowConnection}}
     <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
   {{/if}}
-
+  <div style="margin-bottom:20px;font-weight:bold;font-family:Georgia;">Add a new list</div>
   <div class="control-group">
     <div class="control-label">
-      <label>Name</label>
+      <label style="font-family:Georgia;color:#aaa;">Name of the list</label>
     </div>
     <div class="controls">
       {{input value=name type="text"}}
@@ -22,7 +22,7 @@
 
   <div class="control-group">
     <div class="control-label">
-      <label>Value</label>
+      <label style="font-family:Georgia;color:#aaa;">Entities</label>
     </div>
 
 	{{#each entities}}
@@ -30,8 +30,8 @@
             
   {{/each}}
   </div>
-	 <button {{action 'moreFields' target='view'}}> Add more </button>
-  <button type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
+	<button class = "popup_buttons tiny" style="padding:10px;" {{action 'moreFields' target='view'}}>Add more</button>
+  <button class = "popup_buttons tiny" style="float:right;padding:10px;"  type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
 </form>
  
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>

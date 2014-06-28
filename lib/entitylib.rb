@@ -208,6 +208,28 @@ module EntityLib
 			end
 		end
 
+		def delete_source_entity(id)
+			d = Entity.find(id)
+			t = d.addr.split('/')
+			property = t[-2]
+			t.delete_at(-1)
+			t.delete_at(-1)
+			parent_query = t.join('/')
+			r = Regexp.new(parent_query+'$','i')
+			parent_entity = Entity.find_by(query:r)
+			l = parent_entity[property]
+			l.delete(d.id)
+			parent_entity.update_attributes(property=>nil)
+			parent_entity.update_attributes(property=>l)
+			e_p_list = parent_entity['p_list']
+			e_p_list[property] = parent_entity[property].length
+			parent_entity.update_attributes("p_list"=>nil)
+			parent_entity.update_attributes('p_list'=>e_p_list)
+			puts "parent_entity succesfully updated"
+			d.delete
+			puts "source entity deleted"
+		end
+
 
 	end
 
