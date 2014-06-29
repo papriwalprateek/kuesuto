@@ -60,6 +60,6 @@ gem 'foundation-rails'
 gem 'heroku-deflater', :group => :production
 
 #concurrent workers
-#platforms :ruby do # linux
-#  gem 'unicorn'
-#end
+platforms :ruby do # linux
+  gem 'unicorn'
+end
