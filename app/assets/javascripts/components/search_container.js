@@ -15,7 +15,14 @@ App.SearchContainerComponent = Ember.Component.extend({
 	'Sorry, No results',
 	'</div>'
 	].join('\n'),
-	suggestion: Handlebars.compile('<div style="font-family:Georgia;"></div>{{v}}</div><br><div style="font-size:0.8em;color:#aaa;">Knowledge item</div></div>')
+	suggestion: function(data){
+		var typ = "";
+		if(data.t==="k"){typ="Knowledge item";}
+		else if(data.t==="e"){typ="Entity";}
+		else{typ="List";}
+		return '<div style="font-family:Georgia;"><div>'+data.v+'</div><div style="font-size:0.8em;color:#aaa;">'+typ+'</div></div>';
+		}
+
 	}
 	});
   	 if(this.get('name')===undefined){

@@ -13,7 +13,6 @@ get '/list/*path',to: 'repo#generic'
 get '/bin',to: 'repo#generic'
 get '/contributions',to: 'repo#generic'
 get '/me', to:'repo#generic'
-
   get 'test' => 'test#show'
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
@@ -81,6 +80,7 @@ match '/search', to: 'basic#show', via: [:get, :post]
       resources :duples, only:[:index,:create,:show,:destroy,:update]
       resources :spaces, only:[:index,:create,:show,:destroy]
       resources :autocompletes, only:[:index]
+      resources :reports, only:[:create]
     end
   end
 end

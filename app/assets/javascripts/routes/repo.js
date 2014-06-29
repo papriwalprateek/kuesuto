@@ -21,7 +21,10 @@
 	});
 
  App.RepoController = Ember.ObjectController.extend({
-   // needs: [],
+   
+    needs: ['application'],
+   currentUser: Ember.computed.alias('controllers.application.currentUser'),
+  
     baddr:"",
     item:"",
     updateCommitFields:function(){

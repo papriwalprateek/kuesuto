@@ -46,9 +46,8 @@
           {{#ifneq node.url ""}}
               <span style="float:right;font-size:0.9em;margin-right:5px;"><a {{bind-attr href=node.url}} target="_blank">View source</a></span>
           {{/ifneq}}
-
-          <span style="font-size:0.9em;color:#bbb;float:right;margin-right:10px;"><a>Report</a></b></span>
-
+          {{report-container entity = node._id.$oid user=controller.currentUser}}
+          
           </div>
           
         

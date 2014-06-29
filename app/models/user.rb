@@ -9,6 +9,7 @@ class User
   has_many :duples, as: :parent
   has_many :spaces
   has_many :lists
+  has_many :reports
    def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
