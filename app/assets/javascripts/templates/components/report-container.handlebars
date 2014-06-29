@@ -1,7 +1,7 @@
  <span style="font-size:0.9em;color:#bbb;float:right;margin-right:10px;"><a {{action toggleBody}}>Report</a></b></span>
   {{#if isShowingBody}}
   
-  <div style="display: block; visibility: visible;" class="reveal-modal open" data-reveal="">
+  <div style="display: block; visibility: visible;" class="reveal-modal small open popup " data-reveal="">
  	{{#if saved}}
     <div class="alert">Your Request was submitted </div>
    {{else}} 
@@ -23,7 +23,7 @@
     	{{textarea value = reason}}	
     </div>
   </div>
-	  <button type="submit" {{bind-attr disabled="isProcessing"}}>Submit</button>
+	  <button type="submit" {{bind-attr disabled="isProcessing"}} class="popup_buttons tiny" style="padding:10px;">Submit</button>
 </form>
   {{/if}}
    
