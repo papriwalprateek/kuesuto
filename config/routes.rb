@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
 
  get 'showa' => 'basic#showa'
   get 'repo/:repo'=>'repo#show'
