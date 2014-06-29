@@ -58,3 +58,8 @@ gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
 gem 'heroku-deflater', :group => :production
+
+#concurrent workers
+platforms :ruby do # linux
+  gem 'unicorn'
+end

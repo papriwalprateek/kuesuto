@@ -83,7 +83,7 @@ class ApplicationController < ActionController::Base
                     r['tiles']=[]
                     e['p_list'].each do |p,n|
                         if n>0
-                            puts p
+                           # puts p
                             r1=Hash.new
                             r1["tile_title"]=p
                             r1["tile_url"]=e['addr']+"/"+e['name']+'/i:'+p
@@ -320,7 +320,7 @@ end
   r['tiles']=[]
                     e['p_list'].each do |p,n|
                         if n>0
-                            puts p
+                            #puts p
                             r1=Hash.new
                             r1["tile_title"]=p
                             r1["tile_url"]=e['addr']+"/"+e['name']+'/i:'+p
