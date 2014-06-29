@@ -215,7 +215,8 @@ module EntityLib
 			t.delete_at(-1)
 			t.delete_at(-1)
 			parent_query = t.join('/')
-			r = Regexp.new(parent_query+'$','i')
+			r = /#{Regexp.escape(parent_query)}$/i
+#			r = Regexp.new(parent_query+'$','i')
 			parent_entity = Entity.find_by(query:r)
 			l = parent_entity[property]
 			l.delete(d.id)
