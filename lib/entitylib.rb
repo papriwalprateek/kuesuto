@@ -17,13 +17,12 @@ module EntityLib
 		def initialize(corpus,r)
 			i = 0
 			corpus.each do |k|
+				if Entity.find_by(name:k[0].capitalize) == nil
 				puts "entity creation started"
 				entity_addition(k,r["addr"],r["author"],r["merge"],r["mapping"])
 				puts k[0] + " entity saved"
 				i = i + 1
 				puts i.to_s + " entities saved ........"
-				if i == 10
-					break
 				end
 			end		
 
