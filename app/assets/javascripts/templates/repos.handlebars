@@ -6,37 +6,16 @@
   <div class="row">
   {{#each}}
   <div class="small-12 large-6 columns">
-  {{#link-to 'repo' this}}
+  {{#link-to 'repo' url}}
   	<div class="small panel radius"> 
-  		<h5>Algorithm</h5> 
-  		<p>This is a huge collection of algorithms. It contains articles, videos, definition, pseudocode and many other things.
-  		</p> 
-  		<span class="label">445 entities</span>
-  		<span class="success label">2045 duples</span>
+  		<h5>{{name}}</h5> 
+  	  <p>{{description}}</p> 
+  		<span class="label">{{e_count}} entities</span>
+  		<span class="success label">{{d_count}} duples</span>
   	</div>
   {{/link-to}}
   </div>
   {{/each}}
-  <div class="small-12 large-6 columns">
-  <div class="small panel radius"> 
-  <h5>Operating System</h5> 
-  <p>It contains numerous concepts related to Operating system. It contains articles, videos, lectures, definitions etc.  </p> 
-  <span class="label">101 entities</span>
-  <span class="success label">985 duples</span>
-  </div>
-  </div>
-  
-  <div class="small-12 large-6 columns end">
-  <div class="small panel radius"> 
-  <h5>Operating System</h5> 
-  <p>It contains numerous concepts related to Operating system. It contains articles, videos, lectures, definitions etc.
-  </p> 
-  <span class="label">101 entities</span>
-  <span class="success label">985 duples</span>
-  </div>
-  </div>
-
-
-  </div>
+    </div>
   </div>
 </div>
