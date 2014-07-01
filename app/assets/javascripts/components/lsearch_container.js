@@ -6,12 +6,10 @@ App.LsearchContainerComponent = Ember.Component.extend({
  queryTokenizer: Bloodhound.tokenizers.whitespace,
  remote: {url:'/api/v1/autocompletes.json?query=%QUERY',
   filter: function(response){
-     //format the data here
      return response.autocompletes;
    }
  }
 });
- 
   suggestions.initialize();
     _this=this;
   	 t = this.$('#search').typeahead({
@@ -37,10 +35,12 @@ App.LsearchContainerComponent = Ember.Component.extend({
 	  t.on("typeahead:selected", function(event, item) {
 	  	 // console.log(this);
         _this.get('entities').pushObject({"name":item.v});
+        _this.$('#search').typeahead('val', '');
       });
 
       t.on("typeahead:autocompleted", function(event, item) {
      	    _this.get('entities').pushObject({"name":item.v});
+         _this.$('#search').typeahead('val', '');
       });
   	}
   }
