@@ -41,6 +41,8 @@ App.ListcreateContainerComponent = Ember.Component.extend({
   },
 
   success: function(response) {
+    this.reset();
+    this.toggleBody();
     this.sendAction("action", response.list);
 
   },

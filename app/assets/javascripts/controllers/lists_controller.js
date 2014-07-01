@@ -4,7 +4,7 @@ App.ListsController = Ember.Controller.extend({
   currentUser: Ember.computed.alias('controllers.application.currentUser'),
     newList:function(data){
       console.log(data);
-      transitionToRoute('/list/'+data.name);
+      this.transitionToRoute('/list/'+data.name);
     }
  
   
