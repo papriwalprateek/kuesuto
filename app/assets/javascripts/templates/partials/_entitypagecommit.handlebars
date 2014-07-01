@@ -1,5 +1,5 @@
 <div class="panel card commitcard" id="commitform " >
-   {{#view App.CommitFormView textBinding="controller.comContent" resourceUrlBinding="controller.comUrl" propertyBinding="controller.comProperty"}}
+   {{#view App.CommitFormView textBinding="controller.comContent" resourceUrlBinding="controller.comUrl" propertyBinding="controller.comProperty" currentUserBinding="controller.currentUser"}}
   {{#if view.notFilled}}
   <div class="send_form" >
   <div class="commitformtext" >Add Property. Ex:- Description, video, article etc. 

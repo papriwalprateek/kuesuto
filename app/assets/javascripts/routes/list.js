@@ -19,9 +19,7 @@
   }
 	});
 
-
- App.ListController = Ember.ObjectController.extend({
-   
+ App.ListController = Ember.ObjectController.extend({   
     needs: ['application'],
    currentUser: Ember.computed.alias('controllers.application.currentUser'),
     rt:'list',
@@ -52,14 +50,11 @@
        brd.push({"name":a[index],"url":value});
        }
       });
-        brd.removeAt(0);//hiding repo maker i.e. dq for now
         return brd;
     }.property('baddr'),
     tile:function(){
     		if(this.get('model.has')==='tiles'){
-          if(this.get('item')!=="add"){
-
-          
+          if(this.get('item')!=="add"){          
         arr = this.get('model.tiles');
     		t ={};
     		it = this.get('item');
@@ -100,5 +95,3 @@
         this.set('model',m);
     }
  });
- 
-
