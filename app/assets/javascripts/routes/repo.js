@@ -24,7 +24,7 @@
    
     needs: ['application'],
    currentUser: Ember.computed.alias('controllers.application.currentUser'),
-  
+    rt:'repo',
     baddr:"",
     item:"",
     updateCommitFields:function(){

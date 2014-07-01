@@ -11,7 +11,7 @@ skip_before_action :verify_authenticity_token
       if params[:e_name]  #entity in the list is needed
        e = l.entities.find_by("name"=>/^#{Regexp.escape(params[:e_name])}$/i)
        if e
-          @f = {"has"=> "tiles"}.merge(get_tiles(e))
+          @f = {"has"=> "tiles"}.merge(get_tiles(e,params[:l_name]))
        end
       else #only list is needed
           @f = {"has"=>"list","list"=>l.es}      

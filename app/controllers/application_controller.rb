@@ -315,7 +315,7 @@ def get_entity(query)
     end
 end
 
-  def get_tiles(e)
+  def get_tiles(e,list_name)
   r={}
   r['tiles']=[]
                     e['p_list'].each do |p,n|
@@ -323,7 +323,7 @@ end
                             #puts p
                             r1=Hash.new
                             r1["tile_title"]=p
-                            r1["tile_url"]=e['addr']+"/"+e['name']+'/i:'+p
+                            r1["tile_url"]=list_name+"/"+e['name']+'/i:'+p
                             r1["tile_nodes"]=[]
                             e[p].each do |id|
                                 r2=Hash.new

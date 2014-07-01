@@ -11,12 +11,43 @@ App.EntityStore = Ember.Object.extend({
       cache[addr] = record;
       return record;
     });	   
+  },
+    getL:function (addr) { 
+  if (cache[addr] ) {
+      return cache[addr];
+    }
+    var ad;
+    ad = App.EntityAdapter.create(); //adapter = this.container.lookup('adapter:' + name);
+    return ad.getL(addr).then(function(record) {
+      cache[addr] = cache[addr] || {};
+      cache[addr] = record;
+      return record;
+    });    
   }
 });
 App.EntityAdapter = Ember.Object.extend({ 
   get: function(addr) {
     return $.ajax({
           url: '/api/v1/entities.json?addr='+addr,
+          type: 'GET',
+          dataType: 'json',
+          success: function() {  },
+          error: function() {  }
+      }).then(function(response){return response;});
+},
+ getL: function(addr) {
+      var a = addr.split('/')
+      var url;
+      if(a[1]){
+      
+       url  = '/api/v1/lists.json?l_name='+a[0]+'&e_name='+a[1];}
+      else if(a[0]){
+       url = '/api/v1/lists.json?l_name='+a[0];      
+        
+      }
+
+    return $.ajax({
+          url: url,
           type: 'GET',
           dataType: 'json',
           success: function() {  },
