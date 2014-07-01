@@ -4,22 +4,14 @@ App.ListcreateContainerComponent = Ember.Component.extend({
   isProcessing: false,
   isSlowConnection: false,
   timeout: null,
-  entities: [{name:""},{name:""}],
-  values:function(){
-    var arr = [];
-    var a = this.$('#search');
-    a.each(function( index ) {
-      arr.push( $(this).typeahead('val'));
-    });
-
-    return arr;
+  entities: [],
+  actions:{
+    removeEntity:function(entity){
+      arr = this.get('entities');
+      i =  arr.indexOf(entity);
+      this.get('entities').removeAt(i,1);    
+  }
   },
-
-  moreFields: function(){
-    this.get('entities').pushObject({name:""});
-
-  },
-
   toggleBody: function() {
       if($('.reveal-modal-bg').css('display')==='block'){     // for inactive background
           $('.reveal-modal-bg').hide();
@@ -35,22 +27,22 @@ App.ListcreateContainerComponent = Ember.Component.extend({
       isProcessing: true
     });
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000)); 
-  //var arr =[];
-  //$.map(this.get('entities'),function(val,i){
-  //  arr.push(val.name);
-  //});
+  var arr =[];
+  $.map(this.get('entities'),function(val,i){
+    arr.push(val.name);
+  });
   var data_send = {  
               name:this.get('name'),
               user:this.get('currentUser')._id.$oid,
-              entities:this.values()
+              entities:arr
             };
     var request = $.post("/api/v1/lists", {list:data_send});
   request.then(this.success.bind(this), this.failure.bind(this));
   },
 
   success: function(response) {
-    this.reset();
-    this.toggleBody();
+    this.sendAction("action", response.list);
+
   },
 
   failure: function() {
@@ -70,8 +62,3 @@ App.ListcreateContainerComponent = Ember.Component.extend({
     });
   }
   });
-
-
-
-
-

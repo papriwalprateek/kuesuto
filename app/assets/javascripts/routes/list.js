@@ -34,10 +34,6 @@
     }.observes('model'),
     breadcrumbs:function(){
       var a = decodeURI(this.get('baddr')).split('/');
-     
-      //a.removeAt(0);
-     //   a.removeAt(0); //remove repo name from breadcumb
-    
       var arr = jQuery.map( a, function( n, i ) {
       var count = 0;
       var as = "";
@@ -85,9 +81,6 @@
     actions:{
     	addK:function(){
         this.toggleProperty('commitOpen');
-    			//$('div.contentcard').hide();
-   				//$('div.commitcard').show();
-   				//$('div.entitynavbutton').removeClass('entitynavactive');
     	}
     },
     saveCommit:function(entity){
@@ -106,7 +99,6 @@
       }
         this.set('model',m);
     }
- 
  });
  
 

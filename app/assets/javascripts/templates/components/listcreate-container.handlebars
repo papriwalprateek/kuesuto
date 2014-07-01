@@ -25,13 +25,14 @@
       <label style="font-family:Georgia;color:#aaa;">Entities</label>
     </div>
 
-	{{#each entities}}
-          {{search-container name=name}}
-            
+	{{#each entities}}  
+    {{name}}   <a {{action "removeEntity" this}}>X</a> 
+     </br>  
   {{/each}}
+      {{lsearch-container entities=entities}}
+            
   </div>
-	<button class = "popup_buttons tiny" style="padding:10px;" {{action 'moreFields' target='view'}}>Add more</button>
-  <button class = "popup_buttons tiny" style="float:right;padding:10px;"  type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
+	<button class = "popup_buttons tiny" style="float:right;padding:10px;"  type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
 </form>
  
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
