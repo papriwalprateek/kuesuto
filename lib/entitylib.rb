@@ -136,6 +136,9 @@ module EntityLib
 					
 					d.save
 					end
+
+
+
 				else                  # this is for properties which would have out_type as text 
 
 					v.each do |x|
@@ -177,6 +180,58 @@ module EntityLib
 
 		#	l = {r['init_property']=>1}
 		#	e.update_attributes("p_list"=>l)	
+
+		end
+	end
+
+	class ArticleEntity
+
+		def article_entity_addition(entityjson)
+			require 'dbupdate'
+			l = entityjson[0].capitalize
+			e = Entity.find_by(name:l)
+			v = entityjson[1]
+			c = []
+			e_p_list = e.p_list
+			e_p_list['article'] = 0
+				if v.length > 0
+					v.each do |x|
+						d = Entity.new
+						puts d.id
+						l = '/dqs/webpage'
+						d.update_attributes("type"=>l)
+						l = e['query'].downcase + '/article' + '/' + d.id
+						d.update_attributes("addr"=>l)
+						l = d['addr']
+						d.update_attributes("query"=>l)
+						l = x[0]
+						d.update_attributes("url"=>l)
+						l = x[1]
+						d.update_attributes("title"=>l)
+						l = x[2]
+						d.update_attributes("prank"=>l)
+						l = "url"
+						d.update_attributes("in_type"=>l)
+						l = Entity.find_by(name_ref:'extraction for webpages').id
+						d.update_attributes("extraction_tech_id"=>l)
+						
+						ic = DBUpdate::ItemCache.new
+						ic.url2html(d.id)
+						c << d.id
+						e_p_list['article'] = e_p_list['article'] + 1 
+					end
+					l = true
+					e.update_attributes("cached_articles"=>l)
+					l = c
+					e.update_attributes("article"=>nil)
+					e.update_attributes("article"=>c)
+					l = e_p_list
+					e.update_attributes("p_list"=>nil)
+					e.update_attributes("p_list"=>e_p_list)
+				else
+					l = false
+					e.update_attributes("cached_articles"=>l)
+				end
 
 		end
 
