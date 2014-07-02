@@ -4,12 +4,13 @@ module DBUpdate
 		# This meythod is used when a URL is to be converted into html/text through some extraction technique
 			e = Entity.find(id)
 			property_url = e.url
+			property_type = e.type.split('/')[-1]
 			dq_bind=binding()
 			extract=Entity.find(e['extraction_tech_id'])
 		    present=Entity.find(extract['presentation'])
+		    begin
 		    eval(extract['code'],dq_bind)
-		    eval(present['code'],dq_bind)
-			begin    
+		    eval(present['code'],dq_bind)    
 			e.update_attributes("in_type"=>nil)
 			l = "text"
 			e.update_attributes("out_type"=>l)
