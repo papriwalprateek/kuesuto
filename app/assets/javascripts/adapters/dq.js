@@ -23,6 +23,18 @@ App.EntityStore = Ember.Object.extend({
       cache[addr] = record;
       return record;
     });    
+  },
+   getK:function () { 
+  if (cache['k_board'] ) {
+      return cache['k_board'];
+    }
+    var ad;
+    ad = App.EntityAdapter.create(); //adapter = this.container.lookup('adapter:' + name);
+    return ad.getK().then(function(record) {
+      cache['k_board'] = cache['k_board'] || {};
+      cache['k_board'] = record;
+      return record;
+    });    
   }
 });
 App.EntityAdapter = Ember.Object.extend({ 
@@ -48,6 +60,15 @@ App.EntityAdapter = Ember.Object.extend({
 
     return $.ajax({
           url: url,
+          type: 'GET',
+          dataType: 'json',
+          success: function() {  },
+          error: function() {  }
+      }).then(function(response){return response;});
+},
+ getK: function() {
+    return $.ajax({
+          url: '/api/v1/posts.json',
           type: 'GET',
           dataType: 'json',
           success: function() {  },

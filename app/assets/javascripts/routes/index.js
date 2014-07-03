@@ -4,9 +4,9 @@
   //	var _this = this; 
   //  return App.st.get('profile',_this.get("currentUser").oauth_token);
   //}
-  model: function(params){
+  model: function(){
 //    return App.User.adapter.get(this.get('currentUser').oauth_token);
-      return 'fas';
+      return App.est.getK();
   }
 });
 
