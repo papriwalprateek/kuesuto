@@ -8,10 +8,39 @@
 	<li>{{#link-to 'repos'}}<span class="nav_icon nav_icon_repo"></span>Repositories{{/link-to}}</li> 
 	<li>{{#link-to 'lists'}}<span class="nav_icon nav_icon_flow"></span>Lists{{/link-to}}</li> 
 	<li><a href="/signout"><span class="nav_icon nav_icon_logout"></span>Signout</a></li>
-	<li></li> 
+	<li><a href="#" data-reveal-id="feedback"><span class="nav_icon nav_icon_contri"></span>Feedback</a></li> 
 </ul>
 
 <style>
 .nav_icon_user{
 }
 </style>
+
+
+  
+ 	{{#if saved}}
+    <div class="alert">Your Request was submitted </div>
+   {{else}} 
+  <form class="form-horizontal" {{action "save" on="submit"}}>
+  {{#if reportSaveFailed}}
+    <div class="alert">Report is not submitted!</div>
+  {{/if}}
+  
+  {{#if isSlowConnection}}
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+  {{/if}}
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Reason</label>
+    </div>
+
+    <div class="controls">
+    	{{textarea value = reason}}	
+    </div>
+  </div>
+	  <button type="submit" {{bind-attr disabled="isProcessing"}} class="popup_buttons tiny" style="padding:10px;">Submit</button>
+</form>
+  {{/if}}
+   
+ 
