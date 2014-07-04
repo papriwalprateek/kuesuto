@@ -31,7 +31,7 @@
           {{/ifeq}}
 
           {{#ifeq node.type "/dqs/videopage"}}
-            <div><iframe width="520" height="300"{{bind-attr src= node.url}}></iframe></div>
+            <div class="flex-video widescreen"><iframe width="400"{{bind-attr src= node.url}}></iframe></div>
           {{/ifeq}}
 
           {{#ifeq node.out_type "image"}}
@@ -43,12 +43,21 @@
             <span style="font-size:0.9em;color:#888;float:left;">Added by <b>{{node.author}}</b></span>
           {{/ifeq}}
 
-          {{#ifneq node.url ""}}
-              <span style="float:right;font-size:0.9em;margin-right:5px;"><a {{bind-attr href=node.url}} target="_blank">View source</a></span>
-          {{/ifneq}}
-          {{report-container entity = node._id.$oid user=controller.currentUser}}
-          
+          <div class="rows">
+          <div class="small-6 large-6 columns">
           </div>
+          <div class="small-6 large-6 columns">
+          {{#ifneq node.url ""}}
+              <div style="float:right;"><span style="font-size:0.9em;margin-right:5px;"><a {{bind-attr href=node.url}} target="_blank">View source</a></span></div>
+          {{/ifneq}}
+          <div style="float:right;">
+          {{report-container entity = node._id.$oid user=controller.currentUser}}
+          </div>
+
+          </div>
+          </div>
+          </div>
+
           
         
           </div>
