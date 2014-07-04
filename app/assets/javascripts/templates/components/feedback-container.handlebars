@@ -1,0 +1,27 @@
+  {{#if isShowingBody}}
+  
+  <div style="display: block; visibility: visible;" class="reveal-modal small open popup " data-reveal="">
+  {{#if saved}}
+    <div class="alert">Your Feedback was submitted </div> </br>
+
+    <a class="button tiny" {{action "addMore"}}>Tell us More</a>
+   {{else}} 
+  <form class="form-horizontal" {{action "save" on="submit"}}>
+  
+  {{#if isSlowConnection}}
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+  {{/if}}
+  <div class="control-group">
+    <div class="control-label">
+      <label>We love detailed feedbacks </label>
+    </div>
+    <div class="controls">
+    	{{textarea value = content rows=10}}	
+    </div>
+  </div>
+	  <button type="submit" {{bind-attr disabled="isProcessing"}} class="popup_buttons tiny" style="padding:10px;">Submit</button>
+</form>
+  {{/if}}   
+  <a class="close-reveal-modal" {{action "toggleBody"}}>&#215;</a>
+  </div> 
+  {{/if}}

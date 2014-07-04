@@ -10,7 +10,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
- <%current_user=User.first%>
  <%if current_user%>
  <%if current_user.has_access%>
 <script type="text/javascript">
@@ -55,6 +54,7 @@
 				<div id="content_yield">
 				
 					{{outlet}}
+					{{feedback-container user=currentUser isShowingBody=showingFeedback}}
     				<%= yield %>
     			
 				</div>
@@ -66,10 +66,6 @@
 		</div> 
 </div>
 <div class= "reveal-modal-bgn" style="display:none;"></div>	
-<div id="feedback" class="reveal-modal" data-reveal> 
-	 {{feedback-container user=controller.currentUser}}
-<a class="close-reveal-modal">&#215;</a> </div>	
-</div>
 </script>
 </div>
     <%= javascript_include_tag "application" %> 

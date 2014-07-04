@@ -82,7 +82,7 @@ match '/search', to: 'basic#show', via: [:get, :post]
       resources :spaces, only:[:index,:create,:show,:destroy]
       resources :autocompletes, only:[:index]
       resources :reports, only:[:create]
-      resources :posts, only:[:index]
+      resources :posts, only:[:index,:create]##post create is used for feedback creating now
     end
   end
 end

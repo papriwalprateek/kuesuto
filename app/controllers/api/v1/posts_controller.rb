@@ -15,6 +15,13 @@ class Api::V1::PostsController < ApplicationController
   end 
   end
   def create 
+    DqMailer.feedback(User.find(params[:u_id]),params[:content]).deliver
+
+  respond_to do |format|
+        
+        format.json { render :json=> {}, :status=> :created }
+     
+  end 
   end
   def update
 
