@@ -72,25 +72,28 @@
 <div class= "reveal-modal-bg" style="display:none;"></div>	
 </script>
 </div>
+    <%= javascript_include_tag "application" %> 
 <%else%>
-You are in our invite list, we will soon be giving you access!
+<div class="row">
+<div class="small-12 large-6 large-offset-3 panel callout collumns ember-root-class">
+	Hi <%=current_user.name%>, </br>You are in our invite list, we will soon be giving you access!
+	</br>
+	</br>
+	<a href="/signout">Signout</a>
+</div></div>
+    <%= javascript_include_tag "without_login" %> 
+
 <%end%>
 <%else%>
 	
-<div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></di>
+<div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></div>
 
 <div class="row" style="text-align: center">
 
 <a href="/auth/facebook"><span class="fb_login" style="margin-left:42%"></span></a>
 
 </div>
-
-	
+ <%= javascript_include_tag "without_login" %> 	
 <%end%>
-
-
-    <%= javascript_include_tag "application" %>
-
- 
   </body>
 </html>
