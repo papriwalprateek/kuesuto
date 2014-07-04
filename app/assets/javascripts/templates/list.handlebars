@@ -1,8 +1,8 @@
-<div class="small-12 medium-12 large-12 columns" style="margin-bottom:1.5rem">
+
+ <div class="small-12 medium-12 large-12 columns" style="margin-bottom:1.5rem">
 	
 <ul class="breadcrumbs add_bar"> 
-
-{{#each App.breadcrumbs}}
+{{#each controller.breadcrumbs}}
 	<li {{bind-attr class=active}}>{{#link-to 'list' url}}{{name}}{{/link-to}}</li> 
 {{/each }}
 </ul>
@@ -23,3 +23,4 @@
 </div>
 
  
+

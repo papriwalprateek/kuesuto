@@ -1,19 +1,18 @@
 
-{{#each controller.tiles}}
-  {{#ifneq tile_nodes.length 0}}
-  <div class="panel card contentcard" {{bind-attr id= "tile_title" }}> 
+  {{#ifneq controller.tile.length 0}}
+  <div class="panel contentcard card"> 
     
 
-      <div style="border-bottom:1px solid #aaa;padding-bottom:5px;margin-bottom:5px;font-size:1.2em;color:#888;">{{tile_nodes.length}} knowledge item</div>
+      <div style="border-bottom:1px solid #aaa;padding-bottom:5px;margin-bottom:5px;font-size:1.2em;color:#888;">{{controller.tile.length}} knowledge item</div>
 
     <div >
-        {{#ifeq tile_title "article"}}
+        {{#ifeq controller.item "articl"}}
         {{#ifneq tile_nodes.length 1}}
         <div class="row"><div style="float:right;"><button class="tiny" onclick='mySwipe.prev()'><</button> <button class="tiny" onclick='mySwipe.next()'>></button></div></div>
           <div id='mySwipe' style='margin:0 auto' class='swipe'><div class='swipe-wrap'>  
         {{/ifneq}}
         {{/ifeq}}
-      {{#each tile_nodes}}
+      {{#each controller.tile}}
           <div class="panel text_content">
           
           {{#ifeq node.type "/dqs/not assigned"}}
@@ -47,17 +46,17 @@
           {{#ifneq node.url ""}}
               <span style="float:right;font-size:0.9em;margin-right:5px;"><a {{bind-attr href=node.url}} target="_blank">View source</a></span>
           {{/ifneq}}
-
-          <span style="font-size:0.9em;color:#bbb;float:right;margin-right:10px;"><a>Report</a></b></span>
-
+          {{report-container entity = node._id.$oid user=controller.currentUser}}
+          
           </div>
           
         
           </div>
         {{/each}}
-     {{#ifeq tile_title "article"}}</div></div>{{/ifeq}}
+     {{#ifeq controller.item "articl"}}{{#ifneq tile_nodes.length 1}}
+        </div></div>{{/ifneq}}{{/ifeq}}
       
     </div>
   </div>   
   {{/ifneq}}
-{{/each}}
+

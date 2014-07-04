@@ -3,7 +3,7 @@
 <ul class="breadcrumbs add_bar"> 
 
 
-{{#each App.breadcrumbs}}
+{{#each controller.breadcrumbs}}
 	<li {{bind-attr class=active}}>{{#link-to 'repo' url}}{{name}}{{/link-to}}</li> 
 {{/each }}
 

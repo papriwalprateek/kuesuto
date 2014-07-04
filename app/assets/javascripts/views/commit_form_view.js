@@ -1,8 +1,6 @@
 App.CommitFormView = Ember.View.extend({
   property:'',
   type:function(){return $('input[name="cfproperty"]:checked').val();}.property(),
-  content: '',
-  resourceUrl:'',
   notFilled:true,
   successfully_saved:false,
   submitFailed: false,
@@ -51,15 +49,15 @@ App.CommitFormView = Ember.View.extend({
     	  
    	 	});
    	 this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000));
-	
+	   _this = this;
     	var request = $.post("/api/v1/entities", 
     		{
-    				p:{	content:this.contenthtml(),
+    				p:{	content:this.get('text'),
     					property:this.get('property'),
     					url:this.get('resourceUrl'),
     					in_type:content_type,
-    					parent_query:this.get('controller.query')
-    				
+    					parent_query:this.get('controller.query'),
+            beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Token '+_this.get("currentUser").oauth_token );}    				
     				}
     			}
     	);
@@ -67,11 +65,10 @@ App.CommitFormView = Ember.View.extend({
  	},	
 	
   	success: function(data) {
-  		console.log(data);
-  	  this.reset();
+  		this.reset();
   	  this.set('notFilled',false);
-  	  	this.set('successfully_saved',true);
-
+  	  this.set('successfully_saved',true);
+      this.get("controller").send("saveCommit", data);
     // sign in logic
   	},
 

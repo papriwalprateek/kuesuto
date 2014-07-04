@@ -8,19 +8,19 @@
  
  {{#each model.lists}}
   <div class="small-12 large-6 columns">
-	  {{#link-to 'list' name}}
-    <div class="small panel callout radius"> 
-	  <h5>{{name}}</h5>  
-	  <span class="label">{{entities_count}} entities</span>
-	  Created By - {{creator}}
+    {{#link-to 'list' name}}
+    <div class="small panel radius"> 
+    <div style="font-family:Georgia;font-size:1.0em;margin-bottom:10px;color:#666;">{{name}}</div>  
+    <span class="label">{{entities_count}} entities</span>
+    <span class="label" style="background-color:#20B2AA;color:#fff;">by: {{creator}}</span>
     </div>
      {{/link-to}}
   </div>
   {{/each}}
 
   </br>
-  </div>
-  {{listcreate-container currentUser = currentUser }}
+  </div style="padding:10%;">
+  {{listcreate-container currentUser = currentUser action="newList"}}
   </div>
 
 </div>

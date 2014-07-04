@@ -5,8 +5,14 @@
   	{{partial "partials/entitypagenav"}}
 </div>
 <div class="large-9 columns ">
+{{#ifeq controller.item "add"}}
 	{{partial "partials/entitypagecommit"}}
-	{{partial "partials/entitypagecontent"}}
+{{/ifeq}}
+ {{#ifneq controller.item "add"}}
+ 	{{partial "partials/entitypagecontent"}}
+
+{{/ifneq}}
+
 </div>
 </div>
 {{/view}}

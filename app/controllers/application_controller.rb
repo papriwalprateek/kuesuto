@@ -53,11 +53,11 @@ class ApplicationController < ActionController::Base
           r1["type"]='content'
           r1["node"]=Entity.find_by(addr:a)
           r1["title"]=r1['node']['title']
-          if(r1['node']['type']=='/dqs/videopage')
-              r1['out_type']='video'
-              else
-              r1['out_type']='text'
-          end
+          #if(r1['node']['type']=='/dqs/videopage')
+           #   r1['out_type']='video'
+           #   else
+           #   r1['out_type']='text'
+          #end
           r1["out_html"]=r1['node']['cache']
           r1["url"]=r1['node']['url']
           r['source']<<r1
@@ -83,19 +83,20 @@ class ApplicationController < ActionController::Base
                     r['tiles']=[]
                     e['p_list'].each do |p,n|
                         if n>0
-                            puts p
+                           # puts p
                             r1=Hash.new
                             r1["tile_title"]=p
+                            r1["tile_url"]=e['addr']+"/"+e['name']+'/i:'+p
                             r1["tile_nodes"]=[]
                             e[p].each do |id|
                                 r2=Hash.new
                                 r2['query']=e['addr']+'/'+e['name']+'/'+p+'/'+id.to_s
                                 r2['node']=Entity.find(id)
-                                if p=='video'
-                                    r2['node']['out_type']='video'
-                                    else
-                                    r2['node']['out_type']='text'
-                                end
+                                #if p=='video'
+                                 #   r2['node']['out_type']='video'
+                                  #  else
+                                  #  r2['node']['out_type']='text'
+                                #end
                                 r1['tile_nodes']<<r2
                             end
                             r['tiles']<<r1
@@ -153,7 +154,7 @@ class ApplicationController < ActionController::Base
 def commit_content(r)# r is a Hash(json) containing parent_query,property,content,author,url.
     if r['title']==nil
         r['title']='untitled'
-        end
+    end
     err={}
     err['error']='not supported'
     err['has']='error'
@@ -170,12 +171,12 @@ def commit_content(r)# r is a Hash(json) containing parent_query,property,conten
         
     if(get['has']=='error')
         return get
-        else
+    else
         if(get['has']=='leaf')
             e=get[get['has']]
             if r['review_status']=='under_review'
                 es,e=create_sourcenode('under_review',e,r['out_type'])
-                else
+            else
                 err['details']='not yet supported review_status other than under_review'
                 return err
             end
@@ -183,14 +184,14 @@ def commit_content(r)# r is a Hash(json) containing parent_query,property,conten
             if(r['in_type']=='url')
                 es['imm_content']=false
                 r['content']=nil
-                else
-                if(r['in_type']=='imm_content')
+            else
+            if(r['in_type']=='imm_content')
                     es['imm_content']=true
-                    else
+            else
                     err['details']=" in_type: \"   "+r['intype'].to_s+"   \" not supported, add support in commit_content."
                     puts err
                     return err
-                end
+            end
             end
             r.each do |k,v|
                 if(k!='content')
@@ -203,8 +204,9 @@ def commit_content(r)# r is a Hash(json) containing parent_query,property,conten
             end
             es.save
             send={}
-            send['has']='query'
+            #send['has']='query'
             send['query']=es['addr']
+            send['node'] = es.attributes
             return send
             else
             return err
@@ -313,14 +315,15 @@ def get_entity(query)
     end
 end
 
-  def get_tiles(e)
+  def get_tiles(e,list_name)
   r={}
   r['tiles']=[]
                     e['p_list'].each do |p,n|
                         if n>0
-                            puts p
+                            #puts p
                             r1=Hash.new
                             r1["tile_title"]=p
+                            r1["tile_url"]=list_name+"/"+e['name']+'/i:'+p
                             r1["tile_nodes"]=[]
                             e[p].each do |id|
                                 r2=Hash.new

@@ -1,17 +1,11 @@
-App.ListcreateContainerComponent = Ember.Component.extend({
-  tagName:'div',
-  listSaveFailed: false,
+App.ReportContainerComponent = Ember.Component.extend({
+  tagName:'span',
+  reportSaveFailed: false,
   isProcessing: false,
   isSlowConnection: false,
   timeout: null,
-  entities: [],
-  actions:{
-    removeEntity:function(entity){
-      arr = this.get('entities');
-      i =  arr.indexOf(entity);
-      this.get('entities').removeAt(i,1);    
-  }
-  },
+ 
+actions:{
   toggleBody: function() {
       if($('.reveal-modal-bgn').css('display')==='block'){     // for inactive background
           $('.reveal-modal-bgn').hide();
@@ -21,35 +15,35 @@ App.ListcreateContainerComponent = Ember.Component.extend({
       this.toggleProperty('isShowingBody');
     }
   ,
-  save: function() {
+  
+    save: function() {
      this.setProperties({
-      listSaveFailed: false,
+      reportSaveFailed: false,
       isProcessing: true
     });
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 2000)); 
-  var arr =[];
-  $.map(this.get('entities'),function(val,i){
-    arr.push(val.name);
-  });
+ 
   var data_send = {  
-              name:this.get('name'),
-              user:this.get('currentUser')._id.$oid,
-              entities:arr
+              reason:this.get('reason'),
+              u_id:this.get('user')._id.$oid,
+              e_id:this.get('entity')
             };
-    var request = $.post("/api/v1/lists", {list:data_send});
+            console.log(data_send);
+              var request = $.post("/api/v1/reports", {report:data_send});
   request.then(this.success.bind(this), this.failure.bind(this));
+  
+  }
   },
 
   success: function(response) {
     this.reset();
-    this.toggleBody();
-    this.sendAction("action", response.list);
-
+    this.send('toggleBody');
+    this.set('saved',true);
   },
 
   failure: function() {
     this.reset();
-    this.set("listSaveFailed", true);
+    this.set("reportSaveFailed", true);
   },
 
   slowConnection: function() {
@@ -64,3 +58,8 @@ App.ListcreateContainerComponent = Ember.Component.extend({
     });
   }
   });
+
+
+
+
+
