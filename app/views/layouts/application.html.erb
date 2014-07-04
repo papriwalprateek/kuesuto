@@ -11,6 +11,7 @@
   </head>
   <body>
  <%if current_user%>
+ <%if current_user.has_access%>
 <script type="text/javascript">
  	window.anand_hash= <%=current_user.to_json.html_safe%>;
     window.anand_hash['uimage_s'] = "http://graph.facebook.com/"+window.anand_hash.uid+"/picture?height=32&width=32";
@@ -71,7 +72,9 @@
 <div class= "reveal-modal-bg" style="display:none;"></div>	
 </script>
 </div>
-
+<%else%>
+You are in our invite list, we will soon be giving you access!
+<%end%>
 <%else%>
 	
 <div class="row" style="text-align: center"><img src=<%= asset_path('dqtagcloud.png') %> style="width: 700px;margin:60px;"></img></di>

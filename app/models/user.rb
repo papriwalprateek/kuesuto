@@ -6,6 +6,7 @@ class User
   field :name, type: String
   field :oauth_token, type: String
   field :oauth_expires_at, type: Time
+  field :has_access, type: Boolean, default: false
   has_many :duples, as: :parent
   has_many :spaces
   has_many :lists
