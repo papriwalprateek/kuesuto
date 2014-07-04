@@ -22,32 +22,27 @@
 				
 <div class="off-canvas-wrap" data-offcanvas> 
 	<div class="inner-wrap"> 
-		<nav class="top-bar" data-topbar> 		
-			 <ul class="title-area">
-				    <li class="name">
+		<div class="row" data-topbar> 		
+ 			<div class="small-2 columns" style="padding-left:0px">
 			    		    <a class="left-off-canvas-toggle menu-icon" href="#">
 	 		    		 	<img class="logo_image" src=<%= asset_path 'sidenavopen.png' %>>
 	 		    		 	</a>
-	 			   </li>
-     		   <li class="toggle-topbar menu-icon " ><a href="#" style="background-color:#333"></a></li>
-  			</ul>
- 			
-  			<section class="top-bar-section">
-				<ul class="left" style="min-width:75%">
-      				
-    				<li class="has-form" style="min-width:80%"> <div class="row collapse"> 
-    					<div class="large-7 small-9 large-offset-3 columns"> 
+	 		 </div>					
+    		<div class="large-5 small-10 columns"> 
+    						{{search-container}}    					
+    		</div>
+    		<div class="large-2 hide-for-small-only columns end"> 
+    				    					
+    		<a href="#" data-reveal-id="mission">Mission</a> 
 
-    						{{search-container}}
+    		<div id="mission" class="reveal-modal" data-reveal> 
+    		<%= render "basic/mission" %> 
+    		
+    		 <a class="close-reveal-modal">&#215;</a> </div>			
+    		</div> 
     					
-    					
-    					</div> 
-    					
-    				</li>
-					    			
-    			</ul>
-			</section>
-		</nav> 
+					  
+		</div> 
 		<aside class="left-off-canvas-menu"> 
 		{{partial "partials/sidenav"}}
 		</aside> 
@@ -69,12 +64,12 @@
 		 <a class="exit-off-canvas"></a> 
 		</div> 
 </div>
-<div class= "reveal-modal-bg" style="display:none;"></div>	
+<div class= "reveal-modal-bgn" style="display:none;"></div>	
 </script>
 </div>
     <%= javascript_include_tag "application" %> 
 <%else%>
-<div class="row">
+<div class="row" style="margin-top:100px;">
 <div class="small-12 large-6 large-offset-3 panel callout collumns ember-root-class">
 	Hi <%=current_user.name%>, </br>You are in our invite list, we will soon be giving you access!
 	</br>

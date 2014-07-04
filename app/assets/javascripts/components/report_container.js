@@ -7,10 +7,10 @@ App.ReportContainerComponent = Ember.Component.extend({
  
 actions:{
   toggleBody: function() {
-      if($('.reveal-modal-bg').css('display')==='block'){     // for inactive background
-          $('.reveal-modal-bg').hide();
+      if($('.reveal-modal-bgn').css('display')==='block'){     // for inactive background
+          $('.reveal-modal-bgn').hide();
       }else{
-        $('.reveal-modal-bg').show();
+        $('.reveal-modal-bgn').show();
       }
       this.toggleProperty('isShowingBody');
     }
