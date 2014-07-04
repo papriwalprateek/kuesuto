@@ -31,7 +31,7 @@
           {{/ifeq}}
 
           {{#ifeq node.type "/dqs/videopage"}}
-            <div><iframe width="520" height="300"{{bind-attr src= node.url}}></iframe></div>
+            <div class="flex-video widescreen"><iframe width="400"{{bind-attr src= node.url}}></iframe></div>
           {{/ifeq}}
 
           {{#ifeq node.out_type "image"}}
