@@ -28,14 +28,14 @@
 	 		    		 	<img class="logo_image" src=<%= asset_path 'sidenavopen.png' %>>
 	 		    		 	</a>
 	 		 </div>					
-    		<div class="large-5 small-10 columns"> 
+    		<div class="large-5 small-10 columns" style="padding:8px;"> 
     						{{search-container}}    					
     		</div>
-    		<div class="large-2 hide-for-small-only columns end"> 
+    		<div class="large-2 hide-for-small-only columns end" style="float:right;padding:16px;"> 
     				    					
-    		<a href="#" data-reveal-id="mission">Mission</a> 
+    		<div><a href="#" data-reveal-id="mission" style="color:#444;font-family:sans-serif;"><span style="background-color:#cfc">Mission</span></a></div>
 
-    		<div id="mission" class="reveal-modal" data-reveal> 
+    		<div id="mission" class="reveal-modal popupmission" data-reveal> 
     		<%= render "basic/mission" %> 
     		
     		 <a class="close-reveal-modal">&#215;</a> </div>			
