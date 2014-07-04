@@ -1,39 +1,38 @@
  <button style="background-color:rgb(234,254,255);color:#666;font-family:BantoSans;" class = "expand" {{action "toggleBody"}}>Add a new List</button>
   {{#if isShowingBody}}
   
-  <div style="display: block; visibility: visible;" class="reveal-modal small open popup " data-reveal="">
- 	<form class="form-horizontal" {{action "save" on="submit"}}>
-  {{#if listSaveFailed}}
-    <div class="alert">Not Saved.</div>
-  {{/if}}
-  
-  {{#if isSlowConnection}}
-    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
-  {{/if}}
-  <div style="margin-bottom:20px;font-weight:bold;font-family:Georgia;">Add a new list</div>
-  <div class="control-group">
-    <div class="control-label">
-      <label style="font-family:Georgia;color:#aaa;">Name of the list</label>
-    </div>
-    <div class="controls">
-      {{input value=name type="text"}}
-    </div>
+  <div style="display: block; visibility: visible;" class="reveal-modal open popupmission large" data-reveal="">
+  <div class="row">
+  <div class="small-12 large-12 columns">
+  <div style="font-family:sans-serif;font-size:2em;color:rgb(102,102,102);margin-bottom:10px;">Mission <small style="color:rgb(170,170,170);"">building knowledge repositories</small></div>
+  <div style="font-family:serif;font-size:1.2;color:rgb(34,34,34);">
+  <p>There is a lot of knowledge related to a <span style="background-color:#cfc">topic</span> scattered over different sources. Most of the knowledge is either <span style="background-color:#cfc">online on the web</span> or with the people as <span style="background-color:#cfc">human knowledge</span>. What we are aiming is to provide a platform to bind these scattered pieces of knowledge, <span style="background-color:#cfc">connect these pieces and structurize</span>, making it <span style="background-color:#cfc">one of the best sources of knowledge</span> pertaining to that topic.
+  </p>
+  <p>
+  More such <span style="background-color:#cfc">linked</span> knowledge about a topic gives more power to people and machines to access these different pieces of knowledge efficiently.
+  </p>
   </div>
 
-  <div class="control-group">
-    <div class="control-label">
-      <label style="font-family:Georgia;color:#aaa;">Entities</label>
-    </div>
+  <div style="font-family:sans-serif;font-size:2em;color:rgb(102,102,102);margin-bottom:10px;"><small style="color:rgb(170,170,170);"">Now that you are the member of this platform,</small> you can:</div>
 
-	{{#each entities}}
-          {{search-container name=name}}
-            
-  {{/each}}
+  <ul style="font-family:serif;font-size:1.2;color:rgb(34,34,34);">
+    <li><b style="color:#777;">Add Knowledge:</b> Add a resource url or your own content to a topic to make it more <span style="background-color:#cfc">definitive</span>. If you find a knolwedge item irrelevant, lodge a <span style="background-color:#cfc">report</span>.
+</li>
+    <li><b style="color:#777;">Create Lists:</b> You can create a list of topics and publish it on the lists section.</li>
+    <li><b style="color:#777;">Browse Stuff:</b> Browse <span style="background-color:#cfc">lists and repositories</span>, check daily updates on the <span style="background-color:#cfc">knowledge board</span>.</li>
+  </ul>
+
+  <p style="font-family:serif;font-size:1.2;color:rgb(34,34,34);">
+  You​ are now <span style="background-color:#cfc">officially</span> part of our mission ​to connect and structurize the scattered pieces of knowledge.​
+  </p>
+  <p style="font-family:serif;font-size:1.2;color:rgb(34,34,34);">
+  Cheers, <br>
+  <span style="background-color:#cfc">DaQwest</span> Team
+  </p>
   </div>
-	<button class = "popup_buttons tiny" style="padding:10px;" {{action 'moreFields' target='view'}}>Add more</button>
-  <button class = "popup_buttons tiny" style="float:right;padding:10px;"  type="submit" {{bind-attr disabled="isProcessing"}}>Save!</button>
-</form>
- 
+
+  </div>
+
   <a class="close-reveal-modal" {{action "toggleBody"}}>×</a>
   </div> 
   {{/if}}
