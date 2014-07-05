@@ -26,9 +26,12 @@
     </div>
 
 	{{#each entities}}  
-    {{name}}   <a {{action "removeEntity" this}}>X</a> 
-     </br>  
+    <div style="margin-top:5px;">
+    <span style="font-size:0.9em;font-family:Georgia;color:#666;font-weight:bold;">{{name}}</span>   
+    <span style="float:right;"><a {{action "removeEntity" this}}>&#215</a></span> 
+    </div>
   {{/each}}
+  <br>
       {{lsearch-container entities=entities}}
             
   </div>
