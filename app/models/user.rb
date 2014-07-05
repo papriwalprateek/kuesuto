@@ -6,6 +6,7 @@ class User
   field :name, type: String
   field :oauth_token, type: String
   field :oauth_expires_at, type: Time
+  field :email, type: String
   field :has_access, type: Boolean, default: false
   has_many :duples, as: :parent
   has_many :spaces
@@ -18,6 +19,7 @@ class User
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.email = auth.info.email
       user.save!
     end
   end
