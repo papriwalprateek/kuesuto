@@ -7,7 +7,7 @@ class User
   field :oauth_token, type: String
   field :oauth_expires_at, type: Time
   field :email, type: String
-  field :has_access, type: Boolean, default: false
+  field :has_access, type: Boolean, default: true
   has_many :duples, as: :parent
   has_many :spaces
   has_many :lists
