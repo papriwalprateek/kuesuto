@@ -1,27 +1,16 @@
-<div class="row">
-		<h4>Knowledge Board</h4>
-		<hr>
-		<br>
-		<br>
-		{{#each model.posts}}
-		<div class="small-12 large-9 columns">
-  			<div class="small panel radius" style="background-color:#fff;padding:0px;">
-				<div class="small panel radius" style="background-color:#fff;border:1px solid #ddd;padding:0.8em;">
-				<div>
-				{{#if user}}
-				<span class="secondary label" style="float:right;">published by: Prateek Papriwal</span>{{/if}}
-				<div style="font-family:BantoSans;font-size:0.9em;">{{e_content.name}}</div>
-				</div>
-				<br>
-				{{#each e_content.properties}}
-	 			{{#link-to 'repo' url}}<span  class="radius secondary label">{{title}}</span>{{/link-to}}
- 				{{/each}}
-	 			{{#link-to 'repo' e_content.add_k}}<span  class="radius success label">Add Knowledge</span>{{/link-to}}
- 				</div>			
-				<hr>
-			</div>		
-		</div>
-		{{/each}}
-		
-</div>
+
+<h3>Repositories</h3>
+<hr><br> 
+ 
+These are storehouses of globally aggregated and structured information about topics.
+{{#link-to 'repos'}}<span  class="radius secondary label">Go to Repositories</span>{{/link-to}}
+
+<h3>Lists</h3>
+<hr><br> 
+These are lists of topics which are related in some way.
+{{#link-to 'lists'}}<span  class="radius secondary label">Go to Lists</span>{{/link-to}} 
+
+
+<br><br>
+You can use the left top button to navigate easily
 
