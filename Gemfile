@@ -58,7 +58,7 @@ gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
 gem 'heroku-deflater', :group => :production
-gem 'therubyracer'
+#gem 'therubyracer'
 #concurrent workers
 #platforms :ruby do # linux
 #  gem 'unicorn'
