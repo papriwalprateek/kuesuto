@@ -4,7 +4,9 @@ Rails.application.routes.draw do
  get 'showa' => 'basic#showa'
   get 'repo/:repo'=>'repo#show'
   get 'ember' => 'basic#ember_test'
- 
+constraints subdomain: "algorithm" do   
+  get "/" => redirect { |params| "http://www.daqwest.com" }
+end 
 
 get '/',to: 'repo#generic'
 get '/repo/*path',to:'repo#generic'
