@@ -2,7 +2,7 @@
    {{#view App.CommitFormView textBinding="controller.comContent" resourceUrlBinding="controller.comUrl" propertyBinding="controller.comProperty" currentUserBinding="controller.currentUser"}}
   {{#if view.notFilled}}
   <div class="send_form" >
-  <div class="commitformtext" >Add Property. Ex:- Description, video, article etc. 
+  <div class="commitformtext" >Add Property. Ex:- description, video, article etc. 
   </div> 
   <br>
   <hr>
@@ -14,14 +14,15 @@
 	<br>
 	<hr>
 	<br>
-    <input type="radio" name="type_of_commit" value="url"> I want to suggest a resource 
 	<input type="radio" name="type_of_commit" value="imm_content"> I want to write myself
+  <input type="radio" name="type_of_commit" value="url"> I want to suggest a resource 
+
 {{/view}}
 	 <div class="commit_fields" id="commit_imm_content">
 	 <div class="commitformtext">Your Content:</div><br>
 	
       {{editorpop-container text=view.text }}
-      <a style="float:right;" {{action "insertCode" target=view}}>code</a>
+      <a style="float:right;" {{action "insertCode" target=view}}>code block</a>
 
       <br>
     <button class ="small radius" type="submit" {{action "submit" target=view}}>Done</button>
@@ -30,11 +31,31 @@
 	 
 	<div class="commitformtext">URL for your resource:</div><br>
     {{view Ember.TextField value=view.resourceUrl}}
+    <div style="margin-top:-15px;margin-bottom:15px;color:#aaa;"><span>ex-: youtube url, image url or any online resource</span></div>
     <button class="small radius" type="submit" {{action "submit" target=view}} {{bind-attr disabled=view.emptyurl}}>Done</button>
-
 	</div>
-	
+    <br>
+  <br>
+  <br>
+  <div>
+    <h5>Contribution Guidelines</h5>
+    <hr>
+    <br>
+    <ul style="font-size:0.9em;color:#888;">
+      <li>Specify the property of the knowledge item. Property can be:- description, diagram, article, pseudocode, code, video, lectures, math_analysis, complexity.
+      </li>
+      <li>Add a new property only when the knolwedge item does not fit under any of the above properties.
+      </li>
+      <li>Add knolwedge item (your content or resource url) to make the topic more definitive.
+      </li>
+      <li>Add a part of the article/resource if full article is not relevant to the topic.
+      </li>
+      <li>See an <a style="display:inline;" target="_blank">example.</a>
+      </li>
+    </ul>  
   </div>
+  </div>
+
   {{/if}}
   {{#if view.isSlowConnection}}<div class="commitformtext">It is taking loger than usual...</div>
   {{else}}
@@ -43,7 +64,7 @@
   {{#if view.submitFailed}}Your commit Failed :( {{/if}}
   
   {{#if view.successfully_saved}}
-  	<div class="commitformtext">Congrats, Your commit has been saved and will be reviewed by the repository maintainer soon, you can see it in the review section :)</div><br>
+  	<div class="commitformtext">Congrats, Your knowledge item has been saved and will be reviewed by the repository maintainer soon, you can see it in the review section :)</div><br>
     <button class="small radius" {{action "resetfields" target=view}}>Add more!</button>
    {{/if}}
 	{{#if view.empty}}This is empty please write something to submit{{/if}}
